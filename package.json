@@ -28,6 +28,7 @@
     "@storybook/nextjs": "8.4.7",
     "@storybook/react": "8.4.7",
     "@storybook/test": "8.4.7",
+    "@svgr/webpack": "^8.1.0",
     "@types/bcrypt": "^5.0.2",
     "@types/node": "^20",
     "@types/react": "^19",

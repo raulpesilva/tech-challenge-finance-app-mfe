@@ -1,0 +1,74 @@
+@use "../../theme/base" as *;
+
+.footer {
+  display: flex;
+  background-color: $foreground;
+  width: 100%;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 42px 60px 52px;
+    width: 100%;
+    max-width: 1320px;
+
+    @media (max-width: 768px) {
+      gap: 24px;
+      padding: 24px 60px;
+    }
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      gap: 32px;
+      padding: 24px 66px;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &.content3 {
+      gap: 24px;
+    }
+  }
+
+  h2 {
+    color: $white;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  a {
+    transition-duration: 350ms;
+    width: fit-content;
+    color: $white;
+    line-height: 19px;
+
+    &:hover {
+      color: $gray400;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+
+  .socialMediaWrapper {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    a {
+      display: flex;
+
+      &:hover svg path {
+        fill: $gray400;
+      }
+    }
+
+    a svg path {
+      transition-duration: 350ms;
+    }
+  }
+}
