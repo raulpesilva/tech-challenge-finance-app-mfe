@@ -2,20 +2,20 @@ import { combaneStyles } from "@/utils/combaneStyles";
 import Loading from "../../../assets/icons/loading-icon.svg";
 import styles from "./styles.module.scss";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonIconProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant: "outlined" | "contained";
   color: "primary" | "secondary" | "tertiary" | "error" | "cta";
   children: React.ReactNode;
   loading?: boolean;
 }
 
-export const Button = ({
+export const ButtonIcon = ({
   variant,
   color,
   children,
   loading,
   ...props
-}: ButtonProps) => {
+}: ButtonIconProps) => {
   return (
     <button
       className={combaneStyles([
@@ -27,7 +27,7 @@ export const Button = ({
       {...props}
     >
       {children}
-      {!!loading && <Loading className={styles.loadingIcon}/>}
+      {!!loading && <Loading className={styles.loadingIcon} />}
     </button>
   );
 };
