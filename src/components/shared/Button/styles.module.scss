@@ -1,3 +1,168 @@
+@use "../../../theme/base" as *;
+
+@keyframes loading {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .button {
-  padding: .5rem 1rem;
+  transition-duration: 350ms;
+  border-radius: 8px;
+  padding: 14px 40px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  &.loading {
+    cursor: not-allowed;
+
+    svg {
+      animation: loading 0.75s linear infinite;
+    }
+  }
+
+  svg path {
+    transition-duration: 350ms;
+  }
+}
+
+.contained {
+  color: $white;
+
+  svg path {
+    fill: $white;
+  }
+
+  &.primary {
+    border: 1px solid $primary;
+    background-color: $primary;
+  }
+
+  &.secondary {
+    border: 1px solid $secondary;
+    background-color: $secondary;
+  }
+
+  &.tertiary {
+    border: 1px solid $tertiary;
+    background-color: $tertiary;
+  }
+
+  &.error {
+    border: 1px solid $error;
+    background-color: $error;
+  }
+
+  &.cta {
+    border: 1px solid $black;
+    background-color: $black;
+
+    &:hover {
+      background-color: transparent;
+      color: $black;
+    }
+
+    &:hover svg path {
+      fill: $black;
+    }
+  }
+
+  &:hover {
+    border: 1px solid $black;
+    background-color: $black;
+  }
+}
+
+.outlined {
+  background-color: transparent;
+
+  &.primary {
+    border: 1px solid $primary;
+    color: $primary;
+
+    svg path {
+      fill: $primary;
+    }
+
+    &:hover {
+      background-color: $primary;
+    }
+  }
+
+  &.secondary {
+    border: 1px solid $secondary;
+    color: $secondary;
+
+    svg path {
+      fill: $secondary;
+    }
+
+    &:hover {
+      background-color: $secondary;
+    }
+  }
+
+  &.tertiary {
+    border: 1px solid $tertiary;
+    color: $tertiary;
+
+    svg path {
+      fill: $tertiary;
+    }
+
+    &:hover {
+      background-color: $tertiary;
+    }
+  }
+
+  &.error {
+    border: 1px solid $error;
+    color: $error;
+
+    svg path {
+      fill: $error;
+    }
+
+    &:hover {
+      background-color: $error;
+    }
+  }
+
+  &.cta {
+    border: 1px solid $black;
+    color: $black;
+
+    svg path {
+      fill: $black;
+    }
+
+    &:hover {
+      background-color: $black;
+    }
+  }
+
+  &:hover {
+    color: $white;
+
+    svg path {
+      fill: $white;
+    }
+  }
 }
