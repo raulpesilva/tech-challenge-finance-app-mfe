@@ -1,12 +1,13 @@
-import '@/theme/globals.scss';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import "@/theme/globals.scss";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ['latin'], weight: ['400', '700'] });
+const inter = Inter({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
-  title: 'FIAP Tech challenge',
-  description: 'Projeto criado para Tech challenge FIAP',
+  title: "Bytebank | FIAP Tech Challenge",
+  description:
+    "Bytebank é o seu sistema bancário digital, permitindo gerenciar contas, realizar transações e acompanhar saldos de forma simples e eficiente!",
 };
 
 interface LayoutProps {
@@ -16,12 +17,15 @@ interface LayoutProps {
 
 const isAuthenticated = false;
 
-export default function RootLayout({  authenticated, unauthenticated }: Readonly<LayoutProps>) {
+export default function RootLayout({
+  authenticated,
+  unauthenticated,
+}: Readonly<LayoutProps>) {
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
         {isAuthenticated ? authenticated : unauthenticated}
-        </body>
+      </body>
     </html>
   );
 }
