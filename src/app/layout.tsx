@@ -5,8 +5,8 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'], weight: ['400', '600', '700'] });
 
 export const metadata: Metadata = {
-  title: 'FIAP Tech challenge',
-  description: 'Projeto criado para Tech challenge FIAP',
+  title: 'Bytebank | FIAP Tech Challenge',
+  description: 'Bytebank é o seu sistema bancário digital, permitindo gerenciar contas, realizar transações e acompanhar saldos de forma simples e eficiente!',
 };
 
 interface LayoutProps {
