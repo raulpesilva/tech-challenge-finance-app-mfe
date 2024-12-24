@@ -10,18 +10,13 @@ export const metadata: Metadata = {
 };
 
 interface LayoutProps {
-  authenticated: React.ReactNode;
-  unauthenticated: React.ReactNode;
+  children: React.ReactNode;
 }
 
-const isAuthenticated = false;
-
-export default function RootLayout({  authenticated, unauthenticated }: Readonly<LayoutProps>) {
+export default function RootLayout({ children }: Readonly<LayoutProps>) {
   return (
     <html lang="pt-BR">
-      <body className={inter.className}>
-        {isAuthenticated ? authenticated : unauthenticated}
-        </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
