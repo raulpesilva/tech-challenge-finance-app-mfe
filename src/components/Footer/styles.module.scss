@@ -30,15 +30,19 @@
     flex-direction: column;
     gap: 16px;
 
-    &.content3 {
+    &:last-child {
+      align-items: center;
       gap: 24px;
-    }
-  }
 
-  h2 {
-    color: $white;
-    font-weight: 700;
-    font-size: 16px;
+      @media (max-width: 768px) {
+        align-items: flex-start;
+      }
+
+      @media (min-width: 641px) and (max-width: 768px) {
+        gap: 16px;
+        max-width: 146px;
+      }
+    }
   }
 
   a {
@@ -49,8 +53,6 @@
 
     &:hover {
       color: $gray400;
-      text-decoration: underline;
-      text-underline-offset: 3px;
     }
   }
 
