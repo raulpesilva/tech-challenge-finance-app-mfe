@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <div>
-      <h2>Not Found Unauthenticated</h2>
+      <h2>Not Found public</h2>
       <p>Could not find requested resource</p>
       <Link href="/">Return Home</Link>
     </div>

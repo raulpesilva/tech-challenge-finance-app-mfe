@@ -15,11 +15,11 @@ interface LayoutProps {
 
 export default function Layout({ children, modal }: Readonly<LayoutProps>) {
   return (
-    <>
+    <div id='test'>
       <Header />
       {children}
-      {modal}
       <Footer />
-    </>
+      {modal}
+    </div>
   );
 }

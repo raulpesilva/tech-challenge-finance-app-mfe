@@ -1,13 +1,16 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 export const Header = () => {
   return (
-    <header style={{ gap: 8, display: 'flex' }}>
+    <header style={{ gap: 8, display: 'flex', flexDirection: 'column' }}>
       <h1>Home header</h1>
-      <Link href='/'>Home</Link>
-      <Link href='/login'>Login</Link>
-      <Link href='/register'>Register</Link>
-      <Link href='/dashboard'>dashboard</Link>
+      <div style={{ gap: 8, display: 'flex' }}>
+        <Link href="/">Home</Link>
+        <Link href="/login">Login</Link>
+        <Link href="/register">Register</Link>
+        <Link href="/dashboard">dashboard</Link>
+        <Link href="/noexiste">noexiste</Link>
+      </div>
     </header>
   );
-}
+};
