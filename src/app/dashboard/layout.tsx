@@ -3,7 +3,7 @@ import "@/theme/globals.scss";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Bytebank | FIAP Tech Challenge",
+  title: "Bytebank | Dashboard | FIAP Tech Challenge",
   description:
     "Bytebank é o seu sistema bancário digital, permitindo gerenciar contas, realizar transações e acompanhar saldos de forma simples e eficiente!",
 };
