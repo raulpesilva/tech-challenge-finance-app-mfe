@@ -1,22 +1,31 @@
 // colors
 $white: #ffffff;
 $black: #000000;
-$gray: #dee9ea;
-$light-gray: #f8f8f8;
 
-$light-green: #e4ede3;
+$gray10: #f8f8f8;
+$gray400: #767676;
+$gray600: #444444;
+$gray900: #171717;
 
-$primary: #004d61;
-$secondary: #ff5031;
-$tertiary: #47a138;
+$green10: #e4ede3;
+$green400: #47a138;
+$green600: #004d61;
 
-$error: #BF1313;
+$blue10: #dee9ea;
 
-$background: #ffffff;
-$foreground: #171717;
+$orange600: #ff5031;
+
+$error: #bf1313;
+
+$primary: $green600;
+$secondary: $orange600;
+$tertiary: $green400;
+
+$background: $white;
+$foreground: $gray900;
 
 // gradients
-$gradient: linear-gradient(90deg, #004d61 0%, $white 100%);
+$gradient: linear-gradient(90deg, $primary 0%, $white 100%);
 
 // fonts
-$font-family: 'Inter', 'Inter Fallback', Helvetica, sans-serif;
+$font-family: "Inter", "Inter Fallback", Helvetica, sans-serif;

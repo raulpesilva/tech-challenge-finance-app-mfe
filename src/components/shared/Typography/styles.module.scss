@@ -1,0 +1,73 @@
+@use "../../../theme/base" as *;
+
+.size4xl {
+  font-size: 32px;
+  line-height: 38px;
+}
+
+.size3xl {
+  font-size: 28px;
+  line-height: 34px;
+}
+
+.size2xl {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.sizeXl {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.sizeLg {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.sizeBase {
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.sizeSm {
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.sizeXs {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.semiBold {
+  font-weight: 600;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+.primary {
+  color: $black;
+}
+
+.secondary {
+  color: $white;
+}
+
+.tertiary {
+  color: $tertiary;
+}
+
+.gray400 {
+  color: $gray400;
+}
+
+.gray600 {
+  color: $gray600;
+}
