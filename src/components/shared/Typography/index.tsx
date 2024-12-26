@@ -42,6 +42,8 @@ const colors = {
   tertiary: styles.tertiary,
   gray400: styles.gray400,
   gray600: styles.gray600,
+  error: styles.error,
+  success: styles.success,
 };
 
 interface TypographyProps {

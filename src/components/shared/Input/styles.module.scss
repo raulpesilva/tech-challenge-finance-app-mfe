@@ -1,0 +1,91 @@
+@use "../../../theme/base" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+
+  & > label {
+    color: $black;
+    font-weight: 700;
+    line-height: 19px;
+  }
+
+  .inputContainer {
+    display: flex;
+    align-items: center;
+    transition-duration: 350ms;
+    border: 1px solid $blue10;
+    border-radius: 8px;
+    background-color: $white;
+    overflow: hidden;
+
+    &:hover,
+    &:focus-within {
+      border: 1px solid $primary;
+    }
+
+    &:focus-within {
+      box-shadow: 0 0 3px 0 $primary;
+    }
+
+    &.error {
+      border: 1px solid $error;
+
+      &:focus-within {
+        box-shadow: 0 0 3px 0 $error;
+      }
+    }
+
+    &.success {
+      border: 1px solid $success;
+
+      &:focus-within {
+        box-shadow: 0 0 3px 0 $success;
+      }
+    }
+
+    &.left input {
+      text-align: start;
+    }
+
+    &.center input {
+      text-align: center;
+    }
+
+    &.right input {
+      text-align: end;
+    }
+
+    label {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 46px;
+      height: 46px;
+      overflow: hidden;
+    }
+
+    input {
+      flex: 1;
+      border: none;
+      background-color: transparent;
+      padding: 0 16px;
+      height: 46px;
+      color: $gray600;
+      font-size: 16px;
+      line-height: 19px;
+
+      &:hover,
+      &:focus-within {
+        outline: none;
+        border: none;
+      }
+
+      &::placeholder {
+        color: $gray300;
+      }
+    }
+  }
+}
