@@ -7,6 +7,8 @@ const protectedRoutes = ['/dashboard'];
 const publicRoutes = ['/login', '/register', '/'];
 
 export default async function middleware(req: NextRequest) {
+  const headers = new Headers(req.headers);
+  headers.set("x-current-path", req.nextUrl.pathname);
   // 2. Check if the current route is protected or public
   const path = req.nextUrl.pathname;
   const isProtectedRoute = protectedRoutes.some((route) => path.startsWith(route));
@@ -26,7 +28,7 @@ export default async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL('/dashboard', req.nextUrl));
   }
 
-  return NextResponse.next();
+  return NextResponse.next({ headers });
 }
 
 export const config = {
