@@ -1,0 +1,115 @@
+@use "../../../theme//base" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+
+  & > label {
+    color: $black;
+    font-weight: 700;
+    line-height: 19px;
+  }
+
+  .selectContainer {
+    display: flex;
+    position: relative;
+    transition-duration: 350ms;
+
+    &.selected {
+      button {
+        // border: 1px solid $success;
+        color: $gray600;
+      }
+
+      // button:hover,
+      // button.opened {
+      //   border: 1px solid $success;
+      // }
+
+      // svg path {
+      //   fill: $success;
+      // }
+
+      // .list {
+      //   border: 1px solid $success;
+      // }
+
+      // .item:hover,
+      // .item:focus,
+      // .item:focus-within,
+      // .item.selected {
+      //   background-color: $green10;
+      // }
+    }
+
+    button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1;
+      transition-duration: 350ms;
+      cursor: pointer;
+      border: 1px solid $blue10;
+      border-radius: 8px;
+      background-color: $white;
+      padding: 0 16px;
+      width: 100%;
+      min-height: 48px;
+      color: $gray300;
+      font-size: 16px;
+      line-height: 19px;
+      gap: 16px;
+      text-align: start;
+
+      &:hover,
+      &.opened {
+        border: 1px solid $primary;
+      }
+
+      svg,
+      svg path {
+        transition-duration: 350ms;
+        fill: $primary;
+      }
+
+      &.opened svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    .list {
+      display: flex;
+      position: absolute;
+      top: 31px;
+      flex-direction: column;
+      transition-duration: 350ms;
+      border: 1px solid $primary;
+      border-radius: 0 0 8px 8px;
+      background-color: $white;
+      padding: 15px 0;
+      width: 100%;
+    }
+
+    .item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition-duration: 350ms;
+      cursor: pointer;
+      min-height: 50px;
+      color: $gray600;
+
+      &:hover,
+      &:focus {
+        background-color: $blue10;
+      }
+      
+      &.selected {
+        background-color: $blue10;
+        font-weight: 700;
+      }
+    }
+  }
+}
