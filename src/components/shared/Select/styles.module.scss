@@ -1,5 +1,18 @@
 @use "../../../theme//base" as *;
 
+@keyframes slideTransition {
+  0% {
+    opacity: 0;
+    max-height: 0;
+    overflow-y: hidden;
+  }
+
+  100% {
+    opacity: 1;
+    overflow-y: auto;
+  }
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -17,38 +30,57 @@
     position: relative;
     transition-duration: 350ms;
 
-    &.selected {
-      button {
-        // border: 1px solid $success;
-        color: $gray600;
+    &.error button,
+    &.error .list {
+      border: 1px solid $error;
+
+      &:hover,
+      &.opened {
+        border: 1px solid $error;
       }
 
-      // button:hover,
-      // button.opened {
-      //   border: 1px solid $success;
-      // }
+      &.opened {
+        box-shadow: 0 0 3px 0 $error;
+      }
 
-      // svg path {
-      //   fill: $success;
-      // }
+      &:focus {
+        box-shadow: 0 0 3px 0 $error;
+        border: 1px solid $error;
+      }
 
-      // .list {
-      //   border: 1px solid $success;
-      // }
+      svg path {
+        fill: $error;
+      }
+    }
 
-      // .item:hover,
-      // .item:focus,
-      // .item:focus-within,
-      // .item.selected {
-      //   background-color: $green10;
-      // }
+    &.success button,
+    &.success .list {
+      border: 1px solid $success;
+
+      &:hover,
+      &.opened {
+        border: 1px solid $success;
+      }
+
+      &.opened {
+        box-shadow: 0 0 3px 0 $success;
+      }
+
+      &:focus {
+        box-shadow: 0 0 3px 0 $success;
+        border: 1px solid $success;
+      }
+
+      svg path {
+        fill: $success;
+      }
     }
 
     button {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 1;
+      gap: 16px;
       transition-duration: 350ms;
       cursor: pointer;
       border: 1px solid $blue10;
@@ -60,12 +92,22 @@
       color: $gray300;
       font-size: 16px;
       line-height: 19px;
-      gap: 16px;
       text-align: start;
 
       &:hover,
       &.opened {
         border: 1px solid $primary;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 3px 0 $primary;
+        border: 1px solid $primary;
+      }
+
+      &.opened {
+        z-index: 2;
+        box-shadow: 0 0 3px 0 $primary;
       }
 
       svg,
@@ -77,6 +119,10 @@
       &.opened svg {
         transform: rotate(180deg);
       }
+
+      &.selected {
+        color: $gray600;
+      }
     }
 
     .list {
@@ -84,12 +130,20 @@
       position: absolute;
       top: 31px;
       flex-direction: column;
+      z-index: 1;
+      animation: slideTransition 350ms ease-in-out;
       transition-duration: 350ms;
       border: 1px solid $primary;
       border-radius: 0 0 8px 8px;
       background-color: $white;
       padding: 15px 0;
       width: 100%;
+      max-height: 200px;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 0px;
+      }
     }
 
     .item {
@@ -104,8 +158,9 @@
       &:hover,
       &:focus {
         background-color: $blue10;
+        outline: none;
       }
-      
+
       &.selected {
         background-color: $blue10;
         font-weight: 700;

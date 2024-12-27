@@ -1,12 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
-// import { MdOutlineCheck } from 'react-icons/md'
 import { combaneStyles } from "@/utils/combaneStyles";
+import { useEffect, useState } from "react";
+import Arrow from "../../../assets/icons/arrow-icon.svg";
 import { Typography } from "../Typography";
 import styles from "./styles.module.scss";
-
-import Arrow from "../../../assets/icons/arrow-icon.svg";
 
 interface SelectItemProps {
   option: string;
@@ -74,13 +72,17 @@ export const Select = <T extends readonly string[]>({
       <div
         className={combaneStyles([
           styles.selectContainer,
-          !!value ? styles.selected : "",
+          error && styles.error,
+          !error && success && styles.success,
         ])}
       >
         <button
           type="button"
           onClick={handleOpen}
-          className={opened ? styles.opened : ""}
+          className={combaneStyles([
+            opened ? styles.opened : "",
+            !!value ? styles.selected : "",
+          ])}
         >
           {value ?? placeholder}
           <Arrow />
