@@ -1,0 +1,23 @@
+@use "../../theme/base" as *;
+
+.header {
+  display: flex;
+  // background-color: $foreground;
+  width: 100%;
+  border-bottom: 1px solid red;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 24px 60px;
+    width: 100%;
+    max-width: 1320px;
+
+    @media (max-width: 768px) {
+    }
+
+    @media (max-width: 640px) {
+    }
+  }
+}
