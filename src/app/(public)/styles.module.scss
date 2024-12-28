@@ -1,0 +1,96 @@
+@use "../../theme/base" as *;
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  background: $gradient;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 0 60px;
+    width: 100%;
+    max-width: 1320px;
+
+    @media (max-width: 640px) {
+      padding: 0 24px;
+    }
+  }
+
+  .bannerContainer {
+    display: flex;
+    align-items: center;
+    gap: 76px;
+    margin-top: 24px;
+
+    @media (max-width: 1024px) {
+      gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      margin-top: 40px;
+    }
+
+    p {
+      min-width: 273px;
+
+      @media (max-width: 768px) {
+        text-align: center;
+      }
+
+      @media (max-width: 640px) {
+        font-size: 24px;
+        line-height: 30px;
+      }
+    }
+
+    img {
+      max-width: calc(100% - 76px - 273px);
+      height: auto;
+
+      @media (max-width: 1024px) {
+        max-width: calc(100% - 16px - 273px);
+      }
+
+      @media (max-width: 768px) {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .benefitsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-top: 40px;
+
+    @media (max-width: 640px) {
+      margin-top: 32px;
+    }
+
+    h1 {
+      text-align: center;
+
+      @media (max-width: 640px) {
+        font-size: 20px;
+        line-height: 24px;
+      }
+    }
+  }
+}
+
+.benefit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
