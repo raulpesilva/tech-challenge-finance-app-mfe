@@ -46,27 +46,27 @@
   }
 
   &.primary {
-    border: 1px solid $primary;
+    border: 2px solid $primary;
     background-color: $primary;
   }
 
   &.secondary {
-    border: 1px solid $secondary;
+    border: 2px solid $secondary;
     background-color: $secondary;
   }
 
   &.tertiary {
-    border: 1px solid $tertiary;
+    border: 2px solid $tertiary;
     background-color: $tertiary;
   }
 
   &.error {
-    border: 1px solid $error;
+    border: 2px solid $error;
     background-color: $error;
   }
 
   &.cta {
-    border: 1px solid $black;
+    border: 2px solid $black;
     background-color: $black;
 
     &:hover {
@@ -80,7 +80,7 @@
   }
 
   &:hover {
-    border: 1px solid $black;
+    border: 2px solid $black;
     background-color: $black;
   }
 }
@@ -89,7 +89,7 @@
   background-color: transparent;
 
   &.primary {
-    border: 1px solid $primary;
+    border: 2px solid $primary;
     color: $primary;
 
     svg path {
@@ -102,7 +102,7 @@
   }
 
   &.secondary {
-    border: 1px solid $secondary;
+    border: 2px solid $secondary;
     color: $secondary;
 
     svg path {
@@ -115,7 +115,7 @@
   }
 
   &.tertiary {
-    border: 1px solid $tertiary;
+    border: 2px solid $tertiary;
     color: $tertiary;
 
     svg path {
@@ -128,7 +128,7 @@
   }
 
   &.error {
-    border: 1px solid $error;
+    border: 2px solid $error;
     color: $error;
 
     svg path {
@@ -141,7 +141,7 @@
   }
 
   &.cta {
-    border: 1px solid $black;
+    border: 2px solid $black;
     color: $black;
 
     svg path {
