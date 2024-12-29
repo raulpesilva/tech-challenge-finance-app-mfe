@@ -1,3 +1,4 @@
+import { ButtonLink } from "@/components/shared/ButtonLink";
 import { Typography } from "@/components/shared/Typography";
 import Image, { StaticImageData } from "next/image";
 import imageBenefit1 from "../../assets/images/benefit-1.png";
@@ -45,10 +46,10 @@ const BenefitItem = ({ image, alt, title, text }: BenefitItemProps) => {
   return (
     <div className={styles.benefit}>
       <Image src={image} alt={alt} width={73} height={56} />
-      <Typography variant="heading2" color="success">
+      <Typography variant="heading2" color="success" className={styles.title}>
         {title}
       </Typography>
-      <Typography variant="paragraph" color="gray400">
+      <Typography variant="paragraph" color="gray400" className={styles.text}>
         {text}
       </Typography>
     </div>
@@ -59,29 +60,58 @@ export default function Page() {
   return (
     <main className={styles.main}>
       <div className={styles.container}>
-        <div className={styles.bannerContainer}>
-          <Typography variant="paragraph" size="3xl" weight="semiBold">
+        <section className={styles.bannerContainer}>
+          <Typography
+            variant="heading1"
+            size="3xl"
+            weight="semiBold"
+            className={styles.title}
+          >
             Experimente mais liberdade no controle da sua vida financeira. Crie
             sua conta com a gente!
           </Typography>
 
           <Image
+            className={styles.banner}
             src={imageBanner}
             alt="Ilustração de um gráfico de barras verdes com uma pessoa segurando dinheiro, simbolizando crescimento financeiro."
             width={660}
             height={412}
+            priority
           />
-        </div>
 
-        <div className={styles.benefitsContainer}>
-          <Typography variant="heading1">Vantagens do nosso banco:</Typography>
+          <div className={styles.buttonsWrapper}>
+            <ButtonLink
+              href="/register"
+              variant="contained"
+              color="cta"
+              className={styles.button}
+            >
+              Abrir conta
+            </ButtonLink>
 
-          <div>
+            <ButtonLink
+              href="/login"
+              variant="outlined"
+              color="cta"
+              className={styles.button}
+            >
+              Já tenho conta
+            </ButtonLink>
+          </div>
+        </section>
+
+        <section className={styles.benefitsContainer}>
+          <Typography variant="heading1" className={styles.title}>
+            Vantagens do nosso banco:
+          </Typography>
+
+          <div className={styles.benefitsWrapper}>
             {benefits.map((benefit, i) => (
               <BenefitItem key={`benefit-${i}`} {...benefit} />
             ))}
           </div>
-        </div>
+        </section>
       </div>
     </main>
   );
