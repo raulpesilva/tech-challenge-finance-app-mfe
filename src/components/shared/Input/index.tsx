@@ -1,22 +1,15 @@
 import { combaneStyles } from "@/utils/combaneStyles";
-import {
-  FormEvent,
-  HTMLInputAutoCompleteAttribute,
-  HTMLInputTypeAttribute,
-} from "react";
+import { FormEvent } from "react";
 import { Typography } from "../Typography";
 import styles from "./styles.module.scss";
 
-interface InputProps {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string;
   label: string;
   placeholder: string;
   value: string;
   onChange: (event: FormEvent<HTMLInputElement>) => void;
-  type?: HTMLInputTypeAttribute;
-  maxLength?: number;
   textAlign?: "left" | "center" | "right";
-  autoComplete?: HTMLInputAutoCompleteAttribute;
   success?: boolean;
   successMessage?: string;
   error?: boolean;
@@ -31,16 +24,14 @@ export const Input = ({
   placeholder,
   value,
   onChange,
-  type = "text",
-  maxLength,
   textAlign = "left",
-  autoComplete = "off",
   success,
   successMessage,
   error,
   errorMessage,
   iconLeft,
   iconRight,
+  ...props
 }: InputProps) => {
   return (
     <div className={styles.container}>
@@ -59,11 +50,9 @@ export const Input = ({
         <input
           id={id}
           placeholder={placeholder}
-          type={type}
-          maxLength={maxLength}
-          autoComplete={autoComplete}
           value={value}
           onChange={onChange}
+          {...props}
         />
 
         {!!iconRight && <label htmlFor={id}>{iconRight}</label>}

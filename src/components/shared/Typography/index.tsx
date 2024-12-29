@@ -52,14 +52,17 @@ interface TypographyProps {
   size?: keyof typeof sizes;
   weight?: keyof typeof weights;
   color?: keyof typeof colors;
+  className?: string;
 }
 
+// TODO: pass props to the component - props according to variant
 export const Typography = ({
   children,
   variant = "paragraph",
   size,
   weight,
   color = "primary",
+  className,
 }: TypographyProps) => {
   const Component = componentVariants[variant] ?? "p";
 
@@ -69,6 +72,7 @@ export const Typography = ({
         size ? sizes[size] : variants[variant]?.size,
         weight ? weights[weight] : variants[variant]?.weight,
         colors[color],
+        className && className,
       ])}
     >
       {children}
