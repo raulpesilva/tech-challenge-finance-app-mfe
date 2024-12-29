@@ -2,6 +2,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import "@/theme/globals.scss";
 import type { Metadata } from "next";
+import styles from "./styles.module.scss";
 
 export const metadata: Metadata = {
   title: "Bytebank | FIAP Tech Challenge",
@@ -16,7 +17,7 @@ interface LayoutProps {
 
 export default function Layout({ children, modal }: Readonly<LayoutProps>) {
   return (
-    <div id='test'>
+    <div className={styles.app}>
       <Header />
       {children}
       <Footer />

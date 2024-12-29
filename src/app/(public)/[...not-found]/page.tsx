@@ -1,20 +1,31 @@
-import { headers } from 'next/headers';
-import Link from 'next/link';
-import Page from '../page';
+import { ButtonLink } from "@/components/shared/ButtonLink";
+import { Typography } from "@/components/shared/Typography";
+import { headers } from "next/headers";
+import Page from "../page";
+import styles from "./styles.module.scss";
 
-const publicRoutes = ['/login', '/register'];
+const publicRoutes = ["/login", "/register"];
 
 export default async function NotFound() {
   const header = await headers();
-  const pathname = header.get('x-current-path');
+  const pathname = header.get("x-current-path");
 
   if (publicRoutes.some((route) => pathname?.includes(route))) return <Page />;
 
   return (
-    <div>
-      <h2>Not Found public catch all</h2>
-      <p>Could not find requested resource</p>
-      <Link href="/">Return Home</Link>
-    </div>
+    <main className={styles.main}>
+      <Typography variant="heading1">
+        Ops! Não encontramos a página...{" "}
+      </Typography>
+
+      <Typography variant="paragraph">
+        E olha que exploramos o universo procurando por ela! Que tal voltar e
+        tentar novamente?
+      </Typography>
+
+      <ButtonLink href="/" variant="contained" color="secondary">
+        Voltar ao início
+      </ButtonLink>
+    </main>
   );
 }
