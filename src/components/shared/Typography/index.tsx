@@ -1,5 +1,5 @@
-import { combaneStyles } from "@/utils/combaneStyles";
-import styles from "./styles.module.scss";
+import { combaneStyles } from '@/utils/combaneStyles';
+import styles from './styles.module.scss';
 
 const variants = {
   heading1: { weight: styles.bold, size: styles.size2xl },
@@ -11,18 +11,18 @@ const variants = {
 };
 
 const componentVariants = {
-  heading1: "h1",
-  heading2: "h2",
-  heading3: "h3",
-  heading4: "h4",
-  paragraph: "p",
-  label: "label",
+  heading1: 'h1',
+  heading2: 'h2',
+  heading3: 'h3',
+  heading4: 'h4',
+  paragraph: 'p',
+  label: 'label',
 } as const;
 
 const sizes = {
-  "4xl": styles.size4xl, // 32px
-  "3xl": styles.size3xl, // 28px
-  "2xl": styles.size2xl, // 24px
+  '4xl': styles.size4xl, // 32px
+  '3xl': styles.size3xl, // 28px
+  '2xl': styles.size2xl, // 24px
   xl: styles.sizeXl, // 20px
   lg: styles.sizeLg, // 18px
   base: styles.sizeBase, // 16px
@@ -58,13 +58,13 @@ interface TypographyProps {
 // TODO: pass props to the component - props according to variant
 export const Typography = ({
   children,
-  variant = "paragraph",
+  variant = 'paragraph',
   size,
   weight,
-  color = "primary",
+  color = 'primary',
   className,
 }: TypographyProps) => {
-  const Component = componentVariants[variant] ?? "p";
+  const Component = componentVariants[variant] ?? 'p';
 
   return (
     <Component

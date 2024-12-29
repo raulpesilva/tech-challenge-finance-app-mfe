@@ -1,7 +1,7 @@
-import { combaneStyles } from "@/utils/combaneStyles";
-import { FormEvent } from "react";
-import { Typography } from "../Typography";
-import styles from "./styles.module.scss";
+import { combaneStyles } from '@/utils/combaneStyles';
+import { FormEvent } from 'react';
+import { Typography } from '../Typography';
+import styles from './styles.module.scss';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string;
@@ -9,7 +9,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
   value: string;
   onChange: (event: FormEvent<HTMLInputElement>) => void;
-  textAlign?: "left" | "center" | "right";
+  textAlign?: 'left' | 'center' | 'right';
   success?: boolean;
   successMessage?: string;
   error?: boolean;
@@ -24,7 +24,7 @@ export const Input = ({
   placeholder,
   value,
   onChange,
-  textAlign = "left",
+  textAlign = 'left',
   success,
   successMessage,
   error,
@@ -47,25 +47,19 @@ export const Input = ({
       >
         {!!iconLeft && <label htmlFor={id}>{iconLeft}</label>}
 
-        <input
-          id={id}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          {...props}
-        />
+        <input id={id} placeholder={placeholder} value={value} onChange={onChange} {...props} />
 
         {!!iconRight && <label htmlFor={id}>{iconRight}</label>}
       </div>
 
       {error && !!errorMessage && (
-        <Typography variant="paragraph" size="sm" color="error">
+        <Typography variant='paragraph' size='sm' color='error'>
           {errorMessage}
         </Typography>
       )}
 
       {!error && success && !!successMessage && (
-        <Typography variant="paragraph" size="sm" color="success">
+        <Typography variant='paragraph' size='sm' color='success'>
           {successMessage}
         </Typography>
       )}

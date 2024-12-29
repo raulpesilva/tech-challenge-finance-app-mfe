@@ -14,21 +14,21 @@ export default async function Page() {
           await createAccount(formData);
           redirect('/dashboard');
         }}
-        autoComplete="on"
+        autoComplete='on'
       >
         <label>
           Name:
-          <input name="name" type="name" />
+          <input name='name' type='name' />
         </label>
         <label>
           Email:
-          <input name="email" type="email" />
+          <input name='email' type='email' />
         </label>
         <label>
           Password:
-          <input name="password" type="password" />
+          <input name='password' type='password' />
         </label>
-        <button type="submit">Criar conta</button>
+        <button type='submit'>Criar conta</button>
       </form>
     </div>
   );

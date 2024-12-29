@@ -12,17 +12,17 @@ export default function Page() {
           await login(formData);
           redirect('/dashboard');
         }}
-        autoComplete="on"
+        autoComplete='on'
       >
         <label>
           Email:
-          <input name="email" type="email" />
+          <input name='email' type='email' />
         </label>
         <label>
           Password:
-          <input name="password" type="password" />
+          <input name='password' type='password' />
         </label>
-        <button type="submit">Entrar</button>
+        <button type='submit'>Entrar</button>
       </form>
     </div>
   );

@@ -1,7 +1,7 @@
 'use client';
 
 export const FormRegister = () => {
-  return null
+  return null;
   // const [state, action, isPending] = useActionState(createUser, InitialRegisterResponse);
   // return (
   //   <form action={action} autoComplete="on">

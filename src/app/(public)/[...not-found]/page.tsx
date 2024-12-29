@@ -14,7 +14,7 @@ export default async function NotFound() {
     <div>
       <h2>Not Found public catch all</h2>
       <p>Could not find requested resource</p>
-      <Link href="/">Return Home</Link>
+      <Link href='/'>Return Home</Link>
     </div>
   );
 }

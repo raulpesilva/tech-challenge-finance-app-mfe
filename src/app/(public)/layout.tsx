@@ -1,13 +1,13 @@
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
-import "@/theme/globals.scss";
-import type { Metadata } from "next";
-import styles from "./styles.module.scss";
+import { Footer } from '@/components/Footer';
+import { Header } from '@/components/Header';
+import '@/theme/globals.scss';
+import type { Metadata } from 'next';
+import styles from './styles.module.scss';
 
 export const metadata: Metadata = {
-  title: "Bytebank | FIAP Tech Challenge",
+  title: 'Bytebank | FIAP Tech Challenge',
   description:
-    "Bytebank é o seu sistema bancário digital, permitindo gerenciar contas, realizar transações e acompanhar saldos de forma simples e eficiente!",
+    'Bytebank é o seu sistema bancário digital, permitindo gerenciar contas, realizar transações e acompanhar saldos de forma simples e eficiente!',
 };
 
 interface LayoutProps {

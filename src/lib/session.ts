@@ -18,17 +18,18 @@ export async function decrypt(session: string | undefined = '') {
       algorithms: ['HS256'],
     });
     return payload;
-  } catch (error) {
+  } catch (error: unknown) {
+    if (error instanceof Error) console.error(error.message);
     return null;
   }
 }
 
-export async function verify(input: string | undefined = ''): Promise<any> {
+export async function verify(input: string | undefined = ''): Promise<unknown> {
   try {
     const { payload } = await jwtVerify(input, key, { algorithms: ['HS256'] });
     return payload;
-  } catch (error: any) {
-    console.error(error.message);
+  } catch (error: unknown) {
+    if (error instanceof Error) console.error(error.message);
     return null;
   }
 }
