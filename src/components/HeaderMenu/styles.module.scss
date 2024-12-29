@@ -67,9 +67,11 @@
   text-decoration: none;
 
   @media (max-width: 640px) {
-    border-bottom: 1px solid $tertiary;
+    border-bottom: 1px solid $white;
     border-radius: 0;
     padding: 0 2px 16px;
     width: 100%;
+    color: $white !important;
+    font-weight: 400;
   }
 }
