@@ -162,6 +162,55 @@
   }
 }
 
+.text {
+  background-color: transparent;
+  border: none;
+
+  &.primary {
+    color: $primary;
+
+    svg path {
+      fill: $primary;
+    }
+  }
+
+  &.secondary {
+    color: $secondary;
+
+    svg path {
+      fill: $secondary;
+    }
+  }
+
+  &.tertiary {
+    color: $tertiary;
+
+    svg path {
+      fill: $tertiary;
+    }
+  }
+
+  &.error {
+    color: $error;
+
+    svg path {
+      fill: $error;
+    }
+  }
+
+  &.cta {
+    color: $black;
+
+    svg path {
+      fill: $black;
+    }
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
 .button.loading {
   cursor: not-allowed;
 

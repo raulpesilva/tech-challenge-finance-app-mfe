@@ -1,7 +1,10 @@
+@use "../../theme/base" as *;
+
 .logo {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition-duration: 350ms;
   width: fit-content;
   max-height: 26px;
 

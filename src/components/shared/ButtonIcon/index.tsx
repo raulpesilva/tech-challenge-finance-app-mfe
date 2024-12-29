@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 
 interface ButtonIconProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: "outlined" | "contained";
+  variant: "text"| "outlined" | "contained";
   color: "primary" | "secondary" | "tertiary" | "error" | "cta";
   children: React.ReactNode;
   loading?: boolean;
