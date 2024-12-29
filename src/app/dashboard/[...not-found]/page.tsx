@@ -1,11 +1,10 @@
-import Link from 'next/link';
+import { NotFoundContainer } from "@/components/NotFoundContainer";
+import styles from "./styles.module.scss";
 
 export default function NotFound() {
   return (
-    <div>
-      <h2>Not Found dashboard</h2>
-      <p>Could not find requested resource</p>
-      <Link href='/'>Return Home</Link>
-    </div>
+    <main className={styles.notFoundMain}>
+      <NotFoundContainer />
+    </main>
   );
 }
