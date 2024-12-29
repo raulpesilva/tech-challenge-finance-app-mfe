@@ -1,33 +1,20 @@
-import { combaneStyles } from "@/utils/combaneStyles";
-import Link from "next/link";
-import styles from "./styles.module.scss";
+import { combaneStyles } from '@/utils/combaneStyles';
+import Link from 'next/link';
+import styles from './styles.module.scss';
 
-interface ButtonLinkProps
-  extends React.ButtonHTMLAttributes<HTMLAnchorElement> {
-  variant: "text" | "outlined" | "contained";
-  color: "primary" | "secondary" | "tertiary" | "error" | "cta";
+interface ButtonLinkProps extends React.ButtonHTMLAttributes<HTMLAnchorElement> {
+  variant: 'text' | 'outlined' | 'contained';
+  color: 'primary' | 'secondary' | 'tertiary' | 'error' | 'cta';
   href: string;
   children: React.ReactNode;
   className?: string;
 }
 
-export const ButtonLink = ({
-  variant,
-  color,
-  href,
-  children,
-  className,
-  ...props
-}: ButtonLinkProps) => {
+export const ButtonLink = ({ variant, color, href, children, className, ...props }: ButtonLinkProps) => {
   return (
     <Link
       href={href}
-      className={combaneStyles([
-        styles.buttonLink,
-        styles[variant],
-        styles[color],
-        className && className,
-      ])}
+      className={combaneStyles([styles.buttonLink, styles[variant], styles[color], className && className])}
       {...props}
     >
       {children}

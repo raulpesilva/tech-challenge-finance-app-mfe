@@ -1,9 +1,9 @@
 'use server';
 
 import { compare, genSalt, hash } from 'bcrypt';
-import { jwtVerify, SignJWT } from 'jose';
+import { JWTPayload, jwtVerify, SignJWT } from 'jose';
 
-export interface Fields<T extends Record<string, any>> {
+export interface Fields<T extends Record<string, unknown>> {
   inputs: { [K in keyof T]?: T[K] };
   erros: { [K in keyof T]?: string[] };
 }
@@ -11,19 +11,20 @@ export interface Fields<T extends Record<string, any>> {
 const secret = process.env.JWT_SECRET;
 const key = new TextEncoder().encode(secret);
 
-export async function sign(payload: any) {
-  return await new SignJWT(payload)
+export async function sign(payload: unknown) {
+  return await new SignJWT(payload as JWTPayload)
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
     .setExpirationTime('10 sec from now')
     .sign(key);
 }
 
-export async function verify(input: string | undefined = ''): Promise<any> {
+export async function verify(input: string | undefined = ''): Promise<unknown> {
   try {
     const { payload } = await jwtVerify(input, key, { algorithms: ['HS256'] });
     return payload;
-  } catch (error) {
+  } catch (error: unknown) {
+    if (error instanceof Error) console.error(error.message);
     return null;
   }
 }

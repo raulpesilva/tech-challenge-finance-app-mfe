@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { combaneStyles } from "@/utils/combaneStyles";
-import { useEffect, useState } from "react";
-import Arrow from "../../../assets/icons/arrow-icon.svg";
-import { Typography } from "../Typography";
-import styles from "./styles.module.scss";
+import { combaneStyles } from '@/utils/combaneStyles';
+import { useCallback, useEffect, useState } from 'react';
+import Arrow from '../../../assets/icons/arrow-icon.svg';
+import { Typography } from '../Typography';
+import styles from './styles.module.scss';
 
 interface SelectItemProps {
   option: string;
@@ -32,7 +32,7 @@ const SelectItem = ({ option, value, handleSelect }: SelectItemProps) => {
       tabIndex={0} // tornar o item do select acessível por teclado
       className={combaneStyles([styles.item, itemSelected && styles.selected])}
       onClick={() => handleSelect(option)}
-      onKeyDown={(e) => e.key === "Enter" && handleSelect(option)}
+      onKeyDown={(e) => e.key === 'Enter' && handleSelect(option)}
     >
       {option}
     </li>
@@ -52,17 +52,17 @@ export const Select = <T extends readonly string[]>({
 }: SelectProps<T>) => {
   const [opened, setOpened] = useState(false);
 
-  const handleOpen = () => setOpened(true);
-  const handleClose = () => setOpened(false);
+  const handleOpen = useCallback(() => setOpened(true), []);
+  const handleClose = useCallback(() => setOpened(false), []);
 
-  const handleSelect = (option: string) => {
+  const handleSelect = useCallback((option: string) => {
     onChange(option);
     handleClose();
-  };
+  }, [onChange, handleClose]);
 
   useEffect(() => {
-    document.addEventListener("click", handleClose);
-    return () => document.removeEventListener("click", handleClose);
+    document.addEventListener('click', handleClose);
+    return () => document.removeEventListener('click', handleClose);
   }, [handleClose]);
 
   return (
@@ -70,19 +70,12 @@ export const Select = <T extends readonly string[]>({
       {!!label && <label onClick={handleOpen}>{label}</label>}
 
       <div
-        className={combaneStyles([
-          styles.selectContainer,
-          error && styles.error,
-          !error && success && styles.success,
-        ])}
+        className={combaneStyles([styles.selectContainer, error && styles.error, !error && success && styles.success])}
       >
         <button
-          type="button"
+          type='button'
           onClick={handleOpen}
-          className={combaneStyles([
-            opened ? styles.opened : "",
-            !!value ? styles.selected : "",
-          ])}
+          className={combaneStyles([opened ? styles.opened : '', !!value ? styles.selected : ''])}
         >
           {value ?? placeholder}
           <Arrow />
@@ -103,13 +96,13 @@ export const Select = <T extends readonly string[]>({
       </div>
 
       {error && !!errorMessage && (
-        <Typography variant="paragraph" size="sm" color="error">
+        <Typography variant='paragraph' size='sm' color='error'>
           {errorMessage}
         </Typography>
       )}
 
       {!error && success && !!successMessage && (
-        <Typography variant="paragraph" size="sm" color="success">
+        <Typography variant='paragraph' size='sm' color='success'>
           {successMessage}
         </Typography>
       )}
