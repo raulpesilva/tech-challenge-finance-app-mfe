@@ -1,19 +1,37 @@
-import Link from "next/link";
-import styles from "./styles.module.scss";
+import { HeaderMenu } from "../HeaderMenu";
+import { Logo } from "../Logo";
 import { LogoType } from "../LogoType";
+import { ButtonLink } from "../shared/ButtonLink";
+import styles from "./styles.module.scss";
 
 export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <LogoType />
+        <div className={styles.linksContent}>
+          <LogoType className={styles.logoType} />
+          <Logo className={styles.logo} />
+          <HeaderMenu />
+        </div>
 
-        <div>
-          <Link href="/">Home</Link>
-          <Link href="/login">Login</Link>
-          <Link href="/register">Register</Link>
-          <Link href="/dashboard">dashboard</Link>
-          <Link href="/noexiste">noexiste</Link>
+        <div className={styles.ctaContent}>
+          <ButtonLink
+            href="/register"
+            variant="contained"
+            color="tertiary"
+            className={styles.cta}
+          >
+            Abrir conta
+          </ButtonLink>
+
+          <ButtonLink
+            href="/login"
+            variant="outlined"
+            color="tertiary"
+            className={styles.cta}
+          >
+            Já tenho conta
+          </ButtonLink>
         </div>
       </div>
     </header>
