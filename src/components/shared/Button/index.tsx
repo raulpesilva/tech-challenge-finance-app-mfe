@@ -7,6 +7,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color: "primary" | "secondary" | "tertiary" | "error" | "cta";
   children: React.ReactNode;
   loading?: boolean;
+  className?: string;
 }
 
 export const Button = ({
@@ -14,6 +15,7 @@ export const Button = ({
   color,
   children,
   loading,
+  className,
   ...props
 }: ButtonProps) => {
   return (
@@ -23,11 +25,12 @@ export const Button = ({
         styles[variant],
         styles[color],
         loading && styles.loading,
+        className && className,
       ])}
       {...props}
     >
       {children}
-      {!!loading && <Loading className={styles.loadingIcon}/>}
+      {!!loading && <Loading className={styles.loadingIcon} />}
     </button>
   );
 };

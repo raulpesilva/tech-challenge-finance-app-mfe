@@ -8,6 +8,7 @@ interface ButtonLinkProps
   color: "primary" | "secondary" | "tertiary" | "error" | "cta";
   href: string;
   children: React.ReactNode;
+  className?: string;
 }
 
 export const ButtonLink = ({
@@ -15,6 +16,7 @@ export const ButtonLink = ({
   color,
   href,
   children,
+  className,
   ...props
 }: ButtonLinkProps) => {
   return (
@@ -24,6 +26,7 @@ export const ButtonLink = ({
         styles.buttonLink,
         styles[variant],
         styles[color],
+        className && className,
       ])}
       {...props}
     >
