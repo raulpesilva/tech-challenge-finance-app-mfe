@@ -8,27 +8,20 @@
 
 .main {
   display: flex;
+  display: flex;
   flex: 1;
+  flex-direction: column;
   background: $gradient;
-
-  .container {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    padding: 0 60px;
-    width: 100%;
-    max-width: 1320px;
-
-    @media (max-width: 640px) {
-      padding: 0 24px;
-    }
-  }
 
   .bannerContainer {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 76px;
-    margin-top: 24px;
+    margin: 24px auto 0;
+    padding: 0 60px;
+    width: 100%;
+    max-width: 1320px;
 
     @media (max-width: 1024px) {
       gap: 16px;
@@ -36,13 +29,23 @@
 
     @media (max-width: 768px) {
       flex-direction: column;
-      margin-top: 40px;
+      margin: 40px auto 0;
+    }
+
+    @media (max-width: 640px) {
+      padding: 0 24px;
     }
 
     .title {
       min-width: 273px;
+      max-width: 434px;
+
+      @media (max-width: 1024px) {
+        max-width: 273px;
+      }
 
       @media (max-width: 768px) {
+        max-width: none;
         text-align: center;
       }
 
@@ -90,16 +93,18 @@
     flex-direction: column;
     align-items: center;
     gap: 40px;
-    margin-top: 40px;
-    margin-bottom: 152px;
+    margin: 40px auto 152px;
+    padding: 0 60px;
+    width: 100%;
+    max-width: 1320px;
 
     @media (max-width: 768px) {
-      margin-bottom: 72px;
+      margin: 40px auto 72px;
     }
 
     @media (max-width: 640px) {
-      margin-top: 32px;
-      margin-bottom: 80px;
+      margin: 32px auto 80px;
+      padding: 0 24px;
     }
 
     .title {
