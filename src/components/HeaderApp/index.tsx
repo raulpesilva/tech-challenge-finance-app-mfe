@@ -1,8 +1,8 @@
-import { getSession } from '@/actions/auth/getSession';
+import { getUser } from '@/lib/auth/getUser';
 import Link from 'next/link';
 
 export const HeaderApp = async () => {
-  const session = await getSession();
+  const session = await getUser();
 
   return (
     <header style={{ gap: 8, display: 'flex', flexDirection: 'column' }}>
