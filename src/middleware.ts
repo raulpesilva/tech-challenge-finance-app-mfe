@@ -1,5 +1,6 @@
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
+import { updateSession } from './lib/auth/session';
 import { verifyToken } from './lib/auth/token';
 
 const protectedRoutes = ['/dashboard'];
@@ -14,16 +15,15 @@ export default async function middleware(req: NextRequest) {
   const isPublicRoute = publicRoutes.includes(path);
 
   const cookieStore = await cookies();
-  const cookie = cookieStore.get('session')?.value;
+  const session = cookieStore.get('session')?.value;
 
-  const session = await verifyToken(cookie);
-  const userId = session?.id;
+  const payload = await verifyToken(session);
+  const userId = payload?.id;
 
-  // TODO: somehow this is not working, so need to investigate
-  // if (session && userId) await updateSession();
+  const loginURL = new URL('/login', req.nextUrl);
+  if (isProtectedRoute && !userId) return NextResponse.redirect(loginURL);
 
-  const logoutURL = new URL('/logout', req.nextUrl);
-  if (isProtectedRoute && !userId) return NextResponse.redirect(logoutURL);
+  await updateSession();
 
   const dashboardURL = new URL('/dashboard', req.nextUrl);
   if (isPublicRoute && userId) return NextResponse.redirect(dashboardURL);

@@ -1,19 +1,19 @@
 import { PublicUser } from '@/@types/users';
 import type { ResponseCookie } from 'next/dist/compiled/@edge-runtime/cookies';
 import { cookies } from 'next/headers';
+import { sessionExpires } from './constantes';
 import { createToken, verifyToken } from './token';
-import { getSessionExpires } from './utils';
 
-const createCookieOptions = (expires: Date): Partial<ResponseCookie> => {
+export async function createCookieOptions(expires: Date): Promise<Partial<ResponseCookie>> {
   return { httpOnly: true, secure: true, sameSite: 'lax', path: '/', expires };
-};
+}
 
 export async function createSession(user: PublicUser) {
-  const expiresAt = await getSessionExpires();
+  const expiresAt = new Date(Date.now() + sessionExpires);
   const session = await createToken({ user, expiresAt });
 
   const cookieStore = await cookies();
-  cookieStore.set('session', session, createCookieOptions(expiresAt));
+  cookieStore.set('session', session, await createCookieOptions(expiresAt));
 }
 
 export async function verifySession() {
@@ -28,31 +28,14 @@ export async function verifySession() {
   return user;
 }
 
-// export async function updateSession(request: NextRequest) {
-//   const session = request.cookies.get('session')?.value;
-//   if (!session) return;
-
-//   // Refresh the session so it doesn't expire
-//   const parsed = await verify(session);
-//   parsed.expires = new Date(Date.now() + 10 * 1000);
-//   const res = NextResponse.next();
-//   res.cookies.set({
-//     name: 'session',
-//     value: await sign(parsed),
-//     httpOnly: true,
-//     expires: parsed.expires,
-//   });
-//   return res;
-// }
-
 export async function updateSession() {
   const cookieStore = await cookies();
   const session = cookieStore.get('session')?.value;
   const payload = await verifyToken(session);
 
   if (!session || !payload) return null;
-  const expires = await getSessionExpires();
-  cookieStore.set('session', session, createCookieOptions(expires));
+  const expires = new Date(Date.now() + sessionExpires);
+  cookieStore.set('session', session, await createCookieOptions(expires));
 }
 
 export async function deleteSession() {
