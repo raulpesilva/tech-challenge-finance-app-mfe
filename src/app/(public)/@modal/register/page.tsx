@@ -1,6 +1,5 @@
-import { createAccount } from '@/actions/auth/register';
+import { signUp } from '@/lib/auth/signUp';
 import { headers } from 'next/headers';
-import { redirect } from 'next/navigation';
 
 export default async function Page() {
   await headers();
@@ -11,8 +10,7 @@ export default async function Page() {
       <form
         action={async (formData) => {
           'use server';
-          await createAccount(formData);
-          redirect('/dashboard');
+          await signUp(formData);
         }}
         autoComplete='on'
       >

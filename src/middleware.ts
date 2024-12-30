@@ -1,8 +1,8 @@
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
-import { verify } from './lib/session';
+import { updateSession } from './lib/auth/session';
+import { verifyToken } from './lib/auth/token';
 
-// 1. Specify protected and public routes
 const protectedRoutes = ['/dashboard'];
 const publicRoutes = ['/login', '/register', '/'];
 
@@ -15,16 +15,18 @@ export default async function middleware(req: NextRequest) {
   const isPublicRoute = publicRoutes.includes(path);
 
   const cookieStore = await cookies();
-  const cookie = cookieStore.get('session')?.value;
+  const session = cookieStore.get('session')?.value;
 
-  const session = await verify(cookie);
-  const userId = session?.user?.id;
+  const payload = await verifyToken(session);
+  const userId = payload?.id;
 
-  const logoutURL = new URL('/logout', req.nextUrl);
-  if (isProtectedRoute && !userId) return NextResponse.redirect(logoutURL);
+  const loginURL = new URL('/login', req.nextUrl);
+  if (isProtectedRoute && !userId) return NextResponse.redirect(loginURL);
+
+  await updateSession();
 
   const dashboardURL = new URL('/dashboard', req.nextUrl);
-  if (isPublicRoute && userId && !path.startsWith('/dashboard')) return NextResponse.redirect(dashboardURL);
+  if (isPublicRoute && userId) return NextResponse.redirect(dashboardURL);
 
   return NextResponse.next({ headers });
 }

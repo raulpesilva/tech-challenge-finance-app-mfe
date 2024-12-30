@@ -1,5 +1,4 @@
-import { login } from '@/actions/auth/login';
-import { redirect } from 'next/navigation';
+import { signIn } from '@/lib/auth/signIn';
 
 export default function Page() {
   return (
@@ -9,8 +8,7 @@ export default function Page() {
       <form
         action={async (formData) => {
           'use server';
-          await login(formData);
-          redirect('/dashboard');
+          await signIn(formData);
         }}
         autoComplete='on'
       >
