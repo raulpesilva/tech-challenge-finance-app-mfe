@@ -1,8 +1,8 @@
 import { combaneStyles } from '@/utils/combaneStyles';
-import Link from 'next/link';
+import Link, { LinkProps } from 'next/link';
 import styles from './styles.module.scss';
 
-interface ButtonLinkProps extends React.ButtonHTMLAttributes<HTMLAnchorElement> {
+interface ButtonLinkProps extends LinkProps {
   variant: 'text' | 'outlined' | 'contained';
   color: 'primary' | 'secondary' | 'tertiary' | 'error' | 'cta';
   href: string;
