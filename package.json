@@ -3,14 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"next dev\" \"json-server ./src/mock/server/db.json --port 3001\"",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "server": "json-server ./src/mock/server/db.json --port 3001",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "dev:server": "concurrently \"npm run server\" \"npm run dev\""
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

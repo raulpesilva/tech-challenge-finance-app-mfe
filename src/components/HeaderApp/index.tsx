@@ -1,11 +1,14 @@
-import { getSession } from '@/actions/auth/getSession';
+import { getUser } from '@/lib/auth/getUser';
+import Link from 'next/link';
 import { HeaderAppMenuAccount } from '../HeaderAppMenuAccount';
 import { MenuAccount } from '../MenuAccount';
 import { Typography } from '../shared/Typography';
 import styles from './styles.module.scss';
 
+
+
 export const HeaderApp = async () => {
-  const session = await getSession();
+  const session = await getUser();
 
   // return (
   //   <header >
