@@ -1,5 +1,5 @@
 import { combaneStyles } from '@/utils/combaneStyles';
-import Loading from '../../../assets/icons/loading-icon.svg';
+import LoadingIcon from '../../../assets/icons/loading-icon.svg';
 import styles from './styles.module.scss';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -25,7 +25,7 @@ export const Button = ({ variant, color, children, loading, className, selected,
       {...props}
     >
       {children}
-      {!!loading && <Loading className={styles.loadingIcon} />}
+      {!!loading && <LoadingIcon className={styles.loadingIcon} />}
     </button>
   );
 };
