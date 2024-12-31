@@ -2,7 +2,7 @@
 
 import { combaneStyles } from '@/utils/combaneStyles';
 import { useCallback, useEffect, useState } from 'react';
-import Arrow from '../../../assets/icons/arrow-icon.svg';
+import ArrowIcon from '../../../assets/icons/arrow-icon.svg';
 import { Typography } from '../Typography';
 import styles from './styles.module.scss';
 
@@ -78,7 +78,7 @@ export const Select = <T extends readonly string[]>({
           className={combaneStyles([opened ? styles.opened : '', !!value ? styles.selected : ''])}
         >
           {value ?? placeholder}
-          <Arrow />
+          <ArrowIcon />
         </button>
 
         {opened && (

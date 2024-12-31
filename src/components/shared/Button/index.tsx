@@ -1,16 +1,17 @@
 import { combaneStyles } from '@/utils/combaneStyles';
-import Loading from '../../../assets/icons/loading-icon.svg';
+import LoadingIcon from '../../../assets/icons/loading-icon.svg';
 import styles from './styles.module.scss';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: 'outlined' | 'contained';
-  color: 'primary' | 'secondary' | 'tertiary' | 'error' | 'cta';
+  variant: 'text' | 'outlined' | 'contained';
+  color: 'primary' | 'secondary' | 'tertiary' | 'error' | 'cta' | 'ctaForeground';
   children: React.ReactNode;
   loading?: boolean;
   className?: string;
+  selected?: boolean;
 }
 
-export const Button = ({ variant, color, children, loading, className, ...props }: ButtonProps) => {
+export const Button = ({ variant, color, children, loading, className, selected, ...props }: ButtonProps) => {
   return (
     <button
       className={combaneStyles([
@@ -19,11 +20,12 @@ export const Button = ({ variant, color, children, loading, className, ...props 
         styles[color],
         loading && styles.loading,
         className && className,
+        selected && styles.selected,
       ])}
       {...props}
     >
       {children}
-      {!!loading && <Loading className={styles.loadingIcon} />}
+      {!!loading && <LoadingIcon className={styles.loadingIcon} />}
     </button>
   );
 };

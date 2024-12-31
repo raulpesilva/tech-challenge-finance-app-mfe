@@ -1,6 +1,6 @@
-import Instagram from '@/assets/icons/instagram-icon.svg';
-import Whatsapp from '@/assets/icons/whatsapp-icon.svg';
-import YouTube from '@/assets/icons/youtube-icon.svg';
+import InstagramIcon from '@/assets/icons/instagram-icon.svg';
+import WhatsappIcon from '@/assets/icons/whatsapp-icon.svg';
+import YouTubeIcon from '@/assets/icons/youtube-icon.svg';
 import Link from 'next/link';
 import { LogoType } from '../LogoType';
 import { Typography } from '../shared/Typography';
@@ -36,9 +36,9 @@ const contacts = [
 ];
 
 const socialMedia = [
-  { link: 'https://www.instagram.com/', icon: Instagram },
-  { link: 'https://www.whatsapp.com/', icon: Whatsapp },
-  { link: 'https://www.youtube.com/', icon: YouTube },
+  { link: 'https://www.instagram.com/', icon: InstagramIcon },
+  { link: 'https://www.whatsapp.com/', icon: WhatsappIcon },
+  { link: 'https://www.youtube.com/', icon: YouTubeIcon },
 ];
 
 export const Footer = () => {

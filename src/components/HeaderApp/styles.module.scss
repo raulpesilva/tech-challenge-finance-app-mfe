@@ -1,0 +1,40 @@
+@use '../../theme/base' as *;
+
+.header {
+  display: flex;
+  background-color: $primary;
+  width: 100%;
+  min-height: 96px;
+
+  .container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 60px;
+    margin: 0 auto;
+    padding: 24px 60px;
+    width: 100%;
+    max-width: 1320px;
+
+    @media (max-width: 768px) {
+      gap: 32px;
+    }
+
+    @media (max-width: 640px) {
+      justify-content: space-between;
+      padding: 28px 24px;
+    }
+  }
+
+  .menuServicesApp {
+    @media (min-width: 641px) {
+      display: none;
+    }
+  }
+
+  .user {
+    @media (max-width: 640px) {
+      display: none;
+    }
+  }
+}
