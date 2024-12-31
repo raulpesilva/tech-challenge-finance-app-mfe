@@ -16,7 +16,8 @@
   line-height: 18px;
   text-align: center;
 
-  &:hover {
+  &:hover,
+  &.selected {
     cursor: pointer;
   }
 
@@ -61,17 +62,39 @@
     border: 2px solid $black;
     background-color: $black;
 
-    &:hover {
+    &:hover,
+    &.selected {
       background-color: transparent;
       color: $black;
-    }
 
-    &:hover svg path {
-      fill: $black;
+      svg path {
+        fill: $black;
+      }
     }
   }
 
-  &:hover {
+  &.ctaForeground {
+    border: 2px solid $white;
+    background-color: $white;
+    color: $black;
+
+    svg path {
+      fill: $black;
+    }
+
+    &:hover,
+    &.selected {
+      background-color: transparent;
+      color: $white;
+
+      svg path {
+        fill: $white;
+      }
+    }
+  }
+
+  &:hover,
+  &.selected {
     border: 2px solid $black;
     background-color: $black;
   }
@@ -88,7 +111,8 @@
       fill: $primary;
     }
 
-    &:hover {
+    &:hover,
+    &.selected {
       background-color: $primary;
     }
   }
@@ -101,7 +125,8 @@
       fill: $secondary;
     }
 
-    &:hover {
+    &:hover,
+    &.selected {
       background-color: $secondary;
     }
   }
@@ -114,7 +139,8 @@
       fill: $tertiary;
     }
 
-    &:hover {
+    &:hover,
+    &.selected {
       background-color: $tertiary;
     }
   }
@@ -127,7 +153,8 @@
       fill: $error;
     }
 
-    &:hover {
+    &:hover,
+    &.selected {
       background-color: $error;
     }
   }
@@ -140,12 +167,33 @@
       fill: $black;
     }
 
-    &:hover {
+    &:hover,
+    &.selected {
       background-color: $black;
     }
   }
 
-  &:hover {
+  &.ctaForeground {
+    border: 2px solid $white;
+    color: $white;
+
+    svg path {
+      fill: $white;
+    }
+
+    &:hover,
+    &.selected {
+      background-color: $white;
+      color: $black;
+
+      svg path {
+        fill: $black;
+      }
+    }
+  }
+
+  &:hover,
+  &.selected {
     color: $white;
 
     svg path {
@@ -163,10 +211,6 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 
-  &:hover {
-    opacity: 0.7;
-  }
-
   &.primary {
     color: $primary;
 
@@ -205,5 +249,18 @@
     svg path {
       fill: $black;
     }
+  }
+
+  &.ctaForeground {
+    color: $white;
+
+    svg path {
+      fill: $white;
+    }
+  }
+
+  &:hover,
+  &.selected {
+    opacity: 0.7;
   }
 }

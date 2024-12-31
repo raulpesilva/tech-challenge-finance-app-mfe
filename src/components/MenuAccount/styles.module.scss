@@ -1,0 +1,27 @@
+@use '../../theme/base' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 40px 32px 16px;
+
+  .link {
+    border-bottom: 1px solid $white;
+    border-radius: 0;
+    padding: 0 2px 16px;
+    width: 100%;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-decoration: none;
+  }
+
+  .logoutButton {
+    padding: 0;
+    width: 100%;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
