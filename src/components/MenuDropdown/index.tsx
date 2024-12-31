@@ -13,9 +13,18 @@ interface MenuDropdownProps {
   color: 'primary' | 'secondary' | 'tertiary' | 'error' | 'cta' | 'ctaForeground';
   children: React.ReactNode;
   align?: 'left' | 'right';
+  className?: string;
 }
 
-export const MenuDropdown = ({ param, openIcon, variant, color, children, align = 'right' }: MenuDropdownProps) => {
+export const MenuDropdown = ({
+  param,
+  openIcon,
+  variant,
+  color,
+  children,
+  align = 'right',
+  className,
+}: MenuDropdownProps) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -26,7 +35,7 @@ export const MenuDropdown = ({ param, openIcon, variant, color, children, align 
   const close = () => router.replace('?');
 
   return (
-    <div className={styles.container}>
+    <div className={combaneStyles([styles.container, className && className])}>
       <ButtonIcon variant={variant} color={color} onClick={open} selected={opened} aria-label='Abrir menu'>
         {openIcon}
       </ButtonIcon>
@@ -34,7 +43,7 @@ export const MenuDropdown = ({ param, openIcon, variant, color, children, align 
       {!!opened && <div className={styles.overlay} onClick={close} />}
 
       {!!opened && (
-        <div className={combaneStyles([styles.menuContainer, styles[align]])}>
+        <div className={combaneStyles([styles.menuContainer, styles[align], styles[color]])}>
           <ButtonIcon
             variant='text'
             color={color}

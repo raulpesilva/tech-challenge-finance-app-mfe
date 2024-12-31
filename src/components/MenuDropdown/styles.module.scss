@@ -53,7 +53,6 @@
     z-index: 2;
     animation: slideTransitionY 500ms ease-in-out;
     box-shadow: 0 0 8px 0 $foreground;
-    background-color: $black;
 
     @media (max-width: 640px) {
       position: fixed;
@@ -71,6 +70,30 @@
         left: 0;
         animation: slideTransitionLeft 500ms ease-in-out;
       }
+    }
+
+    &.primary {
+      background-color: lighten($primary, 60%);
+    }
+
+    &.secondary {
+      background-color: lighten($secondary, 30%);
+    }
+
+    &.tertiary {
+      background-color: lighten($tertiary, 40%);
+    }
+
+    &.error {
+      background-color: lighten($error, 40%);
+    }
+
+    &.cta {
+      background-color: lighten($black, 40%);
+    }
+
+    &.ctaForeground {
+      background-color: $white;
     }
   }
 

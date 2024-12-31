@@ -14,16 +14,16 @@ export const MenuAccount = () => {
   return (
     <div className={styles.container}>
       {/* TODO: Add account link */}
-      <ButtonLink href='/dashboard/account' variant='text' color='ctaForeground' className={styles.link} replace>
+      <ButtonLink href='/dashboard/account' variant='text' color='cta' className={styles.link} replace>
         Minha conta
       </ButtonLink>
 
       {/* TODO: Add settings link */}
-      <ButtonLink href='/dashboard/settings' variant='text' color='ctaForeground' className={styles.link} replace>
+      <ButtonLink href='/dashboard/settings' variant='text' color='cta' className={styles.link} replace>
         Configurações
       </ButtonLink>
 
-      <Button variant='text' color='ctaForeground' onClick={handleLogout} className={styles.logoutButton}>
+      <Button variant='text' color='cta' onClick={handleLogout} className={styles.logoutButton}>
         Sair
       </Button>
     </div>
