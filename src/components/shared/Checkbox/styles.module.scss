@@ -1,0 +1,89 @@
+@use '../../../theme/base' as *;
+
+.container {
+  display: flex;
+  position: relative;
+  align-items: center;
+
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  input:checked ~ .box svg {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+
+    svg {
+      visibility: hidden;
+      opacity: 0;
+      transition-duration: 350ms;
+    }
+
+    &.primary {
+      border: 2px solid $primary;
+
+      svg path {
+        fill: $primary;
+      }
+    }
+
+    &.secondary {
+      border: 2px solid $secondary;
+
+      svg path {
+        fill: $secondary;
+      }
+    }
+
+    &.tertiary {
+      border: 2px solid $tertiary;
+
+      svg path {
+        fill: $tertiary;
+      }
+    }
+
+    &.error {
+      border: 2px solid $error;
+
+      svg path {
+        fill: $error;
+      }
+    }
+
+    &.cta {
+      border: 2px solid $black;
+
+      svg path {
+        fill: $black;
+      }
+    }
+
+    &.ctaForeground {
+      border: 2px solid $white;
+
+      svg path {
+        fill: $white;
+      }
+    }
+  }
+
+  label {
+    padding-left: 16px;
+  }
+}
