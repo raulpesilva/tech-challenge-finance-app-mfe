@@ -1,24 +1,24 @@
-import { ButtonLink } from '../shared/ButtonLink';
+import { NavLink } from '../shared/NavLink';
 import styles from './styles.module.scss';
 
 export const MenuServicesApp = () => {
   return (
     <div className={styles.container}>
-      <ButtonLink href='/dashboard' variant='text' color='cta' className={styles.link} replace>
+      <NavLink href='/dashboard' color='cta' colorActive='secondary' replace>
         Início
-      </ButtonLink>
+      </NavLink>
 
-      <ButtonLink href='/dashboard/transactions' variant='text' color='cta' className={styles.link} replace>
+      <NavLink href='/dashboard/transactions' color='cta' colorActive='secondary' replace>
         Transferências
-      </ButtonLink>
+      </NavLink>
 
-      <ButtonLink href='/dashboard/investments' variant='text' color='cta' className={styles.link} replace>
+      <NavLink href='/dashboard/investments' color='cta' colorActive='secondary' replace>
         Investimentos
-      </ButtonLink>
+      </NavLink>
 
-      <ButtonLink href='/dashboard/others' variant='text' color='cta' className={styles.link} replace>
+      <NavLink href='/dashboard/others' color='cta' colorActive='secondary' replace>
         Outros serviços
-      </ButtonLink>
+      </NavLink>
     </div>
   );
 };

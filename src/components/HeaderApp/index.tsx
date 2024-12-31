@@ -16,7 +16,7 @@ export const HeaderApp = async () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <MenuDropdown
-          param='services'
+          param='menu-services-app'
           openIcon={<MenuIcon />}
           variant='text'
           color='secondary'
@@ -30,7 +30,7 @@ export const HeaderApp = async () => {
           {capitalize(userName ?? 'Usuário')}
         </Typography>
 
-        <MenuDropdown param='account' openIcon={<PersonIcon />} variant='outlined' color='secondary'>
+        <MenuDropdown param='menu-account' openIcon={<PersonIcon />} variant='outlined' color='secondary'>
           <MenuAccount />
         </MenuDropdown>
       </div>

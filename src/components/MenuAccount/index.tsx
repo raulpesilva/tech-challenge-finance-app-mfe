@@ -1,7 +1,7 @@
 import { logout } from '@/lib/auth/logout';
 import { redirect } from 'next/navigation';
 import { Button } from '../shared/Button';
-import { ButtonLink } from '../shared/ButtonLink';
+import { NavLink } from '../shared/NavLink';
 import styles from './styles.module.scss';
 
 export const MenuAccount = () => {
@@ -14,14 +14,14 @@ export const MenuAccount = () => {
   return (
     <div className={styles.container}>
       {/* TODO: Add account link */}
-      <ButtonLink href='/dashboard/account' variant='text' color='cta' className={styles.link} replace>
+      <NavLink href='/dashboard/account' color='cta' colorActive='secondary' replace>
         Minha conta
-      </ButtonLink>
+      </NavLink>
 
       {/* TODO: Add settings link */}
-      <ButtonLink href='/dashboard/settings' variant='text' color='cta' className={styles.link} replace>
+      <NavLink href='/dashboard/settings' color='cta' colorActive='secondary' replace>
         Configurações
-      </ButtonLink>
+      </NavLink>
 
       <Button variant='text' color='cta' onClick={handleLogout} className={styles.logoutButton}>
         Sair

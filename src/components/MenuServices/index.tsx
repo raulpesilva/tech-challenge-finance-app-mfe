@@ -5,17 +5,17 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import CloseIcon from '../../assets/icons/close-icon.svg';
 import MenuIcon from '../../assets/icons/menu-icon.svg';
 import { ButtonIcon } from '../shared/ButtonIcon';
-import { ButtonLink } from '../shared/ButtonLink';
+import { NavLink } from '../shared/NavLink';
 import styles from './styles.module.scss';
 
 export const MenuServices = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const menu = searchParams.get('menu-account');
+  const menu = searchParams.get('services');
   const opened = menu === 'true';
 
-  const open = () => router.push(`?menu-account=true`);
+  const open = () => router.push(`?services=true`);
   const close = () => router.replace('?');
 
   return (
@@ -31,13 +31,13 @@ export const MenuServices = () => {
           <CloseIcon />
         </ButtonIcon>
 
-        <ButtonLink href='/' variant='text' color='tertiary' className={styles.link}>
+        <NavLink href='/about' color='ctaForeground' colorActive='tertiary' className={styles.link} replace>
           Sobre
-        </ButtonLink>
+        </NavLink>
 
-        <ButtonLink href='/' variant='text' color='tertiary' className={styles.link}>
+        <NavLink href='/services' color='ctaForeground' colorActive='tertiary' className={styles.link} replace>
           Serviços
-        </ButtonLink>
+        </NavLink>
       </div>
     </div>
   );

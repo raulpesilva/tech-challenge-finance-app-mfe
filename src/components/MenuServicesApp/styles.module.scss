@@ -3,17 +3,5 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
   padding: 40px 32px 16px;
-
-  .link {
-    border-bottom: 1px solid $black;
-    border-radius: 0;
-    padding: 0 2px 16px;
-    width: 100%;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-    text-decoration: none;
-  }
 }
