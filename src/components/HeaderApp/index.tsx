@@ -1,7 +1,8 @@
 import { getUser } from '@/lib/auth/getUser';
 import { capitalize } from '@/utils/string';
+import PersonIcon from '../../assets/icons/person-icon.svg';
 import { MenuAccount } from '../MenuAccount';
-import { MenuAccountDropdown } from '../MenuAccountDropdown';
+import { MenuDropdown } from '../MenuDropdown';
 import { Typography } from '../shared/Typography';
 import styles from './styles.module.scss';
 
@@ -30,9 +31,9 @@ export const HeaderApp = async () => {
           {capitalize(userName ?? 'Usuário')}
         </Typography>
 
-        <MenuAccountDropdown>
+        <MenuDropdown param='menu-account' openIcon={<PersonIcon />} variant='outlined' color='secondary'>
           <MenuAccount />
-        </MenuAccountDropdown>
+        </MenuDropdown>
       </div>
     </header>
   );

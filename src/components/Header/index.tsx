@@ -1,6 +1,6 @@
-import { HeaderMenu } from '../HeaderMenu';
 import { Logo } from '../Logo';
 import { LogoType } from '../LogoType';
+import { MenuServices } from '../MenuServices';
 import { ButtonLink } from '../shared/ButtonLink';
 import styles from './styles.module.scss';
 
@@ -11,7 +11,7 @@ export const Header = () => {
         <div className={styles.linksContent}>
           <LogoType className={styles.logoType} />
           <Logo className={styles.logo} />
-          <HeaderMenu />
+          <MenuServices />
         </div>
 
         <div className={styles.ctaContent}>

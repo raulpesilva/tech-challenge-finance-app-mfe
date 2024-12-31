@@ -1,10 +1,18 @@
 @use '../../theme/base' as *;
 
-@keyframes slideTransitionX {
+@keyframes slideTransitionRight {
   0% {
     transform: translateX(100%);
   }
+  100% {
+    transform: translateX(0);
+  }
+}
 
+@keyframes slideTransitionLeft {
+  0% {
+    transform: translateX(-100%);
+  }
   100% {
     transform: translateX(0);
   }
@@ -15,7 +23,6 @@
     max-height: 0;
     overflow-y: hidden;
   }
-
   100% {
     max-height: 100vh;
     overflow-y: auto;
@@ -24,12 +31,6 @@
 
 .container {
   position: relative;
-
-  .closeButton {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
 
   .overlay {
     position: fixed;
@@ -58,7 +59,24 @@
       position: fixed;
       top: 0;
       right: 0;
-      animation: slideTransitionX 500ms ease-in-out;
+      animation: slideTransitionRight 500ms ease-in-out;
     }
+
+    &.left {
+      right: unset;
+      left: 0;
+
+      @media (max-width: 640px) {
+        right: unset;
+        left: 0;
+        animation: slideTransitionLeft 500ms ease-in-out;
+      }
+    }
+  }
+
+  .closeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }
