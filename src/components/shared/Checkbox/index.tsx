@@ -2,7 +2,7 @@ import { combaneStyles } from '@/utils/combaneStyles';
 import CheckIcon from '../../../assets/icons/check-icon.svg';
 import styles from './styles.module.scss';
 
-interface CheckboxProps {
+interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string;
   label: string;
   color: 'primary' | 'secondary' | 'tertiary' | 'error' | 'cta' | 'ctaForeground';

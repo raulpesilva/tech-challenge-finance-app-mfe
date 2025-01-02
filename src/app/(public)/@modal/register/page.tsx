@@ -62,6 +62,7 @@ export default async function Page() {
 
         <Checkbox
           id='term'
+          name='acceptedTerm'
           color='tertiary'
           label='Li e estou ciente quanto às condições de tratamento dos meus dados conforme descrito na Política de Privacidade do banco.'
           className={styles.checkboxContainer}
