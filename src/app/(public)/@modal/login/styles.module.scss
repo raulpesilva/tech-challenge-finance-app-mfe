@@ -1,0 +1,52 @@
+@use '@/theme/base' as *;
+
+.closeButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 12px;
+}
+
+.bannerImage {
+  margin-top: 32px;
+  aspect-ratio: 332/266;
+  width: 100%;
+  max-width: 332px;
+  height: auto;
+
+  @media (max-width: 640px) {
+    margin-top: 56px;
+    padding: 0 2px;
+  }
+}
+
+.title {
+  margin-top: 32px;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 104px;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 32px 72px;
+  }
+
+  @media (max-width: 640px) {
+    padding: 32px 16px;
+  }
+}
+
+.passwordInput {
+  margin-top: 24px;
+}
+
+.forgotPassword {
+  margin-top: 8px;
+}
+
+.submitButton {
+  margin: 32px auto 0;
+}
