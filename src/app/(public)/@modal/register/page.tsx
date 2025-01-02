@@ -3,6 +3,7 @@ import bannerImage from '@/assets/images/main-banner-register.png';
 import { Modal } from '@/components/Modal';
 import { Button } from '@/components/shared/Button';
 import { ButtonLink } from '@/components/shared/ButtonLink';
+import { Checkbox } from '@/components/shared/Checkbox';
 import { Input } from '@/components/shared/Input';
 import { Typography } from '@/components/shared/Typography';
 import { signUp } from '@/lib/auth/signUp';
@@ -57,6 +58,13 @@ export default async function Page() {
           label='Senha'
           placeholder='Digite sua senha'
           className={styles.inputContainer}
+        />
+
+        <Checkbox
+          id='term'
+          color='tertiary'
+          label='Li e estou ciente quanto às condições de tratamento dos meus dados conforme descrito na Política de Privacidade do banco.'
+          className={styles.checkboxContainer}
         />
 
         <Button variant='contained' color='secondary' type='submit' className={styles.submitButton}>

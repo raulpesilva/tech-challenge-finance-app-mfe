@@ -6,11 +6,12 @@ interface CheckboxProps {
   id: string;
   label: string;
   color: 'primary' | 'secondary' | 'tertiary' | 'error' | 'cta' | 'ctaForeground';
+  className?: string;
 }
 
-export const Checkbox = ({ id, label, color, ...props }: CheckboxProps) => {
+export const Checkbox = ({ id, label, color, className, ...props }: CheckboxProps) => {
   return (
-    <div className={styles.container}>
+    <div className={combaneStyles([styles.container, className && className])}>
       <input id={id} type='checkbox' {...props} />
 
       <label htmlFor={id} className={combaneStyles([styles.box, styles[color]])}>

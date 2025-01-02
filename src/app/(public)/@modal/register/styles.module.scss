@@ -23,7 +23,6 @@
 .title {
   margin-top: 32px;
   padding: 0 104px;
-  text-align: center;
 
   @media (max-width: 768px) {
     padding: 0 72px;
@@ -51,6 +50,10 @@
 
 .inputContainer {
   margin-top: 24px;
+}
+
+.checkboxContainer {
+  margin-top: 32px;
 }
 
 .submitButton {
