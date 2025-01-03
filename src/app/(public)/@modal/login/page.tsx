@@ -29,7 +29,7 @@ export default function Page() {
       <FormSignIn
         signIn={async (prev, formData) => {
           'use server';
-          return signIn(prev, formData);
+          return await signIn(prev, formData);
         }}
       />
     </Modal>
