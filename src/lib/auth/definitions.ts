@@ -8,14 +8,14 @@ export type ActionResponse<T extends Fields<Record<string, unknown>> = Fields<Re
   message?: string;
 };
 
-export type RegisterFields = Fields<{
+export type SignUpFields = Fields<{
   name: string;
   email: string;
   password: string;
   acceptedTerm: string;
 }>;
 
-export type RegisterResponse = ActionResponse<RegisterFields>;
+export type SignUpResponse = ActionResponse<SignUpFields>;
 
 
 export type SignInFields = Fields<{ email: string; password: string }>;

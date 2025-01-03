@@ -32,30 +32,3 @@
     padding: 0 16px;
   }
 }
-
-.formContainer {
-  display: flex;
-  flex-direction: column;
-  padding: 32px 104px;
-  width: 100%;
-
-  @media (max-width: 768px) {
-    padding: 32px 72px;
-  }
-
-  @media (max-width: 640px) {
-    padding: 32px 16px;
-  }
-}
-
-.inputContainer {
-  margin-top: 24px;
-}
-
-.checkboxContainer {
-  margin-top: 32px;
-}
-
-.submitButton {
-  margin: 32px auto 0;
-}

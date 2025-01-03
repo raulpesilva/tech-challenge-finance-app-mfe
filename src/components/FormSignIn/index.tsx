@@ -15,7 +15,6 @@ interface FormSignInProps {
 
 export const FormSignIn = ({ signIn }: FormSignInProps) => {
   const [state, action, isPending] = useActionState(signIn, InitialSignInResponse);
-  console.log({ state, InitialSignInResponse });
   return (
     <form className={styles.formContainer} action={action} autoComplete='on'>
       <Input
@@ -46,7 +45,11 @@ export const FormSignIn = ({ signIn }: FormSignInProps) => {
           - {error}
         </Typography>
       ))}
-
+      {state?.message && (
+        <Typography variant='span' color='error'>
+          - {state?.message}
+        </Typography>
+      )}
       {/* TODO: set link to forgot password */}
       <ButtonLink href='/' variant='text' color='tertiary' className={styles.forgotPassword}>
         Esqueci a senha!

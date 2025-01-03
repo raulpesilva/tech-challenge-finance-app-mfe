@@ -1,4 +1,5 @@
 'user server';
+import 'server-only';
 
 import { getUserByEmail } from '@/actions/services/users';
 import { redirect } from 'next/navigation';
@@ -10,7 +11,6 @@ import { comparePassword, createResponseError } from './utils';
 export async function signIn(_: SignInResponse, formData: FormData) {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
-  console.log(JSON.stringify({ inicial: true, email, password }, null, 2));
 
   const fields: SignInFields = {
     inputs: { email, password },
@@ -22,7 +22,6 @@ export async function signIn(_: SignInResponse, formData: FormData) {
 
   const hasErrors = !!Object.keys(fields.errors).length;
   const response = { ...fields, success: !hasErrors } satisfies SignInResponse;
-  console.log(JSON.stringify({antesError: response}, null, 2));
   if (hasErrors) return response;
 
   const [privateUser] = await getUserByEmail(email);
@@ -33,7 +32,6 @@ export async function signIn(_: SignInResponse, formData: FormData) {
 
   const publicUser = userDTO(privateUser);
   await createSession(publicUser);
-  console.log(JSON.stringify({ final: response }, null, 2));
 
   redirect('/dashboard');
 }
