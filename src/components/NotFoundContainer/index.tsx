@@ -1,7 +1,7 @@
 import imageBanner from '@/assets/images/main-banner-not-found.png';
+import { ButtonLink } from '@/components/shared/ButtonLink';
+import { Typography } from '@/components/shared/Typography';
 import Image from 'next/image';
-import { ButtonLink } from '../shared/ButtonLink';
-import { Typography } from '../shared/Typography';
 import styles from './styles.module.scss';
 
 export const NotFoundContainer = () => {

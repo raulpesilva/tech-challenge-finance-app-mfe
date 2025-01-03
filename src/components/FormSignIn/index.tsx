@@ -1,12 +1,12 @@
 'use client';
 
+import { Button } from '@/components/shared/Button';
+import { ButtonLink } from '@/components/shared/ButtonLink';
+import { Input } from '@/components/shared/Input';
+import { Typography } from '@/components/shared/Typography';
 import { InitialSignInResponse } from '@/lib/auth/constantes';
 import { SignInResponse } from '@/lib/auth/definitions';
 import { useActionState } from 'react';
-import { Button } from '../shared/Button';
-import { ButtonLink } from '../shared/ButtonLink';
-import { Input } from '../shared/Input';
-import { Typography } from '../shared/Typography';
 import styles from './styles.module.scss';
 
 interface FormSignInProps {

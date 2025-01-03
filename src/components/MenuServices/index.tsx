@@ -2,10 +2,10 @@
 
 import CloseIcon from '@/assets/icons/close-icon.svg';
 import MenuIcon from '@/assets/icons/menu-icon.svg';
+import { ButtonIcon } from '@/components/shared/ButtonIcon';
+import { NavLink } from '@/components/shared/NavLink';
 import { combaneStyles } from '@/utils/combaneStyles';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { ButtonIcon } from '../shared/ButtonIcon';
-import { NavLink } from '../shared/NavLink';
 import styles from './styles.module.scss';
 
 export const MenuServices = () => {

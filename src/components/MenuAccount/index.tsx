@@ -1,7 +1,7 @@
+import { Button } from '@/components/shared/Button';
+import { NavLink } from '@/components/shared/NavLink';
 import { logout } from '@/lib/auth/logout';
 import { redirect } from 'next/navigation';
-import { Button } from '../shared/Button';
-import { NavLink } from '../shared/NavLink';
 import styles from './styles.module.scss';
 
 export const MenuAccount = () => {

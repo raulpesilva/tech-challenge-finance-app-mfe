@@ -1,7 +1,7 @@
+import { ButtonLink } from '@/components/shared/ButtonLink';
 import { Logo } from '../Logo';
 import { LogoType } from '../LogoType';
 import { MenuServices } from '../MenuServices';
-import { ButtonLink } from '../shared/ButtonLink';
 import styles from './styles.module.scss';
 
 export const Header = () => {

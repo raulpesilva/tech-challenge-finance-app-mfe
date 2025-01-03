@@ -1,12 +1,12 @@
 'use client';
 
+import { Button } from '@/components/shared/Button';
+import { Checkbox } from '@/components/shared/Checkbox';
+import { Input } from '@/components/shared/Input';
+import { Typography } from '@/components/shared/Typography';
 import { InitialSignUpResponse } from '@/lib/auth/constantes';
 import { SignUpResponse } from '@/lib/auth/definitions';
 import { useActionState } from 'react';
-import { Button } from '../shared/Button';
-import { Checkbox } from '../shared/Checkbox';
-import { Input } from '../shared/Input';
-import { Typography } from '../shared/Typography';
 import styles from './styles.module.scss';
 
 interface FormSignUpProps {
