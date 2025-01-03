@@ -5,6 +5,7 @@ import { verifyToken } from './lib/auth/token';
 
 const protectedRoutes = ['/dashboard'];
 const publicRoutes = ['/login', '/register', '/'];
+const fixContentType = 'text/x-component';
 
 export default async function middleware(req: NextRequest) {
   const headers = new Headers(req.headers);
@@ -28,7 +29,7 @@ export default async function middleware(req: NextRequest) {
   const dashboardURL = new URL('/dashboard', req.nextUrl);
   if (isPublicRoute && userId) return NextResponse.redirect(dashboardURL);
 
-  return NextResponse.next({ headers });
+  return NextResponse.next();
 }
 
 export const config = {

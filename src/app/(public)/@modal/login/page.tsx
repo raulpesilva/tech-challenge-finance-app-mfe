@@ -1,9 +1,8 @@
 import CloseIcon from '@/assets/icons/close-icon.svg';
 import bannerImage from '@/assets/images/main-banner-login.png';
+import { FormSignIn } from '@/components/FormSignIn';
 import { Modal } from '@/components/Modal';
-import { Button } from '@/components/shared/Button';
 import { ButtonLink } from '@/components/shared/ButtonLink';
-import { Input } from '@/components/shared/Input';
 import { Typography } from '@/components/shared/Typography';
 import { signIn } from '@/lib/auth/signIn';
 import Image from 'next/image';
@@ -27,35 +26,12 @@ export default function Page() {
       <Typography variant='heading1' size='xl' className={styles.title}>
         Login
       </Typography>
-
-      <form
-        className={styles.formContainer}
-        action={async (formData) => {
+      <FormSignIn
+        signIn={async (prev, formData) => {
           'use server';
-          await signIn(formData);
+          return await signIn(prev, formData);
         }}
-        autoComplete='on'
-      >
-        <Input id='email' name='email' type='email' label='Email' placeholder='Digite seu email' />
-
-        <Input
-          id='password'
-          name='password'
-          type='password'
-          label='Senha'
-          placeholder='Digite sua senha'
-          className={styles.passwordInput}
-        />
-
-        {/* TODO: set link to forgot password */}
-        <ButtonLink href='/' variant='text' color='tertiary' className={styles.forgotPassword}>
-          Esqueci a senha!
-        </ButtonLink>
-
-        <Button variant='contained' color='tertiary' type='submit' className={styles.submitButton}>
-          Acessar
-        </Button>
-      </form>
+      />
     </Modal>
   );
 }
