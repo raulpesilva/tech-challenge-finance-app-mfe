@@ -2,15 +2,15 @@
 
 .openButton,
 .closeButton {
-  display: none;
+  display: none !important;
 
   @media (max-width: 640px) {
-    display: flex;
+    display: flex !important;
   }
 }
 
 .closeButton {
-  position: absolute;
+  position: absolute !important;
   top: 0;
   right: 0;
 }
@@ -58,5 +58,6 @@
 .link {
   @media (min-width: 641px) {
     border-bottom: none !important;
+    padding: 12px 0;
   }
 }

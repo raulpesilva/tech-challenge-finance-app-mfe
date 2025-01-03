@@ -5,6 +5,10 @@
   position: relative;
   align-items: center;
 
+  &:hover .box {
+    opacity: 0.7;
+  }
+
   input {
     position: absolute;
     top: 0;
@@ -22,6 +26,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition-duration: 350ms;
     cursor: pointer;
     border-radius: 4px;
     padding: 0;
@@ -84,6 +89,7 @@
   }
 
   label {
+    cursor: pointer;
     padding-left: 16px;
   }
 }

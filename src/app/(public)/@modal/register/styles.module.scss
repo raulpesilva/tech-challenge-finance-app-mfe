@@ -1,0 +1,61 @@
+@use '@/theme/base' as *;
+
+.closeButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 12px;
+}
+
+.bannerImage {
+  margin-top: 32px;
+  aspect-ratio: 354/260;
+  width: 100%;
+  max-width: 354px;
+  height: auto;
+
+  @media (max-width: 640px) {
+    margin-top: 56px;
+    padding: 0 2px;
+  }
+}
+
+.title {
+  margin-top: 32px;
+  padding: 0 104px;
+
+  @media (max-width: 768px) {
+    padding: 0 72px;
+  }
+
+  @media (max-width: 640px) {
+    padding: 0 16px;
+  }
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 104px;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 32px 72px;
+  }
+
+  @media (max-width: 640px) {
+    padding: 32px 16px;
+  }
+}
+
+.inputContainer {
+  margin-top: 24px;
+}
+
+.checkboxContainer {
+  margin-top: 32px;
+}
+
+.submitButton {
+  margin: 32px auto 0;
+}

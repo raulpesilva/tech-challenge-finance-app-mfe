@@ -32,7 +32,7 @@ export async function signUp(formData: FormData) {
     return await createResponseError(response, 'Email already exists, please use a different email or login.');
 
   const normalizedUser = {
-    name: name.toLowerCase(),
+    name,
     email: email.toLowerCase(),
     password: await hashPassword(password),
     acceptedTerm: acceptedTerm === 'true',
