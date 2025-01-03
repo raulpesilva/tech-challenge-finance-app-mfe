@@ -8,6 +8,7 @@ const variants = {
   heading4: { weight: styles.bold, size: styles.sizeBase },
   paragraph: { weight: styles.regular, size: styles.sizeBase },
   label: { weight: styles.bold, size: styles.sizeBase },
+  span: { weight: styles.regular, size: styles.sizeBase },
 };
 
 const componentVariants = {
@@ -17,6 +18,7 @@ const componentVariants = {
   heading4: 'h4',
   paragraph: 'p',
   label: 'label',
+  span: 'span',
 } as const;
 
 const sizes = {

@@ -16,16 +16,16 @@ export async function signUp(formData: FormData) {
 
   const fields: RegisterFields = {
     inputs: { name, email, password, acceptedTerm },
-    erros: {},
+    errors: {},
   };
 
-  if (!name) fields.erros.name = ['Name is required'];
-  if (!email) fields.erros.email = ['Email is required'];
-  if (!password) fields.erros.password = ['Password is required'];
-  if (!acceptedTerm) fields.erros.acceptedTerm = ['You must accept the terms'];
+  if (!name) fields.errors.name = ['Name is required'];
+  if (!email) fields.errors.email = ['Email is required'];
+  if (!password) fields.errors.password = ['Password is required'];
+  if (!acceptedTerm) fields.errors.acceptedTerm = ['You must accept the terms'];
 
-  const response = { ...fields, success: !Object.keys(fields.erros).length } as RegisterResponse;
-  if (Object.keys(fields.erros).length) return response;
+  const response = { ...fields, success: !Object.keys(fields.errors).length } satisfies RegisterResponse;
+  if (Object.keys(fields.errors).length) return response;
 
   const user = await getUserByEmail(email);
   if (user.length)
