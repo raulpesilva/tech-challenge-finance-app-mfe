@@ -30,22 +30,6 @@
       box-shadow: 0 0 3px 0 $primary;
     }
 
-    &.error {
-      border: 1px solid $error;
-
-      &:focus-within {
-        box-shadow: 0 0 3px 0 $error;
-      }
-    }
-
-    &.success {
-      border: 1px solid $success;
-
-      &:focus-within {
-        box-shadow: 0 0 3px 0 $success;
-      }
-    }
-
     &.left input {
       text-align: start;
     }
