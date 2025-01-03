@@ -26,7 +26,7 @@ export const FormSignIn = ({ signIn }: FormSignInProps) => {
         defaultValue={state?.inputs.email}
       />
       {state?.errors?.email?.map((error) => (
-        <Typography variant='span' color='error' key={error}>
+        <Typography variant='span' color='error' key={error} className={styles.errorMessage}>
           - {error}
         </Typography>
       ))}
@@ -41,12 +41,12 @@ export const FormSignIn = ({ signIn }: FormSignInProps) => {
         defaultValue={state?.inputs.password}
       />
       {state?.errors?.password?.map((error) => (
-        <Typography variant='span' color='error' key={error}>
+        <Typography variant='span' color='error' key={error} className={styles.errorMessage}>
           - {error}
         </Typography>
       ))}
       {state?.message && (
-        <Typography variant='span' color='error'>
+        <Typography variant='span' color='error' className={styles.errorMessage}>
           - {state?.message}
         </Typography>
       )}

@@ -5,7 +5,6 @@ import { verifyToken } from './lib/auth/token';
 
 const protectedRoutes = ['/dashboard'];
 const publicRoutes = ['/login', '/register', '/'];
-const fixContentType = 'text/x-component';
 
 export default async function middleware(req: NextRequest) {
   const headers = new Headers(req.headers);

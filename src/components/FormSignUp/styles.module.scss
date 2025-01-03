@@ -1,4 +1,3 @@
-
 .formContainer {
   display: flex;
   flex-direction: column;
@@ -24,4 +23,8 @@
 
 .submitButton {
   margin: 32px auto 0;
+}
+
+.errorMessage {
+  margin-top: 8px;
 }
