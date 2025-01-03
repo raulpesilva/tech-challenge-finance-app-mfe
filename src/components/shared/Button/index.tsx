@@ -1,5 +1,5 @@
+import LoadingIcon from '@/assets/icons/loading-icon.svg';
 import { combaneStyles } from '@/utils/combaneStyles';
-import LoadingIcon from '../../../assets/icons/loading-icon.svg';
 import styles from './styles.module.scss';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

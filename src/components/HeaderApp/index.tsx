@@ -1,7 +1,7 @@
+import MenuIcon from '@/assets/icons/menu-icon.svg';
+import PersonIcon from '@/assets/icons/person-icon.svg';
 import { getUser } from '@/lib/auth/getUser';
 import { capitalize } from '@/utils/string';
-import MenuIcon from '../../assets/icons/menu-icon.svg';
-import PersonIcon from '../../assets/icons/person-icon.svg';
 import { MenuAccount } from '../MenuAccount';
 import { MenuDropdown } from '../MenuDropdown';
 import { MenuServicesApp } from '../MenuServicesApp';

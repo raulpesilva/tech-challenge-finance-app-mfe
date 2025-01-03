@@ -1,8 +1,8 @@
 'use client';
 
+import ArrowIcon from '@/assets/icons/arrow-icon.svg';
 import { combaneStyles } from '@/utils/combaneStyles';
 import { useCallback, useEffect, useState } from 'react';
-import ArrowIcon from '../../../assets/icons/arrow-icon.svg';
 import { Typography } from '../Typography';
 import styles from './styles.module.scss';
 
@@ -55,10 +55,13 @@ export const Select = <T extends readonly string[]>({
   const handleOpen = useCallback(() => setOpened(true), []);
   const handleClose = useCallback(() => setOpened(false), []);
 
-  const handleSelect = useCallback((option: string) => {
-    onChange(option);
-    handleClose();
-  }, [onChange, handleClose]);
+  const handleSelect = useCallback(
+    (option: string) => {
+      onChange(option);
+      handleClose();
+    },
+    [onChange, handleClose]
+  );
 
   useEffect(() => {
     document.addEventListener('click', handleClose);

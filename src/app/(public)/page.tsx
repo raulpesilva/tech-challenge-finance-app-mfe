@@ -1,11 +1,11 @@
+import imageBenefit1 from '@/assets/images/benefit-1.png';
+import imageBenefit2 from '@/assets/images/benefit-2.png';
+import imageBenefit3 from '@/assets/images/benefit-3.png';
+import imageBenefit4 from '@/assets/images/benefit-4.png';
+import imageBanner from '@/assets/images/main-banner-home.png';
 import { ButtonLink } from '@/components/shared/ButtonLink';
 import { Typography } from '@/components/shared/Typography';
 import Image, { StaticImageData } from 'next/image';
-import imageBenefit1 from '../../assets/images/benefit-1.png';
-import imageBenefit2 from '../../assets/images/benefit-2.png';
-import imageBenefit3 from '../../assets/images/benefit-3.png';
-import imageBenefit4 from '../../assets/images/benefit-4.png';
-import imageBanner from '../../assets/images/main-banner-home.png';
 import styles from './styles.module.scss';
 
 interface BenefitItemProps {

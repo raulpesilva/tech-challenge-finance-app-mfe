@@ -1,9 +1,9 @@
 'use client';
 
+import CloseIcon from '@/assets/icons/close-icon.svg';
+import MenuIcon from '@/assets/icons/menu-icon.svg';
 import { combaneStyles } from '@/utils/combaneStyles';
 import { useRouter, useSearchParams } from 'next/navigation';
-import CloseIcon from '../../assets/icons/close-icon.svg';
-import MenuIcon from '../../assets/icons/menu-icon.svg';
 import { ButtonIcon } from '../shared/ButtonIcon';
 import { NavLink } from '../shared/NavLink';
 import styles from './styles.module.scss';
