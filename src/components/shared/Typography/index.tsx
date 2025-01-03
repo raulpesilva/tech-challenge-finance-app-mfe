@@ -21,6 +21,8 @@ const componentVariants = {
   span: 'span',
 } as const;
 
+type ComponentVariants = typeof componentVariants;
+
 const sizes = {
   '4xl': styles.size4xl, // 32px
   '3xl': styles.size3xl, // 28px
@@ -57,16 +59,16 @@ interface TypographyProps {
   className?: string;
 }
 
-// TODO: pass props to the component - props according to variant
-export const Typography = ({
+export const Typography = <VariantTag extends ComponentVariants[keyof ComponentVariants] = 'p'>({
   children,
   variant = 'paragraph',
   size,
   weight,
   color = 'primary',
   className,
-}: TypographyProps) => {
-  const Component = componentVariants[variant] ?? 'p';
+  ...props
+}: TypographyProps & Omit<React.HTMLProps<HTMLElementTagNameMap[VariantTag]>, 'size'>) => {
+  const Component: any = componentVariants[variant] ?? 'p';
 
   return (
     <Component
@@ -76,6 +78,7 @@ export const Typography = ({
         colors[color],
         className && className,
       ])}
+      {...props}
     >
       {children}
     </Component>
