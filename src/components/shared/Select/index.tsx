@@ -3,7 +3,6 @@
 import { combaneStyles } from '@/utils/combaneStyles';
 import { useCallback, useEffect, useState } from 'react';
 import ArrowIcon from '../../../assets/icons/arrow-icon.svg';
-import { Typography } from '../Typography';
 import styles from './styles.module.scss';
 
 interface SelectItemProps {
@@ -18,10 +17,6 @@ interface SelectProps<T extends readonly string[]> {
   value: T[number] | null;
   onChange: (option: T[number]) => void;
   label?: string;
-  success?: boolean;
-  successMessage?: string;
-  error?: boolean;
-  errorMessage?: string;
 }
 
 const SelectItem = ({ option, value, handleSelect }: SelectItemProps) => {
@@ -45,20 +40,19 @@ export const Select = <T extends readonly string[]>({
   value,
   onChange,
   label,
-  success,
-  successMessage,
-  error,
-  errorMessage,
 }: SelectProps<T>) => {
   const [opened, setOpened] = useState(false);
 
   const handleOpen = useCallback(() => setOpened(true), []);
   const handleClose = useCallback(() => setOpened(false), []);
 
-  const handleSelect = useCallback((option: string) => {
-    onChange(option);
-    handleClose();
-  }, [onChange, handleClose]);
+  const handleSelect = useCallback(
+    (option: string) => {
+      onChange(option);
+      handleClose();
+    },
+    [onChange, handleClose]
+  );
 
   useEffect(() => {
     document.addEventListener('click', handleClose);
@@ -69,9 +63,7 @@ export const Select = <T extends readonly string[]>({
     <div className={styles.container}>
       {!!label && <label onClick={handleOpen}>{label}</label>}
 
-      <div
-        className={combaneStyles([styles.selectContainer, error && styles.error, !error && success && styles.success])}
-      >
+      <div className={combaneStyles([styles.selectContainer])}>
         <button
           type='button'
           onClick={handleOpen}
@@ -94,18 +86,6 @@ export const Select = <T extends readonly string[]>({
           </ul>
         )}
       </div>
-
-      {error && !!errorMessage && (
-        <Typography variant='paragraph' size='sm' color='error'>
-          {errorMessage}
-        </Typography>
-      )}
-
-      {!error && success && !!successMessage && (
-        <Typography variant='paragraph' size='sm' color='success'>
-          {successMessage}
-        </Typography>
-      )}
     </div>
   );
 };
