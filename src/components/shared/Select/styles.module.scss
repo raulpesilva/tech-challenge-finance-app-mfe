@@ -30,52 +30,6 @@
     position: relative;
     transition-duration: 350ms;
 
-    &.error button,
-    &.error .list {
-      border: 1px solid $error;
-
-      &:hover,
-      &.opened {
-        border: 1px solid $error;
-      }
-
-      &.opened {
-        box-shadow: 0 0 3px 0 $error;
-      }
-
-      &:focus {
-        box-shadow: 0 0 3px 0 $error;
-        border: 1px solid $error;
-      }
-
-      svg path {
-        fill: $error;
-      }
-    }
-
-    &.success button,
-    &.success .list {
-      border: 1px solid $success;
-
-      &:hover,
-      &.opened {
-        border: 1px solid $success;
-      }
-
-      &.opened {
-        box-shadow: 0 0 3px 0 $success;
-      }
-
-      &:focus {
-        box-shadow: 0 0 3px 0 $success;
-        border: 1px solid $success;
-      }
-
-      svg path {
-        fill: $success;
-      }
-    }
-
     button {
       display: flex;
       justify-content: space-between;
