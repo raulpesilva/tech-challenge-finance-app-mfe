@@ -3,7 +3,7 @@ import { headers } from 'next/headers';
 import Page from '../page';
 import styles from './styles.module.scss';
 
-const publicRoutes = ['/login', '/register'];
+const publicRoutes = ['/login', '/register', '/forgot-password'];
 
 export default async function NotFound() {
   const header = await headers();

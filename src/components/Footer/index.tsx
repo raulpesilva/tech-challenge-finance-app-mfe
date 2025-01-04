@@ -1,9 +1,9 @@
 import InstagramIcon from '@/assets/icons/instagram-icon.svg';
 import WhatsappIcon from '@/assets/icons/whatsapp-icon.svg';
 import YouTubeIcon from '@/assets/icons/youtube-icon.svg';
+import { Typography } from '@/components/shared/Typography';
 import Link from 'next/link';
 import { LogoType } from '../LogoType';
-import { Typography } from '../shared/Typography';
 import styles from './styles.module.scss';
 
 interface ExternalLinkProps {

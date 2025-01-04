@@ -1,11 +1,11 @@
+import MenuIcon from '@/assets/icons/menu-icon.svg';
+import PersonIcon from '@/assets/icons/person-icon.svg';
+import { Typography } from '@/components/shared/Typography';
 import { getUser } from '@/lib/auth/getUser';
 import { capitalize } from '@/utils/string';
-import MenuIcon from '../../assets/icons/menu-icon.svg';
-import PersonIcon from '../../assets/icons/person-icon.svg';
 import { MenuAccount } from '../MenuAccount';
 import { MenuDropdown } from '../MenuDropdown';
 import { MenuServicesApp } from '../MenuServicesApp';
-import { Typography } from '../shared/Typography';
 import styles from './styles.module.scss';
 
 export const HeaderApp = async () => {

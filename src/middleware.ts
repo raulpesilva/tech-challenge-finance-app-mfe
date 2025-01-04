@@ -4,8 +4,7 @@ import { updateSession } from './lib/auth/session';
 import { verifyToken } from './lib/auth/token';
 
 const protectedRoutes = ['/dashboard'];
-const publicRoutes = ['/login', '/register', '/'];
-const fixContentType = 'text/x-component';
+const publicRoutes = ['/login', '/register', '/forgot-password', '/'];
 
 export default async function middleware(req: NextRequest) {
   const headers = new Headers(req.headers);

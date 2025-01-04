@@ -1,12 +1,12 @@
 'use client';
 
+import { Button } from '@/components/shared/Button';
+import { ButtonLink } from '@/components/shared/ButtonLink';
+import { Input } from '@/components/shared/Input';
+import { Typography } from '@/components/shared/Typography';
 import { InitialSignInResponse } from '@/lib/auth/constantes';
 import { SignInResponse } from '@/lib/auth/definitions';
 import { useActionState } from 'react';
-import { Button } from '../shared/Button';
-import { ButtonLink } from '../shared/ButtonLink';
-import { Input } from '../shared/Input';
-import { Typography } from '../shared/Typography';
 import styles from './styles.module.scss';
 
 interface FormSignInProps {
@@ -26,7 +26,7 @@ export const FormSignIn = ({ signIn }: FormSignInProps) => {
         defaultValue={state?.inputs.email}
       />
       {state?.errors?.email?.map((error) => (
-        <Typography variant='span' color='error' key={error}>
+        <Typography variant='span' color='error' key={error} className={styles.errorMessage}>
           - {error}
         </Typography>
       ))}
@@ -41,17 +41,17 @@ export const FormSignIn = ({ signIn }: FormSignInProps) => {
         defaultValue={state?.inputs.password}
       />
       {state?.errors?.password?.map((error) => (
-        <Typography variant='span' color='error' key={error}>
+        <Typography variant='span' color='error' key={error} className={styles.errorMessage}>
           - {error}
         </Typography>
       ))}
       {state?.message && (
-        <Typography variant='span' color='error'>
+        <Typography variant='span' color='error' className={styles.errorMessage}>
           - {state?.message}
         </Typography>
       )}
-      {/* TODO: set link to forgot password */}
-      <ButtonLink href='/' variant='text' color='tertiary' className={styles.forgotPassword}>
+
+      <ButtonLink href='/forgot-password' variant='text' color='tertiary' className={styles.forgotPassword}>
         Esqueci a senha!
       </ButtonLink>
 

@@ -9,9 +9,9 @@
 
 .bannerImage {
   margin-top: 32px;
-  aspect-ratio: 354/260;
+  aspect-ratio: 332/220;
   width: 100%;
-  max-width: 354px;
+  max-width: 332px;
   height: auto;
 
   @media (max-width: 640px) {
@@ -20,9 +20,14 @@
   }
 }
 
-.title {
+.title,
+.text {
   margin-top: 32px;
+}
+
+.text {
   padding: 0 104px;
+  text-align: center;
 
   @media (max-width: 768px) {
     padding: 0 72px;

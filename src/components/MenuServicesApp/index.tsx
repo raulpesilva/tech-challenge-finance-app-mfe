@@ -1,4 +1,4 @@
-import { NavLink } from '../shared/NavLink';
+import { NavLink } from '@/components/shared/NavLink';
 import styles from './styles.module.scss';
 
 export const MenuServicesApp = () => {

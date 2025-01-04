@@ -1,9 +1,9 @@
 'use client';
 
+import CloseIcon from '@/assets/icons/close-icon.svg';
+import { ButtonIcon } from '@/components/shared/ButtonIcon';
 import { combaneStyles } from '@/utils/combaneStyles';
 import { useRouter, useSearchParams } from 'next/navigation';
-import CloseIcon from '../../assets/icons/close-icon.svg';
-import { ButtonIcon } from '../shared/ButtonIcon';
 import styles from './styles.module.scss';
 
 interface MenuDropdownProps {

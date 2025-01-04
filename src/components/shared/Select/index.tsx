@@ -1,8 +1,8 @@
 'use client';
 
+import ArrowIcon from '@/assets/icons/arrow-icon.svg';
 import { combaneStyles } from '@/utils/combaneStyles';
 import { useCallback, useEffect, useState } from 'react';
-import ArrowIcon from '../../../assets/icons/arrow-icon.svg';
 import styles from './styles.module.scss';
 
 interface SelectItemProps {

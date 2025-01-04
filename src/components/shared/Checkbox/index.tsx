@@ -1,5 +1,5 @@
+import CheckIcon from '@/assets/icons/check-icon.svg';
 import { combaneStyles } from '@/utils/combaneStyles';
-import CheckIcon from '../../../assets/icons/check-icon.svg';
 import styles from './styles.module.scss';
 
 interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {

@@ -1,12 +1,12 @@
 'use client';
 
+import { Button } from '@/components/shared/Button';
+import { Checkbox } from '@/components/shared/Checkbox';
+import { Input } from '@/components/shared/Input';
+import { Typography } from '@/components/shared/Typography';
 import { InitialSignUpResponse } from '@/lib/auth/constantes';
 import { SignUpResponse } from '@/lib/auth/definitions';
 import { useActionState } from 'react';
-import { Button } from '../shared/Button';
-import { Checkbox } from '../shared/Checkbox';
-import { Input } from '../shared/Input';
-import { Typography } from '../shared/Typography';
 import styles from './styles.module.scss';
 
 interface FormSignUpProps {
@@ -25,7 +25,7 @@ export const FormSignUp = ({ signUp }: FormSignUpProps) => {
         defaultValue={state?.inputs?.name}
       />
       {state?.errors?.name?.map((error) => (
-        <Typography variant='span' color='error' key={error}>
+        <Typography variant='span' color='error' key={error} className={styles.errorMessage}>
           - {error}
         </Typography>
       ))}
@@ -39,7 +39,7 @@ export const FormSignUp = ({ signUp }: FormSignUpProps) => {
         defaultValue={state?.inputs?.email}
       />
       {state?.errors?.email?.map((error) => (
-        <Typography variant='span' color='error' key={error}>
+        <Typography variant='span' color='error' key={error} className={styles.errorMessage}>
           - {error}
         </Typography>
       ))}
@@ -54,7 +54,7 @@ export const FormSignUp = ({ signUp }: FormSignUpProps) => {
         defaultValue={state?.inputs?.password}
       />
       {state?.errors?.password?.map((error) => (
-        <Typography variant='span' color='error' key={error}>
+        <Typography variant='span' color='error' key={error} className={styles.errorMessage}>
           - {error}
         </Typography>
       ))}
@@ -68,12 +68,12 @@ export const FormSignUp = ({ signUp }: FormSignUpProps) => {
         defaultChecked={state?.inputs?.acceptedTerm === 'on'}
       />
       {state?.errors?.acceptedTerm?.map((error) => (
-        <Typography variant='span' color='error' key={error}>
+        <Typography variant='span' color='error' key={error} className={styles.errorMessage}>
           - {error}
         </Typography>
       ))}
       {state?.message && (
-        <Typography variant='span' color='error'>
+        <Typography variant='span' color='error' className={styles.errorMessage}>
           - {state?.message}
         </Typography>
       )}
