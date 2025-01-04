@@ -19,7 +19,9 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    gap: 24px;
+    border-radius: 8px;
+    background-color: $white;
+    padding: 32px;
     height: fit-content;
   }
 }
