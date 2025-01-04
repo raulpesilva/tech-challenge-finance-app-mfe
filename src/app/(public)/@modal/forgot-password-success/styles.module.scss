@@ -1,0 +1,40 @@
+@use '@/theme/base' as *;
+
+.closeButton {
+  position: absolute !important;
+  top: 8px;
+  right: 8px;
+  padding: 12px !important;
+}
+
+.bannerImage {
+  margin-top: 32px;
+  aspect-ratio: 332/284;
+  width: 100%;
+  max-width: 332px;
+  height: auto;
+
+  @media (max-width: 640px) {
+    margin-top: 56px;
+    padding: 0 2px;
+  }
+}
+
+.title,
+.text,
+.backButton {
+  margin-top: 32px;
+}
+
+.text {
+  padding: 0 104px;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 0 72px;
+  }
+
+  @media (max-width: 640px) {
+    padding: 0 16px;
+  }
+}

@@ -50,8 +50,8 @@ export const FormSignIn = ({ signIn }: FormSignInProps) => {
           - {state?.message}
         </Typography>
       )}
-      {/* TODO: set link to forgot password */}
-      <ButtonLink href='/' variant='text' color='tertiary' className={styles.forgotPassword}>
+
+      <ButtonLink href='/forgot-password' variant='text' color='tertiary' className={styles.forgotPassword}>
         Esqueci a senha!
       </ButtonLink>
 
