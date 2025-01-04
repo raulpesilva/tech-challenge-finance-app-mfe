@@ -1,0 +1,13 @@
+@use '@/theme/base' as *;
+
+.extractContainer {
+  border-radius: 8px;
+  background-color: $white;
+  padding: 32px 24px;
+  min-width: 282px;
+  height: fit-content;
+
+  @media (max-width: 1024px) {
+    min-width: auto;
+  }
+}

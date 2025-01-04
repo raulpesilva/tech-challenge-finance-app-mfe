@@ -1,0 +1,25 @@
+@use '@/theme/base' as *;
+
+.pageContainer {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  gap: 24px;
+
+  @media (max-width: 1024px) {
+    flex: none;
+    flex-direction: column;
+  }
+
+  @media (min-width: 641px) and (max-width: 1024px) {
+    gap: 32px;
+  }
+
+  .pageContent {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 24px;
+    height: fit-content;
+  }
+}

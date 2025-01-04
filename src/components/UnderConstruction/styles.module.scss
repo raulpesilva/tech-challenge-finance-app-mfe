@@ -1,0 +1,28 @@
+@use '@/theme/base' as *;
+
+.title {
+  text-align: center;
+}
+
+.textWrapper {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.button {
+  margin: 24px auto 0;
+
+  @media (max-width: 640px) {
+    margin-top: 16px;
+  }
+}
+
+.banner {
+  margin: 32px auto 0;
+  max-width: 100%;
+  height: auto;
+
+  @media (min-width: 641px) and (max-width: 768px) {
+    margin: 16px auto 0;
+  }
+}

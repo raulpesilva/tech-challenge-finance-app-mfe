@@ -1,0 +1,87 @@
+@use '@/theme/base' as *;
+
+// Layout
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  background-color: $green10;
+
+  .container {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    gap: 24px;
+    margin: 24px auto 36px;
+    padding: 0 60px;
+    width: 100%;
+    max-width: 1320px;
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    @media (min-width: 641px) and (max-width: 1024px) {
+      gap: 32px;
+      margin: 32px auto 70px;
+    }
+
+    @media (max-width: 640px) {
+      padding: 0 24px;
+    }
+  }
+
+  .menuContainer {
+    border-radius: 8px;
+    background-color: $white;
+    padding: 12px 34px 16px !important;
+    min-width: 208px;
+
+    @media (max-width: 1024px) {
+      flex-direction: row;
+      gap: 16px;
+      background-color: transparent;
+      padding: 0 !important;
+
+      & > a {
+        padding: 0 0 12px !important;
+        min-width: max-content;
+      }
+    }
+
+    @media (max-width: 640px) {
+      display: none;
+    }
+  }
+}
+
+// Page
+.pageContainer {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  gap: 24px;
+
+  @media (max-width: 1024px) {
+    flex: none;
+    flex-direction: column;
+  }
+
+  @media (min-width: 641px) and (max-width: 1024px) {
+    gap: 32px;
+  }
+
+  .pageContent {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 24px;
+    height: fit-content;
+  }
+}

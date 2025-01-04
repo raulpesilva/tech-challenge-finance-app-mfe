@@ -1,8 +1,11 @@
+import { ExtractSummary } from '@/components/ExtractSummary';
+import styles from './styles.module.scss';
+
 export default function Page() {
   return (
-    <div>
-      <h2>Dashboard</h2>
-      <p>Welcome to the dashboard</p>
+    <div className={styles.pageContainer}>
+      <section className={styles.pageContent}>Dashboard</section>
+      <ExtractSummary />
     </div>
   );
 }
