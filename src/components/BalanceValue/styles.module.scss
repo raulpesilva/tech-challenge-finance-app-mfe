@@ -1,0 +1,56 @@
+@use '@/theme/base' as *;
+
+.balanceValueContainer {
+  display: flex;
+  flex-direction: column;
+
+  .button {
+    justify-content: flex-start;
+    gap: 25px;
+    border-bottom: 2px solid $white;
+    border-radius: 0;
+    padding: 0 0 16px;
+    width: 100%;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .title {
+    margin-top: 16px;
+  }
+
+  .amountWrapper {
+    position: relative;
+    margin-top: 8px;
+
+    &.hiddenAmount .amount {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    &.hiddenAmount .mask {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .amount {
+    width: max-content;
+
+    @media (max-width: 1200px) and (min-width: 1025px) {
+      font-size: 24px;
+    }
+  }
+
+  .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+
+    @media (max-width: 1200px) and (min-width: 1025px) {
+      font-size: 24px;
+    }
+  }
+}
