@@ -26,7 +26,7 @@ export const FormSignUp = ({ signUp }: FormSignUpProps) => {
       />
       {state?.errors?.name?.map((error) => (
         <Typography variant='span' color='error' key={error} className={styles.errorMessage}>
-          - {error}
+          {error}
         </Typography>
       ))}
       <Input
@@ -40,7 +40,7 @@ export const FormSignUp = ({ signUp }: FormSignUpProps) => {
       />
       {state?.errors?.email?.map((error) => (
         <Typography variant='span' color='error' key={error} className={styles.errorMessage}>
-          - {error}
+          {error}
         </Typography>
       ))}
 
@@ -55,7 +55,7 @@ export const FormSignUp = ({ signUp }: FormSignUpProps) => {
       />
       {state?.errors?.password?.map((error) => (
         <Typography variant='span' color='error' key={error} className={styles.errorMessage}>
-          - {error}
+          {error}
         </Typography>
       ))}
 
@@ -69,12 +69,12 @@ export const FormSignUp = ({ signUp }: FormSignUpProps) => {
       />
       {state?.errors?.acceptedTerm?.map((error) => (
         <Typography variant='span' color='error' key={error} className={styles.errorMessage}>
-          - {error}
+          {error}
         </Typography>
       ))}
       {state?.message && (
         <Typography variant='span' color='error' className={styles.errorMessage}>
-          - {state?.message}
+          {state?.message}
         </Typography>
       )}
 
