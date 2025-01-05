@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 
 export const UnderConstruction = () => {
   return (
-    <>
+    <section>
       <Typography variant='heading1' className={styles.title}>
         Ops! Esta página está em construção...
       </Typography>
@@ -28,6 +28,6 @@ export const UnderConstruction = () => {
         priority
         className={styles.banner}
       />
-    </>
+    </section>
   );
 };

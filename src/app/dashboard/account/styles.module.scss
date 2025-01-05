@@ -2,24 +2,10 @@
 
 .pageContainer {
   display: flex;
-  flex: 1;
-  justify-content: space-between;
-  gap: 24px;
-
-  @media (max-width: 1024px) {
-    flex: none;
-    flex-direction: column;
-  }
-
-  @media (min-width: 641px) and (max-width: 1024px) {
-    gap: 32px;
-  }
-
-  .pageContent {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    gap: 24px;
-    height: fit-content;
-  }
+  flex-direction: column;
+  border-radius: 8px;
+  background-color: $gray100;
+  padding: 32px;
+  width: 100%;
+  height: fit-content;
 }
