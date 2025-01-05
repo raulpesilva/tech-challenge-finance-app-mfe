@@ -2,7 +2,6 @@ import EditIcon from '@/assets/icons/edit-icon.svg';
 import GridBottomIcon from '@/assets/icons/grid-bottom.svg';
 import GridTopIcon from '@/assets/icons/grid-top.svg';
 import imageBanner from '@/assets/images/main-banner-account.png';
-
 import { Button } from '@/components/shared/Button';
 import { Input } from '@/components/shared/Input';
 import { Typography } from '@/components/shared/Typography';

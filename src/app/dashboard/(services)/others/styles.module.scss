@@ -1,0 +1,138 @@
+@use '@/theme/base' as *;
+
+.servicesContainer {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  border-radius: 8px;
+  background-color: $gray100;
+  padding: 32px 32px 26px;
+  width: 100%;
+  height: fit-content;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 32px 16px 60px;
+  }
+
+  @media (max-width: 640px) {
+    padding: 32px 24px;
+  }
+
+  .gridTop {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    @media (max-width: 768px) {
+      top: -40px;
+      right: -40px;
+      transform: scale(0.7);
+    }
+
+    @media (max-width: 640px) {
+      top: -56px;
+      right: unset;
+      left: -56px;
+      transform: scale(0.57);
+    }
+  }
+
+  .gridBottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    @media (max-width: 768px) {
+      bottom: -40px;
+      left: -40px;
+      transform: scale(0.7);
+    }
+
+    @media (max-width: 640px) {
+      right: -56px;
+      bottom: -56px;
+      left: unset;
+      transform: scale(0.57);
+    }
+  }
+
+  .title,
+  .servicesList {
+    z-index: 1;
+  }
+
+  .servicesList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+
+    @media (max-width: 1320px) and (min-width: 1025px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 768px) {
+      margin-top: 40px;
+    }
+
+    @media (max-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  .service {
+    display: flex;
+    transition-duration: 350ms;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background-color: $gray20;
+    padding: 20px 32px 32px;
+    list-style: none;
+
+    @media (max-width: 1320px) {
+      padding: 20px;
+    }
+
+    @media (max-width: 1024px) {
+      padding: 24px 16px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      border: 2px solid $green400;
+      background-color: $gray10;
+    }
+
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      width: 100%;
+
+      @media (max-width: 768px) {
+        gap: 24px;
+      }
+    }
+
+    img {
+      width: 100%;
+      max-width: 60px;
+      height: auto;
+
+      @media (max-width: 768px) {
+        max-width: 52px;
+      }
+    }
+
+    .subTitle {
+      text-align: center;
+    }
+  }
+}
