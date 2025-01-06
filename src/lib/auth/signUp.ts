@@ -19,17 +19,17 @@ export async function signUp(_: SignUpResponse, formData: FormData) {
     errors: {},
   };
 
-  if (!name) fields.errors.name = ['Name is required'];
-  if (!email) fields.errors.email = ['Email is required'];
-  if (!password) fields.errors.password = ['Password is required'];
-  if (!acceptedTerm || acceptedTerm !== 'on') fields.errors.acceptedTerm = ['You must accept the terms'];
+  if (!name) fields.errors.name = ['Nome é obrigatório'];
+  if (!email) fields.errors.email = ['E-mail é obrigatório'];
+  if (!password) fields.errors.password = ['Senha é obrigatória'];
+  if (!acceptedTerm || acceptedTerm !== 'on') fields.errors.acceptedTerm = ['Você deve aceitar os termos'];
 
   const response = { ...fields, success: !Object.keys(fields.errors).length } satisfies SignUpResponse;
   if (Object.keys(fields.errors).length) return response;
 
   const user = await getUserByEmail(email);
   if (user.length)
-    return await createResponseError(response, 'Email already exists, please use a different email or login.');
+    return await createResponseError(response, 'O e-mail já existe, use um e-mail diferente ou faça login.');
 
   const normalizedUser = {
     name,

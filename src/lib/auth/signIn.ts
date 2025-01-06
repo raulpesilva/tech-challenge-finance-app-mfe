@@ -17,18 +17,18 @@ export async function signIn(_: SignInResponse, formData: FormData) {
     errors: {},
   };
 
-  if (!email) fields.errors.email = ['Email is required'];
-  if (!password) fields.errors.password = ['Password is required'];
+  if (!email) fields.errors.email = ['E-mail é obrigatório'];
+  if (!password) fields.errors.password = ['Senha é obrigatória'];
 
   const hasErrors = !!Object.keys(fields.errors).length;
   const response = { ...fields, success: !hasErrors } satisfies SignInResponse;
   if (hasErrors) return response;
 
   const [privateUser] = await getUserByEmail(email);
-  if (!privateUser) return await createResponseError(response, 'Invalid login credentials.');
+  if (!privateUser) return await createResponseError(response, 'Credenciais de login inválidas.');
 
   const match = await comparePassword(password, privateUser.password);
-  if (!match) return await createResponseError(response, 'Invalid login credentials.');
+  if (!match) return await createResponseError(response, 'Credenciais de login inválidas.');
 
   const publicUser = userDTO(privateUser);
   await createSession(publicUser);
