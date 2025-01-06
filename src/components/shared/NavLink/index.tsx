@@ -15,7 +15,9 @@ interface NavLinkProps extends LinkProps {
 
 export const NavLink = ({ color, colorActive, href, children, className, ...props }: NavLinkProps) => {
   const pathname = usePathname();
-  const isActive = pathname === href;
+  const pathnameFormatted = pathname.replace('/dashboard/', '');
+  const hrefFormatted = href.replace('/dashboard/', '');
+  const isActive = pathnameFormatted.includes(hrefFormatted);
 
   return (
     <Link

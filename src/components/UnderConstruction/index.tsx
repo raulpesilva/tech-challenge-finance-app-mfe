@@ -4,11 +4,15 @@ import { Typography } from '@/components/shared/Typography';
 import Image from 'next/image';
 import styles from './styles.module.scss';
 
-export const UnderConstruction = () => {
+interface UnderConstructionProps {
+  service?: boolean;
+}
+
+export const UnderConstruction = ({ service }: UnderConstructionProps) => {
   return (
     <section>
       <Typography variant='heading1' className={styles.title}>
-        Ops! Esta página está em construção...
+        {service ? 'Ops! Este serviço está em construção...' : 'Ops! Esta página está em construção...'}
       </Typography>
 
       <div className={styles.textWrapper}>
@@ -16,8 +20,13 @@ export const UnderConstruction = () => {
         <Typography variant='paragraph'>Aguarde!</Typography>
       </div>
 
-      <ButtonLink href='/' variant='contained' color='tertiary' className={styles.button}>
-        Voltar ao início
+      <ButtonLink
+        href={service ? '/dashboard/others' : '/'}
+        variant='contained'
+        color='tertiary'
+        className={styles.button}
+      >
+        {service ? 'Voltar aos serviços' : 'Voltar ao início'}
       </ButtonLink>
 
       <Image
