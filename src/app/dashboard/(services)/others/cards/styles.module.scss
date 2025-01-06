@@ -2,10 +2,79 @@
 
 .pageContainer {
   display: flex;
+  position: relative;
   flex-direction: column;
   border-radius: 8px;
-  background-color: $white;
+  background-color: $gray100;
   padding: 32px;
   width: 100%;
   height: fit-content;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 32px 16px 60px;
+  }
+
+  @media (max-width: 640px) {
+    padding: 32px 24px;
+  }
+
+  .gridTop {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    @media (max-width: 768px) {
+      top: -40px;
+      right: -40px;
+      transform: scale(0.7);
+    }
+
+    @media (max-width: 640px) {
+      top: -56px;
+      right: unset;
+      left: -56px;
+      transform: scale(0.57);
+    }
+  }
+
+  .gridBottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    @media (max-width: 768px) {
+      bottom: -40px;
+      left: -40px;
+      transform: scale(0.7);
+    }
+
+    @media (max-width: 640px) {
+      right: -56px;
+      bottom: -56px;
+      left: unset;
+      transform: scale(0.57);
+    }
+  }
+
+  .title,
+  .subTitle {
+    z-index: 1;
+
+    @media (max-width: 640px) {
+      text-align: center;
+    }
+  }
+
+  .subTitle {
+    margin-top: 24px;
+
+    @media (max-width: 768px) {
+      margin-top: 40px;
+    }
+
+    @media (max-width: 640px) {
+      margin-top: 32px;
+    }
+  }
 }
