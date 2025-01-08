@@ -44,6 +44,7 @@ const colors = {
   primary: styles.primary,
   secondary: styles.secondary,
   tertiary: styles.tertiary,
+  gray50: styles.gray50,
   gray400: styles.gray400,
   gray600: styles.gray600,
   error: styles.error,
