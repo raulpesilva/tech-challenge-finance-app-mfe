@@ -1,0 +1,50 @@
+@use '@/theme/base' as *;
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 32px;
+  width: 100%;
+
+  .selectWrapper {
+    max-width: 75%;
+  }
+
+  .valueWrapper,
+  .dateWrapper {
+    max-width: 50%;
+  }
+
+  .dateWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    & > div > div {
+      transition-duration: 350ms;
+      outline: none;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      background-color: $white;
+      max-height: 48px;
+
+      &:hover,
+      &:focus-within {
+        border: 1px solid $primary;
+      }
+
+      &:focus-within {
+        box-shadow: 0 0 3px 0 $primary;
+      }
+
+      fieldset {
+        border: none !important;
+      }
+    }
+  }
+
+  .submitButton {
+    width: 50%;
+  }
+}
