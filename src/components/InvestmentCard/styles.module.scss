@@ -1,0 +1,15 @@
+@use '@/theme/base' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  border-radius: 8px;
+  background-color: $primary;
+  padding: 18px 16px;
+
+  .value {
+    width: max-content;
+  }
+}
