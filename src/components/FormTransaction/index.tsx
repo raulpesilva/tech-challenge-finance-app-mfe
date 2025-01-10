@@ -12,10 +12,14 @@ import { Select } from '../shared/Select';
 import { Typography } from '../shared/Typography';
 import styles from './styles.module.scss';
 
-const options = ['Depósito', 'Retirada', 'Transferência', 'Investimento'];
+const options = ['Depósito', 'Retirada', 'Transferência', 'Investimento'] as const;
 
-export const FormTransaction = () => {
-  const [typeTransaction, setTypeTransaction] = useState('');
+interface FormTransactionProps {
+  type?: (typeof options)[number];
+}
+
+export const FormTransaction = ({ type }: FormTransactionProps) => {
+  const [typeTransaction, setTypeTransaction] = useState<(typeof options)[number] | null>(type ?? null);
   const [date, setDate] = useState<Dayjs | null>(null);
 
   console.log(typeTransaction, date?.format('DD/MM/YYYY'));
