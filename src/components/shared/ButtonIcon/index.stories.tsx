@@ -1,25 +1,26 @@
 import LoadingIcon from '@/assets/icons/loading-icon.svg';
+import ExemploIcon from '@/assets/icons/logo-icon.svg';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './index';
+import { ButtonIcon } from './index';
 
 const meta = {
-  title: 'UI/Button',
-  component: Button,
+  title: 'UI/ButtonIcon',
+  component: ButtonIcon,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof ButtonIcon>;
 
 export default meta;
 
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof ButtonIcon>;
 
 export const Primary: Story = {
   args: {
     variant: 'contained',
     color: 'primary',
-    children: 'Text Button',
+    children: <ExemploIcon />,
   },
 };
 
@@ -27,7 +28,7 @@ export const Secondary: Story = {
   args: {
     variant: 'contained',
     color: 'secondary',
-    children: 'Text Button',
+    children: <ExemploIcon />,
   },
 };
 
@@ -35,7 +36,7 @@ export const Contained: Story = {
   args: {
     variant: 'contained',
     color: 'primary',
-    children: 'Text Button',
+    children: <ExemploIcon />,
   },
 };
 
@@ -43,7 +44,7 @@ export const Outlined: Story = {
   args: {
     variant: 'outlined',
     color: 'primary',
-    children: 'Text Button',
+    children: <ExemploIcon />,
   },
 };
 
@@ -51,7 +52,7 @@ export const Text: Story = {
   args: {
     variant: 'text',
     color: 'primary',
-    children: 'Text Button',
+    children: <ExemploIcon />,
   },
 };
 
@@ -59,12 +60,8 @@ export const Loading: Story = {
   args: {
     variant: 'contained',
     color: 'primary',
+    children: <LoadingIcon />,
     loading: true,
-    children: (
-      <>
-        Loading <LoadingIcon />
-      </>
-    ),
   },
 };
 
@@ -72,7 +69,7 @@ export const Selected: Story = {
   args: {
     variant: 'contained',
     color: 'primary',
-    children: 'Text Button',
+    children: <ExemploIcon />,
     selected: true,
   },
 };
@@ -81,7 +78,7 @@ export const Disabled: Story = {
   args: {
     variant: 'contained',
     color: 'primary',
-    children: 'Text Button',
+    children: <ExemploIcon />,
     disabled: true,
   },
 };

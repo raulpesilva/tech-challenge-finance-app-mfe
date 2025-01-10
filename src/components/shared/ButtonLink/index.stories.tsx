@@ -1,25 +1,25 @@
-import LoadingIcon from '@/assets/icons/loading-icon.svg';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './index';
+import { ButtonLink } from './index';
 
 const meta = {
-  title: 'UI/Button',
-  component: Button,
+  title: 'UI/ButtonLink',
+  component: ButtonLink,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof ButtonLink>;
 
 export default meta;
 
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof ButtonLink>;
 
 export const Primary: Story = {
   args: {
     variant: 'contained',
     color: 'primary',
-    children: 'Text Button',
+    href: '#',
+    children: 'Button Link',
   },
 };
 
@@ -27,7 +27,8 @@ export const Secondary: Story = {
   args: {
     variant: 'contained',
     color: 'secondary',
-    children: 'Text Button',
+    href: '#',
+    children: 'Button Link',
   },
 };
 
@@ -35,7 +36,8 @@ export const Contained: Story = {
   args: {
     variant: 'contained',
     color: 'primary',
-    children: 'Text Button',
+    href: '#',
+    children: 'Button Link',
   },
 };
 
@@ -43,7 +45,8 @@ export const Outlined: Story = {
   args: {
     variant: 'outlined',
     color: 'primary',
-    children: 'Text Button',
+    href: '#',
+    children: 'Button Link',
   },
 };
 
@@ -51,20 +54,8 @@ export const Text: Story = {
   args: {
     variant: 'text',
     color: 'primary',
-    children: 'Text Button',
-  },
-};
-
-export const Loading: Story = {
-  args: {
-    variant: 'contained',
-    color: 'primary',
-    loading: true,
-    children: (
-      <>
-        Loading <LoadingIcon />
-      </>
-    ),
+    href: '#',
+    children: 'Button Link',
   },
 };
 
@@ -72,16 +63,8 @@ export const Selected: Story = {
   args: {
     variant: 'contained',
     color: 'primary',
-    children: 'Text Button',
+    href: '#',
+    children: 'Button Link',
     selected: true,
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    variant: 'contained',
-    color: 'primary',
-    children: 'Text Button',
-    disabled: true,
   },
 };
