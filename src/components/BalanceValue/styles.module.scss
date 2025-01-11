@@ -17,6 +17,7 @@
 
   .title {
     margin-top: 16px;
+    margin-bottom: 0;
   }
 
   .amountWrapper {
@@ -35,6 +36,7 @@
   }
 
   .amount {
+    margin: 0;
     width: max-content;
 
     @media (max-width: 1200px) and (min-width: 1025px) {
@@ -48,6 +50,7 @@
     left: 0;
     visibility: hidden;
     opacity: 0;
+    margin: 0;
 
     @media (max-width: 1200px) and (min-width: 1025px) {
       font-size: 24px;
