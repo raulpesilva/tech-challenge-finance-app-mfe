@@ -2,12 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { FormForgotPassword } from './index';
 
 const meta: Meta<typeof FormForgotPassword> = {
-  title: 'Components/FormForgotPassword',
+  title: 'Forms/FormForgotPassword',
   component: FormForgotPassword,
   tags: ['autodocs'],
-  parameters: {
-    layout: 'centered',
-  },
 };
 
 export default meta;
