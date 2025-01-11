@@ -13,12 +13,10 @@ export const MenuAccount = () => {
 
   return (
     <div className={styles.container}>
-      {/* TODO: Add account link */}
       <NavLink href='/dashboard/account' color='cta' colorActive='secondary' replace>
         Minha conta
       </NavLink>
 
-      {/* TODO: Add settings link */}
       <NavLink href='/dashboard/settings' color='cta' colorActive='secondary' replace>
         Configurações
       </NavLink>

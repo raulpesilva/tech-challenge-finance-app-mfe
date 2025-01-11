@@ -38,39 +38,47 @@ Storybook: Ferramenta de desenvolvimento para criar e documentar componentes UI 
 &nbsp;
 
 
-## Variáveis de ambiente
+## Como Executar o Projeto
 
-Para executar a aplicação, é preciso criar um arquivo .env seguindo o .example.env localizado na raiz do projeto
+### Variáveis de ambiente
 
-Além do .env, crie também um arquivo db.json seguindo o example.db.json localizado dentro de src/mock/server
+Para executar a aplicação, é preciso criar um arquivo `.env` seguindo o `.example.env` localizado na raiz do projeto
+
+Além do .env, faça uma cópia do arquivo `example.db.json` para um arquivo `db.json` localizado dentro de `src/mock/server`
 
 &nbsp;
 
-
-## Como Executar o Projeto
-
-Para configurar o projeto localmente, siga os passos abaixo:
+### Para configurar o projeto localmente, siga os passos abaixo:
 
 1. Clone o repositório:
-```bash
+```shell
 git clone https://github.com/raulpesilva/tech-challenge-finance-app.git
 ```
 
 2. Instale as dependências:
-```bash
-npm install
+```shell
+pnpm install
 ```
 
-3. Inicie o servidor e o projeto:
-```bash
-npm dev:server
+3. Inicie o mock e o projeto:
+```shell
+pnpm dev:mock
 ```
 
 4. Acesse a aplicação no navegador em http://localhost:3000/
 
-5. Para acessar o StoryBook, inicie a documentação:
-```bash
-npm storybook
+&nbsp;
+
+### Para o StoryBook, siga os passos abaixo:
+
+1. Para acessar o StoryBook, inicie o mock:
+```shell
+pnpm mock
 ```
 
-6. Acesse a documentação no navegador em http://localhost:6006/
+2. E inicie a documentação:
+```shell
+pnpm storybook
+```
+
+3. Acesse a documentação no navegador em http://localhost:6006/

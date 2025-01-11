@@ -12,6 +12,12 @@
     fill: $gray400;
   }
 
+  svg {
+    width: 100%;
+    min-width: 146px;
+    height: auto;
+  }
+
   svg path {
     transition-duration: 350ms;
   }
