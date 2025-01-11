@@ -12,11 +12,11 @@ const preview: Preview = {
       appDirectory: true,
     },
     backgrounds: {
-      default: 'light', // Define o fundo padrão
+      default: 'light',
       values: [
-        { name: 'light', value: '#ffffff' }, // Fundo branco
-        { name: 'dark', value: '#333333' },  // Fundo escuro
-        { name: 'gray', value: '#dadada' },  // Fundo cinza
+        { name: 'light', value: '#ffffff' },
+        { name: 'dark', value: '#333333' },
+        { name: 'gray', value: '#dadada' },
       ],
     },
   },
