@@ -12,6 +12,7 @@ const meta: Meta<typeof MenuDropdown> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof MenuDropdown>;
 
 export const Contained: Story = {
