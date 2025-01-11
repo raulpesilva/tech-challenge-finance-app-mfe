@@ -11,6 +11,14 @@ const preview: Preview = {
     nextjs: {
       appDirectory: true,
     },
+    backgrounds: {
+      default: 'light', // Define o fundo padrão
+      values: [
+        { name: 'light', value: '#ffffff' }, // Fundo branco
+        { name: 'dark', value: '#333333' },  // Fundo escuro
+        { name: 'gray', value: '#dadada' },  // Fundo cinza
+      ],
+    },
   },
 };
 
