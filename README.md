@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bytebank | FIAP Tech Challenge
 
-## Getting Started
+## Contexto do projeto
 
-First, run the development server:
+Este projeto é uma aplicação de gerenciamento financeiro desenvolvida como parte de um desafio técnico da FIAP Tech, utilizando Next.js. O objetivo é permitir que os usuários gerenciem suas transações financeiras de forma intuitiva e eficiente.
 
+&nbsp;
+
+
+## Tecnologias utilizadas
+
+### Front-end
+Next.js: Framework React para construção de aplicações web, permitindo renderização do lado do servidor (SSR) e geração de sites estáticos (SSG).
+
+React: Biblioteca JavaScript para construção de interfaces de usuário.
+
+Material-UI: Biblioteca de componentes React que implementa o Material Design, proporcionando uma interface consistente e responsiva.
+
+Sass: Pré-processador CSS que facilita a escrita de estilos com recursos como variáveis e aninhamento.
+
+Day.js: Biblioteca leve para manipulação de datas, facilitando operações relacionadas a datas e horários.
+
+&nbsp;
+
+### Back-end
+JSON Server: Ferramenta que simula uma API RESTful a partir de um arquivo JSON, permitindo testes e desenvolvimento sem a necessidade de um servidor back-end completo.
+
+bcrypt: Biblioteca para hashing de senhas, utilizada para proteger informações sensíveis.
+
+Jose: Biblioteca para manipulação de tokens JWT (JSON Web Tokens), que pode ser utilizada para autenticação e autorização.
+
+&nbsp;
+
+### Documentação
+
+Storybook: Ferramenta de desenvolvimento para criar e documentar componentes UI isoladamente, facilitando a visualização e teste dos mesmos.
+
+&nbsp;
+
+
+## Variáveis de ambiente
+
+Para executar a aplicação, é preciso criar um arquivo .env seguindo o .example.env localizado na raiz do projeto
+
+Além do .env, crie também um arquivo db.json seguindo o example.db.json localizado dentro de src/mock/server
+
+&nbsp;
+
+
+## Como Executar o Projeto
+
+Para configurar o projeto localmente, siga os passos abaixo:
+
+1. Clone o repositório:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/raulpesilva/tech-challenge-finance-app.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instale as dependências:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Inicie o servidor e o projeto:
+```bash
+npm dev:server
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Acesse a aplicação no navegador em http://localhost:3000/
 
-## Learn More
+5. Para acessar o StoryBook, inicie a documentação:
+```bash
+npm storybook
+```
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+6. Acesse a documentação no navegador em http://localhost:6006/
