@@ -23,6 +23,7 @@
     color: $black;
     font-weight: 700;
     line-height: 19px;
+    font-family: $font-family;
   }
 
   .selectContainer {
@@ -84,15 +85,18 @@
       display: flex;
       position: absolute;
       top: 31px;
+      left: 50%;
       flex-direction: column;
+      transform: translateX(-50%);
       z-index: 1;
       animation: slideTransition 350ms ease-in-out;
       transition-duration: 350ms;
+      margin: 0;
       border: 1px solid $primary;
       border-radius: 0 0 8px 8px;
       background-color: $white;
       padding: 15px 0;
-      width: 100%;
+      width: calc(100% - 2px);
       max-height: 200px;
       overflow-y: auto;
 
@@ -109,11 +113,12 @@
       cursor: pointer;
       min-height: 50px;
       color: $gray600;
+      font-family: $font-family;
 
       &:hover,
       &:focus {
-        background-color: $blue10;
         outline: none;
+        background-color: $blue10;
       }
 
       &.selected {

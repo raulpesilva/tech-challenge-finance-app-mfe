@@ -74,6 +74,7 @@ export const Typography = <VariantTag extends ComponentVariants[keyof ComponentV
   return (
     <Component
       className={combaneStyles([
+        styles.typography,
         size ? sizes[size] : variants[variant]?.size,
         weight ? weights[weight] : variants[variant]?.weight,
         colors[color],
