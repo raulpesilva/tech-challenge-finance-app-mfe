@@ -44,6 +44,7 @@ const colors = {
   primary: styles.primary,
   secondary: styles.secondary,
   tertiary: styles.tertiary,
+  gray50: styles.gray50,
   gray400: styles.gray400,
   gray600: styles.gray600,
   error: styles.error,
@@ -73,6 +74,7 @@ export const Typography = <VariantTag extends ComponentVariants[keyof ComponentV
   return (
     <Component
       className={combaneStyles([
+        styles.typography,
         size ? sizes[size] : variants[variant]?.size,
         weight ? weights[weight] : variants[variant]?.weight,
         colors[color],

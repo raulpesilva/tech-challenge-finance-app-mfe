@@ -1,4 +1,4 @@
-@use '@/theme/base' as *;
+@use '../../../theme/base' as *;
 
 .navLink {
   display: flex;
@@ -13,7 +13,9 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
+  font-family: $font-family;
   text-align: center;
+  text-decoration: none;
 
   &:hover,
   &.selected {

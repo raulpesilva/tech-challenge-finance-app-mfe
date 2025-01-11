@@ -2,7 +2,7 @@
 
 import ArrowIcon from '@/assets/icons/arrow-icon.svg';
 import { combaneStyles } from '@/utils/combaneStyles';
-import { useCallback, useEffect, useState } from 'react';
+import { MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 import styles from './styles.module.scss';
 
 interface SelectItemProps {
@@ -17,6 +17,7 @@ interface SelectProps<T extends readonly string[]> {
   value: T[number] | null;
   onChange: (option: T[number]) => void;
   label?: string;
+  className?: string;
 }
 
 const SelectItem = ({ option, value, handleSelect }: SelectItemProps) => {
@@ -40,19 +41,28 @@ export const Select = <T extends readonly string[]>({
   value,
   onChange,
   label,
+  className,
 }: SelectProps<T>) => {
   const [opened, setOpened] = useState(false);
+  const refButton = useRef<HTMLButtonElement>(null);
 
-  const handleOpen = useCallback(() => setOpened(true), []);
-  const handleClose = useCallback(() => setOpened(false), []);
-
-  const handleSelect = useCallback(
-    (option: string) => {
-      onChange(option);
-      handleClose();
+  const handleOpen = useCallback(
+    (e: MouseEvent) => {
+      if (!opened) e.stopPropagation();
+      setOpened(true);
     },
-    [onChange, handleClose]
+    [opened]
   );
+
+  const handleClose = useCallback(
+    (e: Event) => {
+      if (e.target === refButton.current && !opened) return;
+      setOpened(false);
+    },
+    [opened]
+  );
+
+  const handleSelect = useCallback((option: string) => onChange(option), [onChange]);
 
   useEffect(() => {
     document.addEventListener('click', handleClose);
@@ -60,16 +70,17 @@ export const Select = <T extends readonly string[]>({
   }, [handleClose]);
 
   return (
-    <div className={styles.container}>
-      {!!label && <label onClick={handleOpen}>{label}</label>}
+    <div className={combaneStyles([styles.container, className && className])}>
+      {!!label && <label onClick={(e) => handleOpen(e)}>{label}</label>}
 
       <div className={combaneStyles([styles.selectContainer])}>
         <button
+          ref={refButton}
           type='button'
-          onClick={handleOpen}
+          onClick={(e) => handleOpen(e)}
           className={combaneStyles([opened ? styles.opened : '', !!value ? styles.selected : ''])}
         >
-          {value ?? placeholder}
+          {!!value ? value : placeholder}
           <ArrowIcon />
         </button>
 

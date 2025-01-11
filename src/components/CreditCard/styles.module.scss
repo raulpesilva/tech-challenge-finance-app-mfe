@@ -1,0 +1,96 @@
+@use '../../theme/base' as *;
+
+.container {
+  display: flex;
+  column-gap: 32px;
+  row-gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 1;
+  margin-top: 24px;
+  width: 100%;
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    justify-content: flex-start;
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 40px;
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+  }
+
+  .card {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    border-radius: 8px;
+    padding: 16px;
+    width: 328px;
+    max-width: 100%;
+    min-height: 164px;
+    overflow: hidden;
+
+    &.physical {
+      background-color: $primary;
+    }
+
+    &.virtual {
+      background-color: $gray300;
+    }
+
+    @media (max-width: 1050px) and (min-width: 1025px) {
+      width: 300px;
+    }
+  }
+
+  .cardGridIcon {
+    position: absolute;
+    top: 0;
+    right: 8px;
+  }
+
+  .cardType {
+    margin-top: 8px;
+  }
+
+  .cardHolder {
+    margin-top: auto;
+  }
+
+  .cardNumber {
+    margin-top: 4px;
+  }
+
+  .actions {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 240px;
+
+    @media (max-width: 1024px) and (min-width: 769px) {
+      max-width: 210px;
+    }
+
+    @media (max-width: 640px) {
+      max-width: 215px;
+    }
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .function {
+    width: max-content;
+    min-width: 180px;
+    text-align: center;
+  }
+}

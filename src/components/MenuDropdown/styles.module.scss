@@ -1,4 +1,4 @@
-@use '@/theme/base' as *;
+@use '../../theme/base' as *;
 
 @keyframes slideTransitionRight {
   0% {
@@ -36,7 +36,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 2;
     background-color: transparent;
     width: 100%;
     height: 100%;

@@ -1,4 +1,8 @@
-@use '@/theme/base' as *;
+@use '../../../theme/base' as *;
+
+.typography {
+  font-family: $font-family;
+}
 
 .size4xl {
   font-size: 32px;
@@ -62,6 +66,10 @@
 
 .tertiary {
   color: $tertiary;
+}
+
+.gray50 {
+  color: $gray50;
 }
 
 .gray400 {
