@@ -1,5 +1,9 @@
 @use '../../../theme/base' as *;
 
+.typography {
+  font-family: $font-family;
+}
+
 .size4xl {
   font-size: 32px;
   line-height: 38px;
