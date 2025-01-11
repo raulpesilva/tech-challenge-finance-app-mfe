@@ -17,3 +17,15 @@ type Story = StoryObj<typeof MenuAccount>;
 export const Default: Story = {
   render: () => <MenuAccount />,
 };
+
+export const WithLinkActive: Story = {
+  render: () => <MenuAccount />,
+  parameters: {
+    nextjs: {
+      navigation: {
+        pathname: '/dashboard/settings',
+        query: {},
+      },
+    },
+  },
+};
