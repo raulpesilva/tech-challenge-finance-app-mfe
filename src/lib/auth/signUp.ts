@@ -1,7 +1,7 @@
 'user server';
 import 'server-only';
 
-import { createUser, getUserByEmail } from '@/actions/services/users';
+import { createUser, getUserByEmail } from '@/services/users';
 import { redirect } from 'next/navigation';
 import { SignUpFields, SignUpResponse } from './definitions';
 import { userDTO } from './DTO/user';
