@@ -1,27 +1,19 @@
 'use client';
 
+import { TransactionTypeDictionaryValue } from '@/@types/transaction';
 import { maskCurrency } from '@/utils/masks/maskCurrency';
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { Dayjs } from 'dayjs';
 import 'dayjs/locale/pt';
-import { useState } from 'react';
 import { Button } from '../shared/Button';
 import { Input } from '../shared/Input';
-import { Select } from '../shared/Select';
-import { Typography } from '../shared/Typography';
+import { TransactionDate } from '../TransactionDate';
+import { TransactionOptionsSelect } from '../TransactionOptionsSelect';
 import styles from './styles.module.scss';
 
-const options = ['Depósito', 'Retirada', 'Transferência', 'Investimento'] as const;
-type Options = typeof options;
 interface FormTransactionProps {
-  type?: Options[number];
+  type?: TransactionTypeDictionaryValue;
 }
 
 export const FormTransaction = ({ type }: FormTransactionProps) => {
-  const [typeTransaction, setTypeTransaction] = useState<Options[number] | null>(type ?? null);
-  const [date, setDate] = useState<Dayjs | null>(null);
-
   return (
     <form
       className={styles.formWrapper}
@@ -31,15 +23,7 @@ export const FormTransaction = ({ type }: FormTransactionProps) => {
         console.log('date', formdata.get('date'));
       }}
     >
-      <Select
-        placeholder='Selecione o tipo de transação'
-        options={options}
-        value={typeTransaction}
-        onChange={setTypeTransaction}
-        className={styles.selectWrapper}
-        name='type'
-      />
-
+      <TransactionOptionsSelect type={type} />
       <Input
         id='value'
         name='value'
@@ -48,14 +32,7 @@ export const FormTransaction = ({ type }: FormTransactionProps) => {
         onInput={(e) => (e.currentTarget.value = maskCurrency(e.currentTarget.value))}
         className={styles.valueWrapper}
       />
-
-      <div className={styles.dateWrapper}>
-        <Typography variant='label'>Data</Typography>
-        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={'pt'}>
-          <DatePicker format='DD/MM/YYYY' value={date} onChange={(value) => setDate(value)} name='date' />
-        </LocalizationProvider>
-      </div>
-
+      <TransactionDate />
       <Button variant='contained' color='primary' className={styles.submitButton}>
         Concluir transação
       </Button>

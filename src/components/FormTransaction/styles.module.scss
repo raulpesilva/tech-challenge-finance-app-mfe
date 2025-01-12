@@ -7,48 +7,11 @@
   margin-top: 24px;
   width: 100%;
 
-  .selectWrapper {
-    max-width: 75%;
-
-    @media (max-width: 1200px) and (min-width: 1025px), (max-width: 640px) {
-      max-width: 100%;
-    }
-  }
-
-  .valueWrapper,
-  .dateWrapper {
+  .valueWrapper {
     max-width: 50%;
 
     @media (max-width: 1200px) and (min-width: 1025px), (max-width: 640px) {
       max-width: 100%;
-    }
-  }
-
-  .dateWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-
-    & > div > div {
-      transition-duration: 350ms;
-      outline: none;
-      border: 1px solid transparent;
-      border-radius: 8px;
-      background-color: $white;
-      max-height: 48px;
-
-      &:hover,
-      &:focus-within {
-        border: 1px solid $primary;
-      }
-
-      &:focus-within {
-        box-shadow: 0 0 3px 0 $primary;
-      }
-
-      fieldset {
-        border: none !important;
-      }
     }
   }
 
