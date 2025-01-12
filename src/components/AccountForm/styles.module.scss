@@ -1,0 +1,17 @@
+.formContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 24px;
+
+  @media (max-width: 768px) {
+    align-items: center;
+  }
+}
+
+.submitButton {
+  @media (max-width: 640px) {
+    width: 100%;
+    max-width: 336px;
+  }
+}

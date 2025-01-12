@@ -1,14 +1,22 @@
-import EditIcon from '@/assets/icons/edit-icon.svg';
 import GridBottomIcon from '@/assets/icons/grid-bottom.svg';
 import GridTopIcon from '@/assets/icons/grid-top.svg';
 import imageBanner from '@/assets/images/main-banner-account.png';
-import { Button } from '@/components/shared/Button';
-import { Input } from '@/components/shared/Input';
+
+import { updateUserAction, UpdateUserResponse } from '@/actions/user';
+import { AccountForm } from '@/components/AccountForm';
 import { Typography } from '@/components/shared/Typography';
+import { getUser } from '@/lib/auth/getUser';
 import Image from 'next/image';
 import styles from './styles.module.scss';
 
-export default function Page() {
+export const InitialUpdateUserResponse = {
+  inputs: { name: '', email: '', password: '' },
+  errors: {},
+  success: true,
+} satisfies UpdateUserResponse;
+
+export default async function Page() {
+  const user = await getUser();
   return (
     <div className={styles.pageContainer}>
       <GridTopIcon className={styles.gridTop} />
@@ -27,15 +35,13 @@ export default function Page() {
           priority
           className={styles.banner}
         />
-
-        <form className={styles.formContainer}>
-          <Input id='name' name='name' label='Nome' placeholder='Digite seu nome completo' iconRight={<EditIcon />} />
-          <Input id='email' name='email' label='E-mail' placeholder='Digite seu e-mail' iconRight={<EditIcon />} />
-          <Input id='password' name='password' label='Senha' placeholder='Digite sua senha' iconRight={<EditIcon />} />
-          <Button variant='contained' color='secondary' type='submit' className={styles.submitButton}>
-            Salvar alterações
-          </Button>
-        </form>
+        <AccountForm
+          updateUser={async (prev, formData) => {
+            'use server';
+            return await updateUserAction(prev, formData);
+          }}
+          initialUser={{ ...InitialUpdateUserResponse, inputs: { ...InitialUpdateUserResponse.inputs, ...user } }}
+        />
       </div>
     </div>
   );
