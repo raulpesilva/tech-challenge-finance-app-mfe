@@ -1,24 +1,32 @@
 import { ActionResponse, Fields } from '@/@types/actions';
-import { TRANSACTIONS_TYPES, TransactionType } from '@/@types/transaction';
+import {
+  TRANSACTIONS_TYPES,
+  TRANSACTIONS_TYPES_DICTIONARY_MAP,
+  TransactionTypeDictionaryValue,
+} from '@/@types/transaction';
 import { getUser } from '@/lib/auth/getUser';
 import { createTransaction } from '@/services/transaction';
+import { undoMaskCurrency } from '@/utils/masks/maskCurrency';
 
-export type CreateTransactionFields = Fields<{ type: string; value: number; date: string }>;
+export type CreateTransactionFields = Fields<{ type: string; value: string; date: string }>;
 export type CreateTransactionResponse = ActionResponse<CreateTransactionFields>;
 
 export const createTransactionAction = async (_state: CreateTransactionResponse, formData: FormData) => {
-  const type = formData.get('type') as TransactionType;
-  const value = Number(formData.get('value'));
+  const dictionaryType = formData.get('type') as TransactionTypeDictionaryValue;
+  const type = TRANSACTIONS_TYPES_DICTIONARY_MAP[dictionaryType];
   const date = formData.get('date') as string;
+  const stringValue = undoMaskCurrency(formData.get('value') as string);
+  const numberValue = Number(stringValue);
+  console.log({ type, value: numberValue, date });
 
   const fields: CreateTransactionFields = {
-    inputs: { type, value, date },
+    inputs: { type, value: stringValue, date },
     errors: {},
   };
 
   if (!type) fields.errors.type = ['Tipo é obrigatório'];
-  if (!value) fields.errors.value = ['Valor é obrigatório'];
-  if (!date) fields.errors.date = ['Data é obrigatória'];
+  if (!stringValue) fields.errors.value = ['Valor é obrigatório'];
+  if (!date.replace(/\D/g, '')) fields.errors.date = ['Data é obrigatória'];
   if (!TRANSACTIONS_TYPES.some((t) => t === type)) fields.errors.type = ['Tipo inválido'];
 
   const response = { ...fields, success: !Object.keys(fields.errors).length } as CreateTransactionResponse;
@@ -27,8 +35,8 @@ export const createTransactionAction = async (_state: CreateTransactionResponse,
   try {
     const user = await getUser();
     if (!user) return { ...response, success: false, errors: { type: ['Usuário não encontrado'] } };
-    await createTransaction({ type, value, date, author: user.id });
-    return { ...response, success: true };
+    await createTransaction({ type, value: numberValue, date, author: user.id });
+    return { ...response, inputs: { ...response.inputs, value: '', date: '' }, success: true };
   } catch (error) {
     return { ...response, success: false, errors: { type: ['Erro ao criar transação'] } };
   }

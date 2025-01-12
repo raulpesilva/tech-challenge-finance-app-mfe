@@ -6,8 +6,11 @@ import { useState } from 'react';
 import { Typography } from '../shared/Typography';
 import styles from './styles.module.scss';
 
-export const TransactionDate = () => {
-  const [date, setDate] = useState<Dayjs | null>(null);
+interface TransactionDateProps {
+  initialDate: Dayjs | null;
+}
+export const TransactionDate = ({ initialDate }: TransactionDateProps) => {
+  const [date, setDate] = useState<Dayjs | null>(initialDate ?? null);
   return (
     <div className={styles.dateWrapper}>
       <Typography variant='label'>Data</Typography>

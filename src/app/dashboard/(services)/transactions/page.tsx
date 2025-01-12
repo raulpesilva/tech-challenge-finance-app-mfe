@@ -1,3 +1,4 @@
+import { createTransactionAction, CreateTransactionResponse } from '@/actions/transactions';
 import GridBottomIcon from '@/assets/icons/grid-bottom.svg';
 import GridTopIcon from '@/assets/icons/grid-top.svg';
 import imageBanner from '@/assets/images/main-banner-dashboard.png';
@@ -5,6 +6,11 @@ import { FormTransaction } from '@/components/FormTransaction';
 import { Typography } from '@/components/shared/Typography';
 import Image from 'next/image';
 import styles from './styles.module.scss';
+
+export const InitialUpdateUserResponse = {
+  inputs: { date: '', type: '', value: '' },
+  errors: {},
+} satisfies CreateTransactionResponse;
 
 export default function Page() {
   return (
@@ -17,7 +23,15 @@ export default function Page() {
       </Typography>
 
       <div className={styles.content}>
-        <FormTransaction type='Transferência' />
+        <FormTransaction
+          key='transfer'
+          type='Transferência'
+          createTransaction={async (state, action) => {
+            'use server';
+            return await createTransactionAction(state, action);
+          }}
+          initialTransaction={InitialUpdateUserResponse}
+        />
 
         <Image
           src={imageBanner}
