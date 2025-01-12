@@ -1,27 +1,10 @@
-interface TransactionBase {
+export const TRANSACTIONS_TYPES = ['deposit', 'withdraw', 'investment', 'transfer'] as const;
+
+export type TransactionType = (typeof TRANSACTIONS_TYPES)[number];
+export interface Transaction {
   id: string;
   date: string;
   value: number;
   author: string;
+  type: TransactionType;
 }
-
-interface Deposit extends TransactionBase {
-  type: 'deposit';
-}
-
-interface Withdraw extends TransactionBase {
-  type: 'withdraw';
-}
-
-interface Investment extends TransactionBase {
-  type: 'investment';
-  stock: string;
-  quantity: number;
-}
-
-interface Transfer extends TransactionBase {
-  type: 'transfer';
-  recipient: string;
-}
-
-export type Transaction = Deposit | Withdraw | Investment | Transfer;

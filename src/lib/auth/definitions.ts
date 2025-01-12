@@ -1,22 +1,7 @@
-export interface Fields<T extends Record<string, unknown>> {
-  inputs: { [K in keyof T]?: T[K] };
-  errors: { [K in keyof T]?: string[] };
-}
+import { ActionResponse, Fields } from '@/@types/actions';
 
-export type ActionResponse<T extends Fields<Record<string, unknown>> = Fields<Record<string, unknown>>> = T & {
-  success?: boolean;
-  message?: string;
-};
-
-export type SignUpFields = Fields<{
-  name: string;
-  email: string;
-  password: string;
-  acceptedTerm: string;
-}>;
-
+export type SignUpFields = Fields<{ name: string; email: string; password: string; acceptedTerm: string }>;
 export type SignUpResponse = ActionResponse<SignUpFields>;
-
 
 export type SignInFields = Fields<{ email: string; password: string }>;
 export type SignInResponse = ActionResponse<SignInFields>;

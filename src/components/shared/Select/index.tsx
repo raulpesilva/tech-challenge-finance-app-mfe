@@ -18,6 +18,7 @@ interface SelectProps<T extends readonly string[]> {
   onChange: (option: T[number]) => void;
   label?: string;
   className?: string;
+  name?: string;
 }
 
 const SelectItem = ({ option, value, handleSelect }: SelectItemProps) => {
@@ -42,6 +43,7 @@ export const Select = <T extends readonly string[]>({
   onChange,
   label,
   className,
+  name,
 }: SelectProps<T>) => {
   const [opened, setOpened] = useState(false);
   const refButton = useRef<HTMLButtonElement>(null);
@@ -72,6 +74,7 @@ export const Select = <T extends readonly string[]>({
   return (
     <div className={combaneStyles([styles.container, className && className])}>
       {!!label && <label onClick={(e) => handleOpen(e)}>{label}</label>}
+      <input type='hidden' value={value || ''} name={name} />
 
       <div className={combaneStyles([styles.selectContainer])}>
         <button

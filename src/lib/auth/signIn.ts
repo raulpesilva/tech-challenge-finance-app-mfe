@@ -1,7 +1,7 @@
 'user server';
 import 'server-only';
 
-import { getUserByEmail } from '@/actions/services/users';
+import { getUserByEmail } from '@/services/users';
 import { redirect } from 'next/navigation';
 import { SignInFields, SignInResponse } from './definitions';
 import { userDTO } from './DTO/user';

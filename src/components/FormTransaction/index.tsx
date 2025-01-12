@@ -22,16 +22,20 @@ export const FormTransaction = ({ type }: FormTransactionProps) => {
   const [typeTransaction, setTypeTransaction] = useState<(typeof options)[number] | null>(type ?? null);
   const [date, setDate] = useState<Dayjs | null>(null);
 
-  console.log(typeTransaction, date?.format('DD/MM/YYYY'));
 
   return (
-    <form className={styles.formWrapper}>
+    <form className={styles.formWrapper} action={formdata=>{
+      console.log('type', formdata.get('type'));
+      console.log('value', formdata.get('value'));
+      console.log('date', formdata.get('date'));
+    }}>
       <Select
         placeholder='Selecione o tipo de transação'
         options={options}
         value={typeTransaction}
         onChange={setTypeTransaction}
         className={styles.selectWrapper}
+        name='type'
       />
 
       <Input
@@ -46,7 +50,7 @@ export const FormTransaction = ({ type }: FormTransactionProps) => {
       <div className={styles.dateWrapper}>
         <Typography variant='label'>Data</Typography>
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={'pt'}>
-          <DatePicker format='DD/MM/YYYY' value={date} onChange={(value) => setDate(value)} />
+          <DatePicker format='DD/MM/YYYY' value={date} onChange={(value) => setDate(value)} name='date'/>
         </LocalizationProvider>
       </div>
 
