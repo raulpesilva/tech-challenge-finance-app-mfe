@@ -48,7 +48,7 @@ Além do .env, faça uma cópia do arquivo `example.db.json` para um arquivo `db
 
 &nbsp;
 
-### Para configurar o projeto localmente, siga os passos abaixo:
+### Para rodar o projeto localmente, siga os passos abaixo:
 
 1. Clone o repositório:
 ```shell
