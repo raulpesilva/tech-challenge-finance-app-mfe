@@ -53,6 +53,8 @@
     z-index: 2;
     animation: slideTransitionY 500ms ease-in-out;
     box-shadow: 0 0 8px 0 $foreground;
+    padding: 40px 32px 16px;
+    width: max-content;
 
     @media (max-width: 640px) {
       position: fixed;

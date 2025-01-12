@@ -2,7 +2,7 @@ import '@/theme/globals.scss';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'], weight: ['400', '600', '700'] });
+const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600', '700'] });
 
 export const metadata: Metadata = {
   title: 'Bytebank | FIAP Tech Challenge',

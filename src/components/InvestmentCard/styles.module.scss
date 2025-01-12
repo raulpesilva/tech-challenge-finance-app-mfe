@@ -9,6 +9,11 @@
   background-color: $primary;
   padding: 18px 16px;
 
+  .title,
+  .value {
+    margin: 0;
+  }
+
   .value {
     width: max-content;
   }
