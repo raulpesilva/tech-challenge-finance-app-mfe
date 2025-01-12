@@ -3,7 +3,7 @@ import GridTopIcon from '@/assets/icons/grid-top.svg';
 import imageBanner from '@/assets/images/main-banner-account.png';
 
 import { updateUserAction, UpdateUserResponse } from '@/actions/user';
-import { AccountForm } from '@/components/AccountForm';
+import { FormAccount } from '@/components/FormAccount';
 import { Typography } from '@/components/shared/Typography';
 import { getUser } from '@/lib/auth/getUser';
 import Image from 'next/image';
@@ -35,7 +35,7 @@ export default async function Page() {
           priority
           className={styles.banner}
         />
-        <AccountForm
+        <FormAccount
           updateUser={async (prev, formData) => {
             'use server';
             return await updateUserAction(prev, formData);
