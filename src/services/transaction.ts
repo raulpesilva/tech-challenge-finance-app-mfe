@@ -1,5 +1,6 @@
 'use server';
 
+import { Filters } from '@/@types/filters';
 import { Transaction } from '@/@types/transaction';
 import { onlyKeysWithTruthyValueAndConvertToString } from '@/utils/object';
 
@@ -16,7 +17,7 @@ export const createTransaction = async (transaction: Omit<Transaction, 'id'>) =>
   return response.json() as Promise<Transaction>;
 };
 
-export const getTransactionsByUser = async (author: string, filters: Partial<Transaction> = {}) => {
+export const getTransactionsByUser = async (author: string, filters: Filters<Transaction> = {}) => {
   'use server';
   const searchParams = new URLSearchParams(onlyKeysWithTruthyValueAndConvertToString({ author, ...filters }));
   const response = await fetch(`${BASE_URL}?${searchParams.toString()}`);

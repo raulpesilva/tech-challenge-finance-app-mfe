@@ -1,5 +1,6 @@
-export const maskCurrency = (value: string | undefined) => {
+export const maskCurrency = (value: string |number| undefined ) => {
   if(!value) return '';
+  value = String(value);
   value = value.replace(/\D/g, '');
   value = value.replace(/^0+(?!$)/, '');
   value = value.padStart(3, '0');

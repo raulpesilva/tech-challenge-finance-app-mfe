@@ -1,0 +1,7 @@
+@use '../../theme/base' as *;
+
+.date {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

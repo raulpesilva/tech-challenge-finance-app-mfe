@@ -1,3 +1,5 @@
+'use server';
+
 import { ActionResponse, Fields } from '@/@types/actions';
 import {
   TRANSACTIONS_TYPES,
@@ -5,8 +7,9 @@ import {
   TransactionTypeDictionaryValue,
 } from '@/@types/transaction';
 import { getUser } from '@/lib/auth/getUser';
-import { createTransaction } from '@/services/transaction';
+import { createTransaction, deleteTransaction } from '@/services/transaction';
 import { undoMaskCurrency } from '@/utils/masks/maskCurrency';
+import { revalidatePath } from 'next/cache';
 
 export type CreateTransactionFields = Fields<{ type: string; value: string; date: string }>;
 export type CreateTransactionResponse = ActionResponse<CreateTransactionFields>;
@@ -40,4 +43,9 @@ export const createTransactionAction = async (_state: CreateTransactionResponse,
   } catch (error) {
     return { ...response, success: false, errors: { type: ['Erro ao criar transação'] } };
   }
+};
+
+export const deleteTransactionAction = async (id: string, _formData: FormData) => {
+  await deleteTransaction(id);
+  revalidatePath('/dashboard');
 };
