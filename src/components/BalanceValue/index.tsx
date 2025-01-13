@@ -3,7 +3,7 @@
 import EyeCloseIcon from '@/assets/icons/eye-close-icon.svg';
 import EyeIcon from '@/assets/icons/eye-icon.svg';
 import { combineStyles } from '@/utils/combineStyles';
-import { maskCurrency } from '@/utils/masks/maskCurrency';
+import { formatCurrency } from '@/utils/formatCurrency';
 import { useState } from 'react';
 import { Button } from '../shared/Button';
 import { Typography } from '../shared/Typography';
@@ -13,6 +13,7 @@ interface BalanceValueProps {
   balance: number;
 }
 export const BalanceValue = ({ balance }: BalanceValueProps) => {
+  console.log(balance);
   const [showValue, setShowValue] = useState(true);
   const handleShowValue = () => setShowValue(!showValue);
 
@@ -30,7 +31,7 @@ export const BalanceValue = ({ balance }: BalanceValueProps) => {
 
       <div className={combineStyles([styles.amountWrapper, !showValue && styles.hiddenAmount])}>
         <Typography variant='heading2' color='secondary' size='4xl' weight='regular' className={styles.amount}>
-          R$ {maskCurrency(balance) || '0,00'}
+          {formatCurrency(balance / 100) || '0,00'}
         </Typography>
 
         <Typography variant='heading2' color='secondary' size='4xl' weight='regular' className={styles.mask}>

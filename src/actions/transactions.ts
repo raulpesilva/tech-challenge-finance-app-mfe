@@ -29,7 +29,7 @@ export const createTransactionAction = async (_state: CreateTransactionResponse,
   };
   if (!date.replace(/\D/g, '')) fields.errors.date = ['Data é obrigatória'];
   if (!type) fields.errors.type = ['Tipo é obrigatório'];
-  if (!stringValue) fields.errors.value = ['Valor é obrigatório'];
+  if (!stringValue || stringValue === '000') fields.errors.value = ['Valor é obrigatório'];
   if (!TRANSACTIONS_TYPES.some((t) => t === type)) fields.errors.type = ['Tipo inválido'];
 
   if (date) {
@@ -73,7 +73,7 @@ export const updateTransactionAction = async (_state: UpdateTransactionResponse,
   };
 
   if (!type) fields.errors.type = ['Tipo é obrigatório'];
-  if (!stringValue) fields.errors.value = ['Valor é obrigatório'];
+  if (!stringValue || stringValue === '000') fields.errors.value = ['Valor é obrigatório'];
   if (!date.replace(/\D/g, '')) fields.errors.date = ['Data é obrigatória'];
   if (!TRANSACTIONS_TYPES.some((t) => t === type)) fields.errors.type = ['Tipo inválido'];
 
