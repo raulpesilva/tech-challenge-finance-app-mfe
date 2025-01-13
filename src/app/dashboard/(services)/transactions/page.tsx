@@ -25,8 +25,8 @@ export default function Page() {
       <div className={styles.content}>
         <FormTransaction
           key='transfer'
-          type='Transferência'
-          createTransaction={async (state, action) => {
+          type='transfer'
+          transactionAction={async (state, action) => {
             'use server';
             return await createTransactionAction(state, action);
           }}

@@ -25,7 +25,7 @@ export default function Page() {
       <div className={styles.content}>
         <FormTransaction
           key='transactions'
-          createTransaction={async (state, action) => {
+          transactionAction={async (state, action) => {
             'use server';
             return await createTransactionAction(state, action);
           }}
