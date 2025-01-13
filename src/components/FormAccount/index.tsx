@@ -38,6 +38,7 @@ export const FormAccount = ({ updateUser, initialUser }: FormUpdateUserProps) =>
         placeholder='Digite seu e-mail'
         iconRight={<EditIcon />}
         defaultValue={state.inputs.email}
+        className={styles.inputContainer}
       />
       {state?.errors?.email?.map((error) => (
         <Typography variant='span' color='error' key={error} className={styles.errorMessage}>
@@ -51,6 +52,7 @@ export const FormAccount = ({ updateUser, initialUser }: FormUpdateUserProps) =>
         placeholder='Digite sua senha'
         iconRight={<EditIcon />}
         defaultValue={state.inputs.password}
+        className={styles.inputContainer}
       />
       {state?.errors?.password?.map((error) => (
         <Typography variant='span' color='error' key={error} className={styles.errorMessage}>
