@@ -2,7 +2,7 @@
 
 import { Filters } from '@/@types/filters';
 import { Transaction } from '@/@types/transaction';
-import { onlyKeysWithTruthyValueAndConvertToString } from '@/utils/object';
+import { convertToSearchString, onlyKeysWithTruthyValueAndConvertToString } from '@/utils/object';
 
 const BASE_URL = `${process.env.REACT_API_URL}/transactions`;
 
@@ -19,8 +19,8 @@ export const createTransaction = async (transaction: Omit<Transaction, 'id'>) =>
 
 export const getTransactionsByUser = async (author: string, filters: Filters<Transaction> = {}) => {
   'use server';
-  const searchParams = new URLSearchParams(onlyKeysWithTruthyValueAndConvertToString({ author, ...filters }));
-  const response = await fetch(`${BASE_URL}?${searchParams.toString()}`);
+  const searchParams = convertToSearchString(onlyKeysWithTruthyValueAndConvertToString({ author, ...filters }));
+  const response = await fetch(`${BASE_URL}?${searchParams}`);
   return response.json() as Promise<Transaction[]>;
 };
 

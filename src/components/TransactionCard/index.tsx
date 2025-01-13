@@ -8,12 +8,13 @@ import styles from './styles.module.scss';
 
 export const TransactionCard = ({ transaction }: { transaction: Transaction }) => {
   const [day, month, year] = transaction.date.split('/');
+  const date = dayjs(`${year}-${month}-${day}`).format('MMMM');
   const deleteAction = deleteTransactionAction.bind(null, transaction.id);
   return (
     <div className={styles.transaction}>
       <div className={styles.date}>
         <Typography variant='paragraph' color='success'>
-          {dayjs(`${year}-${day}-${month}`).format('MMMM')}
+          {date}
         </Typography>
         <Typography variant='paragraph'>{transaction.date}</Typography>
       </div>

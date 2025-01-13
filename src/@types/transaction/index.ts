@@ -31,6 +31,7 @@ export type TransactionTypeDictionaryValue = TransactionTypeDictionaryValues[num
 export interface Transaction {
   id: string;
   date: string;
+  dateIso: string;
   value: number;
   author: string;
   type: TransactionType;

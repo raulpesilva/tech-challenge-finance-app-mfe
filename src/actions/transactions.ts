@@ -9,6 +9,7 @@ import {
 import { getUser } from '@/lib/auth/getUser';
 import { createTransaction, deleteTransaction } from '@/services/transaction';
 import { undoMaskCurrency } from '@/utils/masks/maskCurrency';
+import dayjs from 'dayjs';
 import { revalidatePath } from 'next/cache';
 
 export type CreateTransactionFields = Fields<{ type: string; value: string; date: string }>;
@@ -20,7 +21,6 @@ export const createTransactionAction = async (_state: CreateTransactionResponse,
   const date = formData.get('date') as string;
   const stringValue = undoMaskCurrency(formData.get('value') as string);
   const numberValue = Number(stringValue);
-  console.log({ type, value: numberValue, date });
 
   const fields: CreateTransactionFields = {
     inputs: { type, value: stringValue, date },
@@ -38,7 +38,10 @@ export const createTransactionAction = async (_state: CreateTransactionResponse,
   try {
     const user = await getUser();
     if (!user) return { ...response, success: false, errors: { type: ['Usuário não encontrado'] } };
-    await createTransaction({ type, value: numberValue, date, author: user.id });
+    const [day, month, year] = date.split('/');
+    const dateIso = dayjs(`${year}-${day}-${month}`).toISOString();
+    await createTransaction({ type, value: numberValue, date, author: user.id, dateIso });
+    revalidatePath('/dashboard');
     return { ...response, inputs: { ...response.inputs, value: '', date: '' }, success: true };
   } catch (error) {
     return { ...response, success: false, errors: { type: ['Erro ao criar transação'] } };
