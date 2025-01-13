@@ -3,6 +3,7 @@ import { deleteTransactionAction } from '@/actions/transactions';
 import { maskCurrency } from '@/utils/masks/maskCurrency';
 import dayjs from 'dayjs';
 import { Button } from '../shared/Button';
+import { ButtonLink } from '../shared/ButtonLink';
 import { Typography } from '../shared/Typography';
 import styles from './styles.module.scss';
 
@@ -22,6 +23,9 @@ export const TransactionCard = ({ transaction }: { transaction: Transaction }) =
       <Typography variant='paragraph' weight='bold'>
         R$ {maskCurrency(transaction.value)}
       </Typography>
+      <ButtonLink href={`/dashboard/statement/${transaction.id}`} variant='contained' color='primary'>
+        Editar
+      </ButtonLink>
       <form action={deleteAction}>
         <Button variant='contained' color='error' type='submit'>
           Excluir
