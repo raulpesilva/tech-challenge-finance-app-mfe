@@ -28,14 +28,15 @@ export const getTransactionById = async (id: string) => {
   'use server';
 
   const response = await fetch(`${BASE_URL}/${id}`);
-  return response.json() as Promise<Transaction>;
+  const result: Transaction = await response.json();
+  return result;
 };
 
 export const updateTransaction = async (transaction: Transaction) => {
   'use server';
 
   const response = await fetch(`${BASE_URL}/${transaction.id}`, {
-    method: 'PUT',
+    method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(transaction),
   });
