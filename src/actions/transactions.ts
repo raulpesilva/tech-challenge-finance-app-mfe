@@ -22,17 +22,22 @@ export const createTransactionAction = async (_state: CreateTransactionResponse,
   const stringValue = undoMaskCurrency(formData.get('value') as string);
   const numberValue = Number(stringValue);
   const [day, month, year] = date.split('/');
-  const dateIso = dayjs(`${year}-${day}-${month}`).toISOString();
 
   const fields: CreateTransactionFields = {
-    inputs: { type, value: stringValue, date, dateIso },
+    inputs: { type, value: stringValue, date, dateIso: '' },
     errors: {},
   };
-
+  if (!date.replace(/\D/g, '')) fields.errors.date = ['Data é obrigatória'];
   if (!type) fields.errors.type = ['Tipo é obrigatório'];
   if (!stringValue) fields.errors.value = ['Valor é obrigatório'];
-  if (!date.replace(/\D/g, '')) fields.errors.date = ['Data é obrigatória'];
   if (!TRANSACTIONS_TYPES.some((t) => t === type)) fields.errors.type = ['Tipo inválido'];
+
+  if (date) {
+    const dateIso = dayjs(`${year}-${month}-${day}`).toISOString();
+    fields.inputs.dateIso = dateIso;
+  }
+
+  if (!fields.inputs.dateIso) fields.errors.date = ['Data é obrigatória'];
 
   const response = { ...fields, success: !Object.keys(fields.errors).length } as CreateTransactionResponse;
   if (Object.keys(fields.errors).length) return response;
@@ -41,10 +46,10 @@ export const createTransactionAction = async (_state: CreateTransactionResponse,
     const user = await getUser();
     if (!user) return { ...response, success: false, errors: { type: ['Usuário não encontrado'] } };
 
-    await createTransaction({ type, value: numberValue, date, author: user.id, dateIso });
+    await createTransaction({ type, value: numberValue, date, author: user.id, dateIso: fields.inputs.dateIso! });
     revalidatePath('/dashboard');
     return { ...response, inputs: { ...response.inputs, value: '', date: '', dateIso: '' }, success: true };
-  } catch (error) {
+  } catch {
     return { ...response, success: false, errors: { type: ['Erro ao criar transação'] } };
   }
 };
@@ -60,7 +65,7 @@ export const updateTransactionAction = async (_state: UpdateTransactionResponse,
   const stringValue = undoMaskCurrency(formData.get('value') as string);
   const numberValue = Number(stringValue);
   const [day, month, year] = date.split('/');
-  const dateIso = dayjs(`${year}-${day}-${month}`).toISOString();
+  const dateIso = dayjs(`${year}-${month}-${day}`).toISOString();
 
   const fields: CreateTransactionFields = {
     inputs: { type, value: stringValue, date, dateIso },
@@ -83,7 +88,7 @@ export const updateTransactionAction = async (_state: UpdateTransactionResponse,
     revalidatePath('/dashboard');
     revalidatePath('/dashboard/statement/*');
     return { ...response, success: true };
-  } catch (error) {
+  } catch {
     return { ...response, success: false, errors: { type: ['Erro ao criar transação'] } };
   }
 };
