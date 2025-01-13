@@ -1,6 +1,6 @@
 'use client';
 
-import { combaneStyles } from '@/utils/combaneStyles';
+import { combineStyles } from '@/utils/combineStyles';
 import Link, { LinkProps } from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './styles.module.scss';
@@ -22,7 +22,7 @@ export const NavLink = ({ color, colorActive, href, children, className, ...prop
   return (
     <Link
       href={href}
-      className={combaneStyles([
+      className={combineStyles([
         styles.navLink,
         styles[color],
         styles[`${colorActive}Active`],

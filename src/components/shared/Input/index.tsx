@@ -1,4 +1,4 @@
-import { combaneStyles } from '@/utils/combaneStyles';
+import { combineStyles } from '@/utils/combineStyles';
 import styles from './styles.module.scss';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -22,10 +22,10 @@ export const Input = ({
   ...props
 }: InputProps) => {
   return (
-    <div className={combaneStyles([styles.container, className && className])}>
+    <div className={combineStyles([styles.container, className && className])}>
       <label htmlFor={id}>{label}</label>
 
-      <div className={combaneStyles([styles.inputContainer, styles[textAlign]])}>
+      <div className={combineStyles([styles.inputContainer, styles[textAlign]])}>
         {!!iconLeft && <label htmlFor={id}>{iconLeft}</label>}
 
         <input id={id} placeholder={placeholder} {...props} />

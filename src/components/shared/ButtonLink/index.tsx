@@ -1,4 +1,4 @@
-import { combaneStyles } from '@/utils/combaneStyles';
+import { combineStyles } from '@/utils/combineStyles';
 import Link, { LinkProps } from 'next/link';
 import styles from './styles.module.scss';
 
@@ -15,7 +15,7 @@ export const ButtonLink = ({ variant, color, href, children, className, selected
   return (
     <Link
       href={href}
-      className={combaneStyles([
+      className={combineStyles([
         styles.buttonLink,
         styles[variant],
         styles[color],

@@ -1,5 +1,5 @@
 import { NavLink } from '@/components/shared/NavLink';
-import { combaneStyles } from '@/utils/combaneStyles';
+import { combineStyles } from '@/utils/combineStyles';
 import styles from './styles.module.scss';
 
 interface MenuServicesAppProps {
@@ -10,7 +10,7 @@ interface MenuServicesAppProps {
 
 export const MenuServicesApp = ({ color = 'cta', colorActive = 'secondary', className }: MenuServicesAppProps) => {
   return (
-    <div className={combaneStyles([styles.container, className && className])}>
+    <div className={combineStyles([styles.container, className && className])}>
       <NavLink href='/dashboard' color={color} colorActive={colorActive} replace>
         Início
       </NavLink>

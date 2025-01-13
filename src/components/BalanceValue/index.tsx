@@ -2,7 +2,7 @@
 
 import EyeCloseIcon from '@/assets/icons/eye-close-icon.svg';
 import EyeIcon from '@/assets/icons/eye-icon.svg';
-import { combaneStyles } from '@/utils/combaneStyles';
+import { combineStyles } from '@/utils/combineStyles';
 import { useState } from 'react';
 import { Button } from '../shared/Button';
 import { Typography } from '../shared/Typography';
@@ -25,7 +25,7 @@ export const BalanceValue = () => {
         Conta Corrente
       </Typography>
 
-      <div className={combaneStyles([styles.amountWrapper, !showValue && styles.hiddenAmount])}>
+      <div className={combineStyles([styles.amountWrapper, !showValue && styles.hiddenAmount])}>
         <Typography variant='heading2' color='secondary' size='4xl' weight='regular' className={styles.amount}>
           R$ 2.500,00
         </Typography>

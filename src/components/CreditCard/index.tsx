@@ -3,7 +3,7 @@ import GridCardIcon from '@/assets/icons/grid-card.svg';
 import { Button } from '@/components/shared/Button';
 import { Typography } from '@/components/shared/Typography';
 import { getUser } from '@/lib/auth/getUser';
-import { combaneStyles } from '@/utils/combaneStyles';
+import { combineStyles } from '@/utils/combineStyles';
 import { capitalize } from '@/utils/string';
 import { Montserrat } from 'next/font/google';
 import styles from './styles.module.scss';
@@ -22,14 +22,14 @@ export const CreditCard = async ({ type, cardNumber, cardFunction }: CreditCardP
 
   return (
     <div className={styles.container}>
-      <div className={combaneStyles([styles.card, styles[type]])}>
+      <div className={combineStyles([styles.card, styles[type]])}>
         <GridCardIcon className={styles.cardGridIcon} />
         <CardIcon className={styles.cardIcon} />
 
         <Typography
           variant='paragraph'
           color='secondary'
-          className={combaneStyles([montserrat.className, styles.cardType])}
+          className={combineStyles([montserrat.className, styles.cardType])}
         >
           Platinum
         </Typography>
@@ -38,7 +38,7 @@ export const CreditCard = async ({ type, cardNumber, cardFunction }: CreditCardP
           variant='paragraph'
           size='sm'
           color='secondary'
-          className={combaneStyles([montserrat.className, styles.cardHolder])}
+          className={combineStyles([montserrat.className, styles.cardHolder])}
         >
           {capitalize(userName ?? 'Usuário')}
         </Typography>
