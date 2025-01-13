@@ -13,7 +13,7 @@ interface FormUpdateUserProps {
   initialUser: UpdateUserResponse;
 }
 
-export const AccountForm = ({ updateUser, initialUser }: FormUpdateUserProps) => {
+export const FormAccount = ({ updateUser, initialUser }: FormUpdateUserProps) => {
   const [state, action, isPending] = useActionState(updateUser, initialUser);
 
   return (

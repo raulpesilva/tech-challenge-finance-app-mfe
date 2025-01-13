@@ -1,5 +1,5 @@
 import LoadingIcon from '@/assets/icons/loading-icon.svg';
-import { combaneStyles } from '@/utils/combaneStyles';
+import { combineStyles } from '@/utils/combineStyles';
 import styles from './styles.module.scss';
 
 interface ButtonIconProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -14,7 +14,7 @@ interface ButtonIconProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
 export const ButtonIcon = ({ variant, color, children, loading, className, selected, ...props }: ButtonIconProps) => {
   return (
     <button
-      className={combaneStyles([
+      className={combineStyles([
         styles.button,
         styles[variant],
         styles[color],

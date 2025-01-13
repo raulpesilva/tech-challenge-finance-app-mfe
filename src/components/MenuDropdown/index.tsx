@@ -2,7 +2,7 @@
 
 import CloseIcon from '@/assets/icons/close-icon.svg';
 import { ButtonIcon } from '@/components/shared/ButtonIcon';
-import { combaneStyles } from '@/utils/combaneStyles';
+import { combineStyles } from '@/utils/combineStyles';
 import { useRouter, useSearchParams } from 'next/navigation';
 import styles from './styles.module.scss';
 
@@ -35,7 +35,7 @@ export const MenuDropdown = ({
   const close = () => router.replace('?');
 
   return (
-    <div className={combaneStyles([styles.container, className && className])}>
+    <div className={combineStyles([styles.container, className && className])}>
       <ButtonIcon variant={variant} color={color} onClick={open} selected={opened} aria-label='Abrir menu'>
         {openIcon}
       </ButtonIcon>
@@ -43,7 +43,7 @@ export const MenuDropdown = ({
       {!!opened && <div className={styles.overlay} onClick={close} />}
 
       {!!opened && (
-        <div className={combaneStyles([styles.menuContainer, styles[align], styles[color]])}>
+        <div className={combineStyles([styles.menuContainer, styles[align], styles[color]])}>
           <ButtonIcon
             variant='text'
             color={color}

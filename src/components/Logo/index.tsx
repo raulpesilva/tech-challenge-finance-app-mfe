@@ -1,5 +1,5 @@
 import LogoIcon from '@/assets/icons/logo-icon.svg';
-import { combaneStyles } from '@/utils/combaneStyles';
+import { combineStyles } from '@/utils/combineStyles';
 import Link from 'next/link';
 import styles from './styles.module.scss';
 
@@ -9,7 +9,7 @@ interface LogoProps {
 
 export const Logo = ({ className }: LogoProps) => {
   return (
-    <Link href='/' aria-label='Home' className={combaneStyles([styles.logo, className && className])}>
+    <Link href='/' aria-label='Home' className={combineStyles([styles.logo, className && className])}>
       <LogoIcon />
     </Link>
   );

@@ -1,5 +1,20 @@
+import { getUser } from '@/lib/auth/getUser';
+import { getTransactionsByUser } from '@/services/transaction';
+import Link from 'next/link';
+import { Typography } from '../shared/Typography';
+import { TransactionCard } from '../TransactionCard';
 import styles from './styles.module.scss';
 
-export const ExtractSummary = () => {
-  return <section className={styles.extractContainer}>Extract</section>;
+export const ExtractSummary = async () => {
+  const user = await getUser();
+  if (!user) return null;
+  const transactions = await getTransactionsByUser(user.id, { _start: 0, _end: 4, _sort: '-dateIso' });
+  return (
+    <section className={styles.extractContainer}>
+      <Link href='/dashboard/statement'>
+        <Typography variant='heading2'>Extract</Typography>
+      </Link>
+      {transactions?.map?.((transaction) => <TransactionCard key={transaction.id} transaction={transaction} />)}
+    </section>
+  );
 };

@@ -2,15 +2,18 @@
 
 import EyeCloseIcon from '@/assets/icons/eye-close-icon.svg';
 import EyeIcon from '@/assets/icons/eye-icon.svg';
-import { combaneStyles } from '@/utils/combaneStyles';
+import { combineStyles } from '@/utils/combineStyles';
+import { maskCurrency } from '@/utils/masks/maskCurrency';
 import { useState } from 'react';
 import { Button } from '../shared/Button';
 import { Typography } from '../shared/Typography';
 import styles from './styles.module.scss';
 
-export const BalanceValue = () => {
+interface BalanceValueProps {
+  balance: number;
+}
+export const BalanceValue = ({ balance }: BalanceValueProps) => {
   const [showValue, setShowValue] = useState(true);
-
   const handleShowValue = () => setShowValue(!showValue);
 
   return (
@@ -25,9 +28,9 @@ export const BalanceValue = () => {
         Conta Corrente
       </Typography>
 
-      <div className={combaneStyles([styles.amountWrapper, !showValue && styles.hiddenAmount])}>
+      <div className={combineStyles([styles.amountWrapper, !showValue && styles.hiddenAmount])}>
         <Typography variant='heading2' color='secondary' size='4xl' weight='regular' className={styles.amount}>
-          R$ 2.500,00
+          R$ {maskCurrency(balance) || '0,00'}
         </Typography>
 
         <Typography variant='heading2' color='secondary' size='4xl' weight='regular' className={styles.mask}>

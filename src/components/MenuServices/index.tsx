@@ -4,7 +4,7 @@ import CloseIcon from '@/assets/icons/close-icon.svg';
 import MenuIcon from '@/assets/icons/menu-icon.svg';
 import { ButtonIcon } from '@/components/shared/ButtonIcon';
 import { NavLink } from '@/components/shared/NavLink';
-import { combaneStyles } from '@/utils/combaneStyles';
+import { combineStyles } from '@/utils/combineStyles';
 import { useRouter, useSearchParams } from 'next/navigation';
 import styles from './styles.module.scss';
 
@@ -26,7 +26,7 @@ export const MenuServices = () => {
 
       {!!opened && <div className={styles.overlay} onClick={close} />}
 
-      <div className={combaneStyles([styles.menuContent, opened && styles.opened])}>
+      <div className={combineStyles([styles.menuContent, opened && styles.opened])}>
         <ButtonIcon variant='text' color='tertiary' onClick={close} className={styles.closeButton}>
           <CloseIcon />
         </ButtonIcon>

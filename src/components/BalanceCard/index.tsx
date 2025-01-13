@@ -2,6 +2,7 @@ import GridBottomIcon from '@/assets/icons/grid-balance-card-bottom.svg';
 import GridTopIcon from '@/assets/icons/grid-balance-card-top.svg';
 import imageBanner from '@/assets/images/banner-balance-card.png';
 import { getUser } from '@/lib/auth/getUser';
+import { getTransactionsByUser } from '@/services/transaction';
 import { fullDate } from '@/utils/date/fullDate';
 import { capitalize } from '@/utils/string';
 import Image from 'next/image';
@@ -13,6 +14,16 @@ export const BalanceCard = async () => {
   const session = await getUser();
   const userName = session?.name?.split(' ')[0] || session?.email;
   const welcomeMessage = `Olá, ${capitalize(userName ?? 'Usuário')}! :)`;
+  const date = fullDate();
+  const transactions = session?.id
+    ? await getTransactionsByUser(session.id, { type: ['deposit', 'withdraw', 'transfer'] })
+    : [];
+  const balance = transactions.reduce((acc, transaction) => {
+    if (transaction.type === 'deposit') return acc + transaction.value;
+    if (transaction.type === 'withdraw') return acc - transaction.value;
+    if (transaction.type === 'transfer') return acc - transaction.value;
+    return acc;
+  }, 0);
 
   return (
     <section className={styles.container}>
@@ -24,7 +35,7 @@ export const BalanceCard = async () => {
       </Typography>
 
       <Typography variant='span' color='secondary' className={styles.date}>
-        {fullDate()}
+        {date}
       </Typography>
 
       <div className={styles.content}>
@@ -37,7 +48,7 @@ export const BalanceCard = async () => {
           className={styles.banner}
         />
 
-        <BalanceValue />
+        <BalanceValue balance={balance} />
       </div>
     </section>
   );

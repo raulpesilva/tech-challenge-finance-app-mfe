@@ -1,4 +1,4 @@
-import { combaneStyles } from '@/utils/combaneStyles';
+import { combineStyles } from '@/utils/combineStyles';
 import styles from './styles.module.scss';
 
 const variants = {
@@ -73,7 +73,7 @@ export const Typography = <VariantTag extends ComponentVariants[keyof ComponentV
 
   return (
     <Component
-      className={combaneStyles([
+      className={combineStyles([
         styles.typography,
         size ? sizes[size] : variants[variant]?.size,
         weight ? weights[weight] : variants[variant]?.weight,

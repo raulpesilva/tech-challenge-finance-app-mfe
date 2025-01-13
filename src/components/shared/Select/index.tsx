@@ -1,7 +1,7 @@
 'use client';
 
 import ArrowIcon from '@/assets/icons/arrow-icon.svg';
-import { combaneStyles } from '@/utils/combaneStyles';
+import { combineStyles } from '@/utils/combineStyles';
 import { MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 import styles from './styles.module.scss';
 
@@ -27,7 +27,7 @@ const SelectItem = ({ option, value, handleSelect }: SelectItemProps) => {
   return (
     <li
       tabIndex={0} // tornar o item do select acessível por teclado
-      className={combaneStyles([styles.item, itemSelected && styles.selected])}
+      className={combineStyles([styles.item, itemSelected && styles.selected])}
       onClick={() => handleSelect(option)}
       onKeyDown={(e) => e.key === 'Enter' && handleSelect(option)}
     >
@@ -72,16 +72,16 @@ export const Select = <T extends readonly string[]>({
   }, [handleClose]);
 
   return (
-    <div className={combaneStyles([styles.container, className && className])}>
+    <div className={combineStyles([styles.container, className && className])}>
       {!!label && <label onClick={(e) => handleOpen(e)}>{label}</label>}
       <input type='hidden' value={value || ''} name={name} />
 
-      <div className={combaneStyles([styles.selectContainer])}>
+      <div className={combineStyles([styles.selectContainer])}>
         <button
           ref={refButton}
           type='button'
           onClick={(e) => handleOpen(e)}
-          className={combaneStyles([opened ? styles.opened : '', !!value ? styles.selected : ''])}
+          className={combineStyles([opened ? styles.opened : '', !!value ? styles.selected : ''])}
         >
           {!!value ? value : placeholder}
           <ArrowIcon />
