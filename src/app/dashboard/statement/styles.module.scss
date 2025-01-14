@@ -1,0 +1,10 @@
+@use '../../../theme/base' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  background-color: #ffffff;
+  padding: 32px 24px;
+  width: 100%;
+}
