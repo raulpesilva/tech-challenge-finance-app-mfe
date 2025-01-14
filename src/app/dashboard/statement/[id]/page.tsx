@@ -2,6 +2,7 @@ import { CreateTransactionResponse, updateTransactionAction } from '@/actions/tr
 import { FormTransaction } from '@/components/FormTransaction';
 import { GoBackButton } from '@/components/GoBackButton';
 import { getTransactionById } from '@/services/transaction';
+import styles from './styles.module.scss';
 
 export const InitialUpdateUserResponse = {
   inputs: { date: '', type: '', value: '' },
@@ -13,7 +14,7 @@ export default async function Page({ params }: { params: Promise<{ [key: string]
   if (!id) return null;
   const transaction = await getTransactionById(id);
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+    <div className={styles.container}>
       <GoBackButton />
       <FormTransaction
         id={id}
@@ -29,7 +30,6 @@ export default async function Page({ params }: { params: Promise<{ [key: string]
         }}
         transactionAction={async (state, formData) => {
           'use server';
-          console.log(state, formData);
           return await updateTransactionAction(state, formData);
         }}
       />

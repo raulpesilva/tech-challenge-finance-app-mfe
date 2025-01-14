@@ -2,14 +2,24 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 24px;
 
   @media (max-width: 768px) {
     align-items: center;
   }
 }
 
+.inputContainer {
+  margin-top: 24px;
+}
+
+.errorMessage {
+  margin-top: 8px;
+  width: 100%;
+}
+
 .submitButton {
+  margin-top: 24px;
+
   @media (max-width: 640px) {
     width: 100%;
     max-width: 336px;

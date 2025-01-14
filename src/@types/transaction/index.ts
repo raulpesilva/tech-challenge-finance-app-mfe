@@ -19,6 +19,21 @@ export const TRANSACTIONS_TYPES_DICTIONARY_VALUES = Object.values(
   TRANSACTIONS_TYPES_DICTIONARY
 ) as TransactionTypeDictionaryValues;
 
+export const MONTHS_DICTIONARY = {
+  January: 'Janeiro',
+  February: 'Fevereiro',
+  March: 'Março',
+  April: 'Abril',
+  May: 'Maio',
+  June: 'Junho',
+  July: 'Julho',
+  August: 'Agosto',
+  September: 'Setembro',
+  October: 'Outubro',
+  November: 'Novembro',
+  December: 'Dezembro',
+} as const;
+
 export type TransactionOptions = typeof TRANSACTIONS_TYPES;
 export type TransactionType = (typeof TRANSACTIONS_TYPES)[number];
 export type TransactionTypeDictionary = typeof TRANSACTIONS_TYPES_DICTIONARY;
