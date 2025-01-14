@@ -13,7 +13,6 @@ interface BalanceValueProps {
   balance: number;
 }
 export const BalanceValue = ({ balance }: BalanceValueProps) => {
-  console.log(balance);
   const [showValue, setShowValue] = useState(true);
   const handleShowValue = () => setShowValue(!showValue);
 

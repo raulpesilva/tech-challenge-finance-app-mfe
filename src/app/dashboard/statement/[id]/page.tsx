@@ -29,7 +29,6 @@ export default async function Page({ params }: { params: Promise<{ [key: string]
         }}
         transactionAction={async (state, formData) => {
           'use server';
-          console.log(state, formData);
           return await updateTransactionAction(state, formData);
         }}
       />

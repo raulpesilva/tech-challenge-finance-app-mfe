@@ -1,7 +1,31 @@
 @use '../../theme/base' as *;
 
+.transaction {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 24px;
+  border-bottom: 1px solid $tertiary;
+  padding-bottom: 8px;
+}
+
 .date {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 8px;
+  align-items: center;
+  gap: 8px;
+}
+
+.editButton {
+  border-radius: 50% !important;
+  padding: 12px !important;
 }
