@@ -1,4 +1,5 @@
 @use '../../theme/base' as *;
+@use 'sass:color';
 
 @keyframes slideTransitionRight {
   0% {
@@ -75,23 +76,23 @@
     }
 
     &.primary {
-      background-color: lighten($primary, 60%);
+      background-color: color.adjust($primary, $lightness: 60%);
     }
 
     &.secondary {
-      background-color: lighten($secondary, 30%);
+      background-color: color.adjust($secondary, $lightness: 30%);
     }
 
     &.tertiary {
-      background-color: lighten($tertiary, 40%);
+      background-color: color.adjust($tertiary, $lightness: 40%);
     }
 
     &.error {
-      background-color: lighten($error, 40%);
+      background-color: color.adjust($error, $lightness: 40%);
     }
 
     &.cta {
-      background-color: lighten($black, 40%);
+      background-color: color.adjust($black, $lightness: 40%);
     }
 
     &.ctaForeground {
