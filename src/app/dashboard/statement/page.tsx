@@ -11,7 +11,12 @@ export default async function Page() {
 
   return (
     <div className={styles.container}>
-      <Typography variant='heading2'>Extrato</Typography>
+      <Typography variant='heading2'>Extrato completo</Typography>
+      {!transactions?.length && (
+        <Typography variant='paragraph' className={styles.noTransactions}>
+          Sem transações cadastradas
+        </Typography>
+      )}
       {transactions?.map?.((transaction) => <TransactionCard key={transaction.id} transaction={transaction} />)}
     </div>
   );
