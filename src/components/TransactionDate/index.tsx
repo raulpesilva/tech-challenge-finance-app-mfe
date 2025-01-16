@@ -2,7 +2,6 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Dayjs } from 'dayjs';
 import { useState } from 'react';
-
 import { Typography } from '../shared/Typography';
 import styles from './styles.module.scss';
 
