@@ -1,6 +1,7 @@
 @use '../../theme/base' as *;
 
 .selectWrapper {
+  min-width: 208px;
   max-width: 75%;
 
   @media (max-width: 1200px) and (min-width: 1025px), (max-width: 640px) {
