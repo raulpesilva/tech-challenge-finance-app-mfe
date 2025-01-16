@@ -1,7 +1,7 @@
+import { PublicUser } from '@/@types/users';
 import GridBottomIcon from '@/assets/icons/grid-balance-card-bottom.svg';
 import GridTopIcon from '@/assets/icons/grid-balance-card-top.svg';
 import imageBanner from '@/assets/images/banner-balance-card.png';
-import { getUser } from '@/lib/auth/getUser';
 import { getTransactionsByUser } from '@/services/transaction';
 import { fullDate } from '@/utils/date/fullDate';
 import { capitalize } from '@/utils/string';
@@ -10,13 +10,16 @@ import { BalanceValue } from '../BalanceValue';
 import { Typography } from '../shared/Typography';
 import styles from './styles.module.scss';
 
-export const BalanceCard = async () => {
-  const session = await getUser();
-  const userName = session?.name?.split(' ')[0] || session?.email;
+interface BalanceCardProps {
+  user: PublicUser | null;
+}
+
+export const BalanceCard = async ({ user }: BalanceCardProps) => {
+  const userName = user?.name?.split(' ')[0] || user?.email;
   const welcomeMessage = `Olá, ${capitalize(userName ?? 'Usuário')}! :)`;
   const date = fullDate();
-  const transactions = session?.id
-    ? await getTransactionsByUser(session.id, { type: ['deposit', 'withdraw', 'transfer'] })
+  const transactions = user?.id
+    ? await getTransactionsByUser(user.id, { type: ['deposit', 'withdraw', 'transfer'] })
     : [];
   const balance = transactions.reduce((acc, transaction) => {
     if (transaction.type === 'deposit') return acc + transaction.value;
