@@ -1,8 +1,8 @@
 'user server';
 import 'server-only';
 
+import { ActionResponse } from '@/@types/actions';
 import { compare, genSalt, hash } from 'bcrypt';
-import { ActionResponse } from './definitions';
 
 export async function hashPassword(input: string) {
   const salt = await genSalt(10);
