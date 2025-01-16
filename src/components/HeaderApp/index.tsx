@@ -12,7 +12,7 @@ interface HeaderAppProps {
   user: PublicUser | null;
 }
 
-export const HeaderApp = async ({ user }: HeaderAppProps) => {
+export const HeaderApp = ({ user }: HeaderAppProps) => {
   const userName = user?.name || user?.email;
 
   return (
