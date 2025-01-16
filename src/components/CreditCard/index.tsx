@@ -1,8 +1,8 @@
+import { PublicUser } from '@/@types/users';
 import CardIcon from '@/assets/icons/card-icon.svg';
 import GridCardIcon from '@/assets/icons/grid-card.svg';
 import { Button } from '@/components/shared/Button';
 import { Typography } from '@/components/shared/Typography';
-import { getUser } from '@/lib/auth/getUser';
 import { combineStyles } from '@/utils/combineStyles';
 import { capitalize } from '@/utils/string';
 import { Montserrat } from 'next/font/google';
@@ -14,11 +14,11 @@ interface CreditCardProps {
   type: 'virtual' | 'physical';
   cardNumber: string;
   cardFunction: string;
+  user: PublicUser | null;
 }
 
-export const CreditCard = async ({ type, cardNumber, cardFunction }: CreditCardProps) => {
-  const session = await getUser();
-  const userName = session?.name || session?.email;
+export const CreditCard = ({ type, cardNumber, cardFunction, user }: CreditCardProps) => {
+  const userName = user?.name || user?.email;
 
   return (
     <div className={styles.container}>

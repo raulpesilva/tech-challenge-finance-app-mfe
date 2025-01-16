@@ -1,4 +1,4 @@
-import { getUser } from '@/lib/auth/getUser';
+import { PublicUser } from '@/@types/users';
 import { getTransactionsByUser } from '@/services/transaction';
 import Link from 'next/link';
 import { NavLink } from '../shared/NavLink';
@@ -6,8 +6,11 @@ import { Typography } from '../shared/Typography';
 import { TransactionCard } from '../TransactionCard';
 import styles from './styles.module.scss';
 
-export const ExtractSummary = async () => {
-  const user = await getUser();
+interface ExtractSummaryProps {
+  user: PublicUser | null;
+}
+
+export const ExtractSummary = async ({ user }: ExtractSummaryProps) => {
   if (!user) return null;
   const transactions = await getTransactionsByUser(user.id, { _start: 0, _end: 4, _sort: '-dateIso' });
 
