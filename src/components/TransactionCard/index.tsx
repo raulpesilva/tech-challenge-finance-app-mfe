@@ -16,7 +16,8 @@ export const TransactionCard = ({ transaction }: { transaction: Transaction }) =
   const deleteAction = deleteTransactionAction.bind(null, transaction.id);
 
   const negative = transaction.type === 'withdraw' || transaction.type === 'transfer';
-  if (negative) transaction.value *= -1;
+  let value = transaction.value / 100;
+  if (negative) value *= -1;
 
   return (
     <div className={styles.transaction}>
@@ -32,7 +33,7 @@ export const TransactionCard = ({ transaction }: { transaction: Transaction }) =
       <Typography variant='paragraph'>{TRANSACTIONS_TYPES_DICTIONARY[transaction.type] ?? ''}</Typography>
 
       <Typography variant='paragraph' weight='semiBold'>
-        {formatCurrency(transaction.value / 100)}
+        {formatCurrency(value)}
       </Typography>
 
       <div className={styles.actions}>
