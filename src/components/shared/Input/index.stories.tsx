@@ -35,7 +35,7 @@ export const CenteredText: Story = {
 export const RightText: Story = {
   args: {
     id: 'centered-input',
-    label: 'Centered Input',
+    label: 'Right Input',
     placeholder: 'Type here...',
     textAlign: 'right',
   },
