@@ -1,4 +1,5 @@
 import { ButtonLink } from '@/components/shared/ButtonLink';
+import { Suspense } from 'react';
 import { Logo } from '../Logo';
 import { LogoType } from '../LogoType';
 import { MenuServices } from '../MenuServices';
@@ -11,7 +12,9 @@ export const Header = () => {
         <div className={styles.linksContent}>
           <LogoType className={styles.logoType} />
           <Logo className={styles.logo} />
-          <MenuServices />
+          <Suspense>
+            <MenuServices />
+          </Suspense>
         </div>
 
         <div className={styles.ctaContent}>

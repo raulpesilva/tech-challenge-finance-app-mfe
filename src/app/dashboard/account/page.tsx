@@ -9,7 +9,7 @@ import { getUser } from '@/lib/auth/getUser';
 import Image from 'next/image';
 import styles from './styles.module.scss';
 
-export const InitialUpdateUserResponse = {
+const initialTransaction = {
   inputs: { name: '', email: '', password: '' },
   errors: {},
   success: true,
@@ -40,7 +40,7 @@ export default async function Page() {
             'use server';
             return await updateUserAction(prev, formData);
           }}
-          initialUser={{ ...InitialUpdateUserResponse, inputs: { ...InitialUpdateUserResponse.inputs, ...user } }}
+          initialUser={{ ...initialTransaction, inputs: { ...initialTransaction.inputs, ...user } }}
         />
       </div>
     </div>
