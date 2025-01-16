@@ -7,7 +7,7 @@ import { Typography } from '@/components/shared/Typography';
 import Image from 'next/image';
 import styles from './styles.module.scss';
 
-export const InitialUpdateUserResponse = {
+const initialTransaction = {
   inputs: { date: '', type: '', value: '' },
   errors: {},
 } satisfies CreateTransactionResponse;
@@ -29,7 +29,7 @@ export default function Page() {
             'use server';
             return await createTransactionAction(state, action);
           }}
-          initialTransaction={InitialUpdateUserResponse}
+          initialTransaction={initialTransaction}
         />
 
         <Image

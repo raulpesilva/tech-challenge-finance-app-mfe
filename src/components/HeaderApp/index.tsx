@@ -3,6 +3,7 @@ import MenuIcon from '@/assets/icons/menu-icon.svg';
 import PersonIcon from '@/assets/icons/person-icon.svg';
 import { Typography } from '@/components/shared/Typography';
 import { capitalize } from '@/utils/string';
+import { Suspense } from 'react';
 import { MenuAccount } from '../MenuAccount';
 import { MenuDropdown } from '../MenuDropdown';
 import { MenuServicesApp } from '../MenuServicesApp';
@@ -26,7 +27,9 @@ export const HeaderApp = ({ user }: HeaderAppProps) => {
           align='left'
           className={styles.menuServicesApp}
         >
-          <MenuServicesApp />
+          <Suspense>
+            <MenuServicesApp />
+          </Suspense>
         </MenuDropdown>
 
         <Typography variant='paragraph' size='sm' weight='semiBold' color='secondary' className={styles.user}>

@@ -6,7 +6,7 @@ import { getTransactionById } from '@/services/transaction';
 import Image from 'next/image';
 import styles from './styles.module.scss';
 
-export const InitialUpdateUserResponse = {
+const initialTransaction = {
   inputs: { date: '', type: '', value: '' },
   errors: {},
 } satisfies CreateTransactionResponse;
@@ -23,9 +23,9 @@ export default async function Page({ params }: { params: Promise<{ [key: string]
         <FormTransaction
           id={id}
           initialTransaction={{
-            ...InitialUpdateUserResponse,
+            ...initialTransaction,
             inputs: {
-              ...InitialUpdateUserResponse.inputs,
+              ...initialTransaction.inputs,
               value: String(transaction.value),
               date: transaction.date,
               type: transaction.type,

@@ -39,7 +39,7 @@ export const updateUserAction = async (_state: UpdateUserResponse, formData: For
     await updateUser(user);
     revalidatePath('/dashboard/account');
     return { ...response, success: true };
-  } catch (error) {
+  } catch {
     return { ...response, success: false, errors: { email: ['Erro ao atualizar usuário'] } };
   }
 };
