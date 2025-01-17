@@ -11,7 +11,8 @@
     "build-storybook": "storybook build",
     "mock": "json-server ./src/mock/server/db.json --port 3001",
     "prettier": "prettier --write .",
-    "dev:mock": "concurrently \"pnpm run mock\" \"pnpm run dev\""
+    "dev:mock": "concurrently \"pnpm run mock\" \"pnpm run dev\"",
+    "storybook:mock": "concurrently \"pnpm run mock\" \"pnpm run storybook\""
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
