@@ -1,6 +1,7 @@
 import GridBottomIcon from '@/assets/icons/grid-bottom.svg';
 import GridTopIcon from '@/assets/icons/grid-top.svg';
 import { InvestmentCard } from '@/components/InvestmentCard';
+import { InvestmentChart } from '@/components/InvestmentChart';
 import { Typography } from '@/components/shared/Typography';
 import styles from './styles.module.scss';
 
@@ -25,7 +26,9 @@ export default function Page() {
       <Typography variant='heading3' size='xl' weight='regular' className={styles.statisticsTitle}>
         Estatísticas
       </Typography>
-      <div className={styles.statisticsContainer}></div>
+      <div className={styles.statisticsContainer} id='investment-chart'>
+        <InvestmentChart />
+      </div>
     </section>
   );
 }
