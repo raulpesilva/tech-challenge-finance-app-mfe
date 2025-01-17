@@ -18,11 +18,13 @@ Material-UI: Biblioteca de componentes React que implementa o Material Design, p
 
 Sass: Pré-processador CSS que facilita a escrita de estilos com recursos como variáveis e aninhamento.
 
+Recharts: Biblioteca de gráficos para React, facilitando a criação de visualizações de dados interativas.
+
 Day.js: Biblioteca leve para manipulação de datas, facilitando operações relacionadas a datas e horários.
 
 &nbsp;
 
-### Back-end
+### Back-end e segurança
 JSON Server: Ferramenta que simula uma API RESTful a partir de um arquivo JSON, permitindo testes e desenvolvimento sem a necessidade de um servidor back-end completo.
 
 bcrypt: Biblioteca para hashing de senhas, utilizada para proteger informações sensíveis.
@@ -31,9 +33,19 @@ Jose: Biblioteca para manipulação de tokens JWT (JSON Web Tokens), que pode se
 
 &nbsp;
 
-### Documentação
-
+### Documentação e qualidade de código
 Storybook: Ferramenta de desenvolvimento para criar e documentar componentes UI isoladamente, facilitando a visualização e teste dos mesmos.
+
+ESLint: Ferramenta de linting para identificar e corrigir problemas no código.
+
+Prettier: Formatador de código para manter a consistência e padronização.
+
+&nbsp;
+
+### Ferramentas de desenvolvimento
+TypeScript: Superconjunto tipado do JavaScript, trazendo mais segurança ao código durante o desenvolvimento.
+
+Concurrently: Utilitário que permite rodar múltiplos scripts ao mesmo tempo, como iniciar o servidor mock e o ambiente de desenvolvimento simultaneamente.
 
 &nbsp;
 
@@ -71,14 +83,9 @@ pnpm dev:mock
 
 ### Para o StoryBook, siga os passos abaixo:
 
-1. Para acessar o StoryBook, inicie o mock:
+1. Para acessar o StoryBook, inicie o mock e a documentação:
 ```shell
-pnpm mock
+pnpm storybook:mock
 ```
 
-2. E inicie a documentação:
-```shell
-pnpm storybook
-```
-
-3. Acesse a documentação no navegador em http://localhost:6006/
+2. Acesse a documentação no navegador em http://localhost:6006/
