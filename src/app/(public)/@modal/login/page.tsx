@@ -32,6 +32,15 @@ export default function Page() {
           return await signIn(prev, formData);
         }}
       />
+
+      <div className={styles.registerLink}>
+        <Typography variant='paragraph' color='primary'>
+          Ainda não possui uma conta?
+        </Typography>
+        <ButtonLink href='/register' variant='text' color='tertiary'>
+          Registre-se aqui!
+        </ButtonLink>
+      </div>
     </Modal>
   );
 }
