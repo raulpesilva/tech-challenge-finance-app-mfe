@@ -31,7 +31,7 @@ export const FormTransaction = ({ type, initialTransaction, transactionAction, i
   const [state, action, isPending] = useActionState(transactionAction, initialTransaction);
   const initialType = (state?.inputs?.type || type) as TransactionTypeDictionaryKey;
   const transactionType = TRANSACTIONS_TYPES_DICTIONARY[initialType] as TransactionTypeDictionaryValue;
-  const initialDate = state?.inputs?.dateIso ? dayjs(state.inputs.dateIso) : null;
+  const initialDate = state?.inputs?.dateIso ? dayjs(state.inputs.dateIso) : dayjs();
 
   return (
     <form className={styles.formWrapper} action={action}>
