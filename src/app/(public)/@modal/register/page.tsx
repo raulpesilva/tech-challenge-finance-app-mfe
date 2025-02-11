@@ -33,6 +33,15 @@ export default function Page() {
           return await signUp(prev, formData);
         }}
       />
+
+      <div className={styles.registerLink}>
+        <Typography variant='paragraph' color='primary'>
+          Já possui uma conta?
+        </Typography>
+        <ButtonLink href='/login' variant='text' color='secondary'>
+          Entre aqui!
+        </ButtonLink>
+      </div>
     </Modal>
   );
 }
