@@ -22,6 +22,7 @@ export const Button = ({ variant, color, children, loading, className, selected,
         className && className,
         selected && styles.selected,
       ])}
+      disabled={loading}
       {...props}
     >
       {children}

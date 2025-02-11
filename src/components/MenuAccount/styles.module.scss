@@ -1,14 +1,4 @@
-@use '../../theme/base' as *;
-
 .container {
   display: flex;
   flex-direction: column;
-
-  .logoutButton {
-    padding: 16px 0 0;
-    width: 100%;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-  }
 }

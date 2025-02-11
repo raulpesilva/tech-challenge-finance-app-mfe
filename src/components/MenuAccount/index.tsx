@@ -1,13 +1,13 @@
-import { Button } from '@/components/shared/Button';
 import { NavLink } from '@/components/shared/NavLink';
 import { logout } from '@/lib/auth/logout';
 import { redirect } from 'next/navigation';
+import { LogoutButton } from '../LogoutButton';
 import styles from './styles.module.scss';
 
 export const MenuAccount = () => {
   const handleLogout = async () => {
     'use server';
-    logout();
+    await logout();
     redirect('/');
   };
 
@@ -21,9 +21,9 @@ export const MenuAccount = () => {
         Configurações
       </NavLink>
 
-      <Button variant='text' color='cta' onClick={handleLogout} className={styles.logoutButton}>
-        Sair
-      </Button>
+      <form action={handleLogout}>
+        <LogoutButton />
+      </form>
     </div>
   );
 };
