@@ -10,8 +10,13 @@ interface ExtractSummaryProps {
   user: PublicUser | null;
 }
 
+const renderedItems = 4;
+
 export const ExtractSummary = async ({ user }: ExtractSummaryProps) => {
-  const transactions = user?.id ? await getTransactionsByUser(user.id, { _start: 0, _end: 4, _sort: '-dateIso' }) : [];
+  const transactions = user?.id ? await getTransactionsByUser(user.id, { _start: 0, _end: 5, _sort: '-dateIso' }) : [];
+  if (!transactions) return null;
+
+  const transactionsSlice = transactions.slice(0, renderedItems);
 
   return (
     <section className={styles.extractContainer}>
@@ -19,21 +24,21 @@ export const ExtractSummary = async ({ user }: ExtractSummaryProps) => {
         <Typography variant='heading2'>Extrato</Typography>
       </Link>
 
-      {!transactions?.length && (
+      {!transactionsSlice.length && (
         <Typography variant='paragraph' className={styles.noTransactions}>
           Sem transações cadastradas
         </Typography>
       )}
 
-      {!!transactions?.length && (
+      {!!transactionsSlice.length && (
         <div className={styles.transactions}>
-          {transactions.map((transaction) => (
+          {transactionsSlice.map((transaction) => (
             <TransactionCard key={transaction.id} transaction={transaction} />
           ))}
         </div>
       )}
 
-      {!!transactions?.length && (
+      {transactions.length > 4 && (
         <NavLink href='/dashboard/statement' color='cta' colorActive='tertiary' replace className={styles.seeAll}>
           Ver todas as transações
         </NavLink>
