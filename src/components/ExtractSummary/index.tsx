@@ -11,8 +11,6 @@ interface ExtractSummaryProps {
 }
 
 export const ExtractSummary = async ({ user }: ExtractSummaryProps) => {
-  // if (!user) return null;
-
   const transactions = user?.id ? await getTransactionsByUser(user.id, { _start: 0, _end: 4, _sort: '-dateIso' }) : [];
 
   return (
