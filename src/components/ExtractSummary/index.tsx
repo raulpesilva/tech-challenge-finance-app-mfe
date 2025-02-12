@@ -18,12 +18,21 @@ export const ExtractSummary = async ({ user }: ExtractSummaryProps) => {
       <Link href='/dashboard/statement'>
         <Typography variant='heading2'>Extrato</Typography>
       </Link>
+
       {!transactions?.length && (
         <Typography variant='paragraph' className={styles.noTransactions}>
           Sem transações cadastradas
         </Typography>
       )}
-      {transactions?.map?.((transaction) => <TransactionCard key={transaction.id} transaction={transaction} />)}
+
+      {!!transactions?.length && (
+        <div className={styles.transactions}>
+          {transactions.map((transaction) => (
+            <TransactionCard key={transaction.id} transaction={transaction} />
+          ))}
+        </div>
+      )}
+
       {!!transactions?.length && (
         <NavLink href='/dashboard/statement' color='cta' colorActive='tertiary' replace className={styles.seeAll}>
           Ver todas as transações

@@ -10,7 +10,7 @@ interface PageProps {
   searchParams: { page?: string };
 }
 
-const itemsPerPage = 2;
+const itemsPerPage = 10;
 const requestLimit = itemsPerPage + 1;
 
 export default async function Page({ searchParams }: PageProps) {
@@ -42,8 +42,13 @@ export default async function Page({ searchParams }: PageProps) {
         </Typography>
       )}
 
-      {!!transactionsSlice.length &&
-        transactionsSlice.map((transaction) => <TransactionCard key={transaction.id} transaction={transaction} />)}
+      {!!transactionsSlice.length && (
+        <div className={styles.transactions}>
+          {transactionsSlice.map((transaction) => (
+            <TransactionCard key={transaction.id} transaction={transaction} />
+          ))}
+        </div>
+      )}
 
       {!!transactionsSlice.length && (
         <Pagination page={page} itemsPerPage={itemsPerPage} totalItems={transactions.length} />
