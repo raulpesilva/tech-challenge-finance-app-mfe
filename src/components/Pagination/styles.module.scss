@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto ;
+  min-width: 180px;
+  min-height: 40px;
+}
+
+.prevArrow {
+  position: absolute !important;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) rotate(180deg);
+  border-radius: 50% !important;
+  padding: 12px !important;
+}
+
+.nextArrow {
+  position: absolute !important;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  border-radius: 50% !important;
+  padding: 12px !important;
+}
