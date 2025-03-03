@@ -13,7 +13,9 @@ interface ExtractSummaryProps {
 const renderedItems = 4;
 
 export const ExtractSummary = async ({ user }: ExtractSummaryProps) => {
-  const transactions = user?.id ? await getTransactionsByUser(user.id, { _start: 0, _end: 5, _sort: '-dateIso' }) : [];
+  const transactions = user?.id
+    ? await getTransactionsByUser(user.id, { _start: 0, _end: renderedItems + 1, _sort: '-dateIso' })
+    : [];
   if (!transactions) return null;
 
   const transactionsSlice = transactions.slice(0, renderedItems);
@@ -38,7 +40,7 @@ export const ExtractSummary = async ({ user }: ExtractSummaryProps) => {
         </div>
       )}
 
-      {transactions.length > 4 && (
+      {transactions.length > renderedItems && (
         <NavLink href='/dashboard/statement' color='cta' colorActive='tertiary' replace className={styles.seeAll}>
           Ver todas as transações
         </NavLink>
