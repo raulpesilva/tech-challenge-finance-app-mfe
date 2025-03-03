@@ -42,11 +42,23 @@ export const WithInitialType: Story = {
   ),
 };
 
-export const EditTransaction: Story = {
+export const EditTransactionWithAdvancedOptions: Story = {
   render: () => (
     <FormTransaction
       initialTransaction={{
         inputs: { type: 'deposit', value: '1000', dateIso: '2025-01-16', category: 'food', title: 'Almoço' },
+        errors: {},
+      }}
+      transactionAction={mockTransactionAction}
+    />
+  ),
+};
+
+export const EditTransactionWithoutAdvancedOptions: Story = {
+  render: () => (
+    <FormTransaction
+      initialTransaction={{
+        inputs: { type: 'deposit', value: '1000', dateIso: '2025-01-16', category: '', title: 'Almoço' },
         errors: {},
       }}
       transactionAction={mockTransactionAction}
