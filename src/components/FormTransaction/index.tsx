@@ -10,7 +10,7 @@ import { CreateTransactionResponse, UpdateTransactionResponse } from '@/actions/
 import { maskCurrency } from '@/utils/masks/maskCurrency';
 import dayjs from 'dayjs';
 import 'dayjs/locale/pt';
-import { useActionState } from 'react';
+import { useActionState, useState } from 'react';
 import { CategoriesOptionsSelect } from '../CategoriesOptionsSelect';
 import { Button } from '../shared/Button';
 import { Input } from '../shared/Input';
@@ -37,19 +37,14 @@ export const FormTransaction = ({ type, initialTransaction, transactionAction, i
   const categoryType = CATEGORIES_TYPES_DICTIONARY[initialCategory] as CategoryTypeDictionaryValue;
   const initialDate = state?.inputs?.dateIso ? dayjs(state.inputs.dateIso) : dayjs();
 
+  const [showAdvancedOptions, setShowAdvancedOptions] = useState(false);
+
   return (
     <form className={styles.formWrapper} action={action}>
       {id && <input type='hidden' name='id' value={id} />}
 
       <TransactionOptionsSelect type={transactionType} />
       {state?.errors?.type?.map((error) => (
-        <Typography variant='span' color='error' key={error} className={styles.errorMessage}>
-          {error}
-        </Typography>
-      ))}
-
-      <CategoriesOptionsSelect type={categoryType} />
-      {state?.errors?.category?.map((error) => (
         <Typography variant='span' color='error' key={error} className={styles.errorMessage}>
           {error}
         </Typography>
@@ -90,6 +85,33 @@ export const FormTransaction = ({ type, initialTransaction, transactionAction, i
           {error}
         </Typography>
       ))}
+
+      {!showAdvancedOptions && (
+        <Button
+          type='button'
+          variant='outlined'
+          color='primary'
+          className={styles.advancedOptionsButton}
+          onClick={() => setShowAdvancedOptions(true)}
+        >
+          Opções avançadas
+        </Button>
+      )}
+
+      {showAdvancedOptions && (
+        <>
+          <CategoriesOptionsSelect type={categoryType} />
+          {state?.errors?.category?.map((error) => (
+            <Typography variant='span' color='error' key={error} className={styles.errorMessage}>
+              {error}
+            </Typography>
+          ))}
+
+          <Button type='button' variant='outlined' color='primary' className={styles.uploadButton}>
+            Enviar anexo
+          </Button>
+        </>
+      )}
 
       {state?.message && (
         <Typography variant='span' color='error' className={styles.errorMessage}>

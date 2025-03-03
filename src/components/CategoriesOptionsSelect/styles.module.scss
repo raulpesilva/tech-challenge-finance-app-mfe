@@ -3,9 +3,10 @@
 .selectWrapper {
   margin-top: 24px;
   min-width: 208px;
-  max-width: 75%;
+  max-width: 50%;
 
   @media (max-width: 1200px) and (min-width: 1025px), (max-width: 640px) {
-    max-width: 100%;
+    width: 100%;
+    min-width: 100%;
   }
 }

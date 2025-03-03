@@ -12,7 +12,8 @@ export const CategoriesOptionsSelect = ({ type }: CategoriesOptionsSelectProps) 
 
   return (
     <Select
-      placeholder='Selecione a categoria da transação'
+      placeholder='Selecione a categoria'
+      label='Categoria'
       options={CATEGORIES_TYPES_DICTIONARY_VALUES}
       value={category}
       onChange={setCategory}
