@@ -27,16 +27,9 @@ interface FormTransactionProps {
   ) => Promise<CreateTransactionResponse | UpdateTransactionResponse>;
   initialTransaction: CreateTransactionResponse | UpdateTransactionResponse;
   id?: string;
-  hasAdvancedOptions?: boolean;
 }
 
-export const FormTransaction = ({
-  type,
-  initialTransaction,
-  transactionAction,
-  id,
-  hasAdvancedOptions,
-}: FormTransactionProps) => {
+export const FormTransaction = ({ type, initialTransaction, transactionAction, id }: FormTransactionProps) => {
   const [state, action, isPending] = useActionState(transactionAction, initialTransaction);
   const initialType = (state?.inputs?.type || type) as TransactionTypeDictionaryKey;
   const transactionType = TRANSACTIONS_TYPES_DICTIONARY[initialType] as TransactionTypeDictionaryValue;
@@ -44,6 +37,7 @@ export const FormTransaction = ({
   const categoryType = CATEGORIES_TYPES_DICTIONARY[initialCategory] as CategoryTypeDictionaryValue;
   const initialDate = state?.inputs?.dateIso ? dayjs(state.inputs.dateIso) : dayjs();
 
+  const hasAdvancedOptions = !!categoryType && categoryType !== 'Sem Categoria';
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(hasAdvancedOptions);
 
   return (

@@ -15,7 +15,6 @@ export default async function Page({ params }: { params: Promise<{ [key: string]
   const { id } = await params;
   if (!id) return null;
   const transaction = await getTransactionById(id);
-  const hasAdvancedOptions = transaction.category && transaction.category !== 'uncategorized';
 
   return (
     <div className={styles.container}>
@@ -39,7 +38,6 @@ export default async function Page({ params }: { params: Promise<{ [key: string]
             'use server';
             return await updateTransactionAction(state, formData);
           }}
-          hasAdvancedOptions={hasAdvancedOptions}
         />
 
         <Image
