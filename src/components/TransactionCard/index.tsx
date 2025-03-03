@@ -1,3 +1,4 @@
+import { CATEGORIES_TYPES_DICTIONARY } from '@/@types/category';
 import { MONTHS_DICTIONARY, Transaction, TRANSACTIONS_TYPES_DICTIONARY } from '@/@types/transaction';
 import { deleteTransactionAction } from '@/actions/transactions';
 import DeleteIcon from '@/assets/icons/delete-icon.svg';
@@ -30,7 +31,17 @@ export const TransactionCard = ({ transaction }: { transaction: Transaction }) =
         </Typography>
       </div>
 
+      {transaction.title && (
+        <Typography variant='paragraph' weight='semiBold'>
+          {transaction.title}
+        </Typography>
+      )}
+
       <Typography variant='paragraph'>{TRANSACTIONS_TYPES_DICTIONARY[transaction.type] ?? ''}</Typography>
+
+      {CATEGORIES_TYPES_DICTIONARY[transaction.category] && (
+        <Typography variant='paragraph'>{CATEGORIES_TYPES_DICTIONARY[transaction.category]}</Typography>
+      )}
 
       <Typography variant='paragraph' weight='semiBold'>
         {formatCurrency(value)}

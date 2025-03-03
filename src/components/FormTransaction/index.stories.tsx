@@ -20,7 +20,10 @@ type Story = StoryObj<typeof FormTransaction>;
 export const Default: Story = {
   render: () => (
     <FormTransaction
-      initialTransaction={{ inputs: { type: undefined, value: undefined, dateIso: undefined }, errors: {} }}
+      initialTransaction={{
+        inputs: { type: undefined, value: undefined, dateIso: undefined, category: undefined, title: undefined },
+        errors: {},
+      }}
       transactionAction={mockTransactionAction}
     />
   ),
@@ -30,7 +33,10 @@ export const WithInitialType: Story = {
   render: () => (
     <FormTransaction
       type='transfer'
-      initialTransaction={{ inputs: { type: undefined, value: undefined, dateIso: undefined }, errors: {} }}
+      initialTransaction={{
+        inputs: { type: undefined, value: undefined, dateIso: undefined, category: undefined, title: undefined },
+        errors: {},
+      }}
       transactionAction={mockTransactionAction}
     />
   ),
@@ -39,7 +45,10 @@ export const WithInitialType: Story = {
 export const EditTransaction: Story = {
   render: () => (
     <FormTransaction
-      initialTransaction={{ inputs: { type: 'deposit', value: '1000', dateIso: '2025-01-16' }, errors: {} }}
+      initialTransaction={{
+        inputs: { type: 'deposit', value: '1000', dateIso: '2025-01-16', category: 'food', title: 'Almoço' },
+        errors: {},
+      }}
       transactionAction={mockTransactionAction}
     />
   ),
@@ -49,8 +58,13 @@ export const WithErrors: Story = {
   render: () => (
     <FormTransaction
       initialTransaction={{
-        inputs: { type: undefined, value: undefined, dateIso: undefined },
-        errors: { type: ['Tipo inválido'], value: ['Valor é obrigatório'], date: ['Data é obrigatória'] },
+        inputs: { type: undefined, value: undefined, dateIso: undefined, category: undefined, title: undefined },
+        errors: {
+          type: ['Tipo inválido'],
+          value: ['Valor é obrigatório'],
+          date: ['Data é obrigatória'],
+          title: ['Título é obrigatório'],
+        },
       }}
       transactionAction={mockTransactionAction}
     />
