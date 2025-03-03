@@ -13,6 +13,7 @@ import styles from './styles.module.scss';
 export const TransactionCard = ({ transaction }: { transaction: Transaction }) => {
   const [day, month, year] = transaction.date.split('/');
   const date = dayjs(`${year}-${month}-${day}`).format('MMMM');
+  const category = CATEGORIES_TYPES_DICTIONARY[transaction.category];
 
   const deleteAction = deleteTransactionAction.bind(null, transaction.id);
 
@@ -39,9 +40,7 @@ export const TransactionCard = ({ transaction }: { transaction: Transaction }) =
 
       <Typography variant='paragraph'>{TRANSACTIONS_TYPES_DICTIONARY[transaction.type] ?? ''}</Typography>
 
-      {CATEGORIES_TYPES_DICTIONARY[transaction.category] && (
-        <Typography variant='paragraph'>{CATEGORIES_TYPES_DICTIONARY[transaction.category]}</Typography>
-      )}
+      {category && category !== 'Sem Categoria' && <Typography variant='paragraph'>{category}</Typography>}
 
       <Typography variant='paragraph' weight='semiBold'>
         {formatCurrency(value)}
