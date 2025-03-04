@@ -40,16 +40,16 @@ export default async function Page({ searchParams }: PageProps) {
       <Typography variant='heading2'>Extrato completo</Typography>
 
       <div className={styles.controlsContainer}>
-        <div className={styles.search}>
-          <Input label='Buscar transação' placeholder='Digite o título da transação' id='search' />
-          <Button color='tertiary' variant='contained' className={styles.searchButton}>
+        <div className={styles.searchContainer}>
+          <Input label='Buscar transação' placeholder='Digite o título' color='tertiary' id='search' />
+          <Button variant='contained' color='tertiary' className={styles.searchButton}>
             <SearchIcon />
           </Button>
         </div>
 
-        <div className={styles.search}>
-          <Input label='Buscar transação' placeholder='Digite o título da transação' id='search' />
-          <Button color='tertiary' variant='contained' className={styles.searchButton}>
+        <div className={styles.searchContainer}>
+          <Input label='Buscar transação' placeholder='Digite o título' color='tertiary' id='search' />
+          <Button variant='contained' color='tertiary' className={styles.searchButton}>
             <SearchIcon />
           </Button>
         </div>

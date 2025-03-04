@@ -5,6 +5,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string;
   label: string;
   placeholder: string;
+  color?: 'primary' | 'secondary' | 'tertiary' | 'error' | 'cta' | 'ctaForeground';
   textAlign?: 'left' | 'center' | 'right';
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
@@ -15,6 +16,7 @@ export const Input = ({
   id,
   label,
   placeholder,
+  color = 'primary',
   textAlign = 'left',
   iconLeft,
   iconRight,
@@ -25,7 +27,7 @@ export const Input = ({
     <div className={combineStyles([styles.container, className && className])}>
       <label htmlFor={id}>{label}</label>
 
-      <div className={combineStyles([styles.inputContainer, styles[textAlign]])}>
+      <div className={combineStyles([styles.inputContainer, styles[textAlign], color && styles[color]])}>
         {!!iconLeft && <label htmlFor={id}>{iconLeft}</label>}
 
         <input id={id} placeholder={placeholder} {...props} />
