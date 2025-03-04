@@ -28,6 +28,28 @@
     }
   }
 
+  .advancedOptionsButton {
+    margin-top: 24px;
+    width: 50%;
+
+    @media (max-width: 1200px) and (min-width: 1025px), (max-width: 640px) {
+      margin: 24px auto 0;
+      width: 100%;
+      max-width: 336px;
+    }
+  }
+
+  .uploadButton {
+    margin-top: 24px;
+    width: 50%;
+
+    @media (max-width: 1200px) and (min-width: 1025px), (max-width: 640px) {
+      margin: 24px auto 0;
+      width: 100%;
+      max-width: 336px;
+    }
+  }
+
   .submitButton {
     margin-top: 24px;
     width: 50%;

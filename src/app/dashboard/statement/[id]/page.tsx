@@ -7,7 +7,7 @@ import Image from 'next/image';
 import styles from './styles.module.scss';
 
 const initialTransaction = {
-  inputs: { date: '', type: '', value: '' },
+  inputs: { date: '', type: '', value: '', category: '', title: '' },
   errors: {},
 } satisfies CreateTransactionResponse;
 
@@ -30,6 +30,8 @@ export default async function Page({ params }: { params: Promise<{ [key: string]
               date: transaction.date,
               type: transaction.type,
               dateIso: transaction.dateIso,
+              category: transaction.category,
+              title: transaction.title,
             },
           }}
           transactionAction={async (state, formData) => {

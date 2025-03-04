@@ -1,3 +1,4 @@
+import { CategoryType } from '../category';
 import { ConvertUnionToTuple } from '../utils';
 
 export const TRANSACTIONS_TYPES = ['deposit', 'withdraw', 'investment', 'transfer'] as const;
@@ -50,4 +51,6 @@ export interface Transaction {
   value: number;
   author: string;
   type: TransactionType;
+  category: CategoryType;
+  title: string;
 }

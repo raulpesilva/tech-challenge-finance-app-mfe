@@ -1,3 +1,4 @@
+import { CATEGORIES_TYPES_DICTIONARY } from '@/@types/category';
 import { MONTHS_DICTIONARY, Transaction, TRANSACTIONS_TYPES_DICTIONARY } from '@/@types/transaction';
 import { deleteTransactionAction } from '@/actions/transactions';
 import DeleteIcon from '@/assets/icons/delete-icon.svg';
@@ -12,6 +13,7 @@ import styles from './styles.module.scss';
 export const TransactionCard = ({ transaction }: { transaction: Transaction }) => {
   const [day, month, year] = transaction.date.split('/');
   const date = dayjs(`${year}-${month}-${day}`).format('MMMM');
+  const category = CATEGORIES_TYPES_DICTIONARY[transaction.category];
 
   const deleteAction = deleteTransactionAction.bind(null, transaction.id);
 
@@ -30,7 +32,15 @@ export const TransactionCard = ({ transaction }: { transaction: Transaction }) =
         </Typography>
       </div>
 
+      {transaction.title && (
+        <Typography variant='paragraph' weight='semiBold'>
+          {transaction.title}
+        </Typography>
+      )}
+
       <Typography variant='paragraph'>{TRANSACTIONS_TYPES_DICTIONARY[transaction.type] ?? ''}</Typography>
+
+      {category && category !== 'Sem Categoria' && <Typography variant='paragraph'>{category}</Typography>}
 
       <Typography variant='paragraph' weight='semiBold'>
         {formatCurrency(value)}
