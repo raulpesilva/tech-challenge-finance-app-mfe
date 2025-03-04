@@ -1,4 +1,7 @@
+import SearchIcon from '@/assets/icons/search-icon.svg';
 import { Pagination } from '@/components/Pagination';
+import { Button } from '@/components/shared/Button';
+import { Input } from '@/components/shared/Input';
 import { Typography } from '@/components/shared/Typography';
 import { TransactionCard } from '@/components/TransactionCard';
 import { getUser } from '@/lib/auth/getUser';
@@ -35,6 +38,22 @@ export default async function Page({ searchParams }: PageProps) {
   return (
     <div className={styles.container}>
       <Typography variant='heading2'>Extrato completo</Typography>
+
+      <div className={styles.controlsContainer}>
+        <div className={styles.search}>
+          <Input label='Buscar transação' placeholder='Digite o título da transação' id='search' />
+          <Button color='tertiary' variant='contained' className={styles.searchButton}>
+            <SearchIcon />
+          </Button>
+        </div>
+
+        <div className={styles.search}>
+          <Input label='Buscar transação' placeholder='Digite o título da transação' id='search' />
+          <Button color='tertiary' variant='contained' className={styles.searchButton}>
+            <SearchIcon />
+          </Button>
+        </div>
+      </div>
 
       {!transactionsSlice.length && (
         <Typography variant='paragraph' className={styles.noTransactions}>
