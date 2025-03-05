@@ -18,7 +18,7 @@
 
   @media (min-width: 1025px) {
     overflow-y: auto;
-    max-height: calc(100vh - 348px);
+    max-height: calc(100vh - 455px);
     padding-right: 24px;
 
     &::-webkit-scrollbar {
@@ -46,15 +46,4 @@
   @media (max-width: 768px) {
     flex-direction: column;
   }
-}
-
-.searchContainer {
-  width: 100%;
-  display: flex;
-  align-items: flex-end;
-}
-
-.searchButton {
-  padding: 10px !important;
-  margin-left: -12px;
 }

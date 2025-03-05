@@ -1,7 +1,5 @@
-import SearchIcon from '@/assets/icons/search-icon.svg';
 import { Pagination } from '@/components/Pagination';
-import { Button } from '@/components/shared/Button';
-import { Input } from '@/components/shared/Input';
+import { Search } from '@/components/Search';
 import { Typography } from '@/components/shared/Typography';
 import { TransactionCard } from '@/components/TransactionCard';
 import { getUser } from '@/lib/auth/getUser';
@@ -10,7 +8,7 @@ import { redirect } from 'next/navigation';
 import styles from './styles.module.scss';
 
 interface PageProps {
-  searchParams: { page?: string };
+  searchParams: { page?: string; q?: string };
 }
 
 const itemsPerPage = 10;
@@ -21,6 +19,7 @@ export default async function Page({ searchParams }: PageProps) {
   if (!user) return null;
 
   const page = searchParams.page ? Number(searchParams.page) : 1;
+  const query = searchParams.q ? searchParams.q : '';
   const startRequest = (page - 1) * itemsPerPage;
   const endRequest = startRequest + requestLimit;
 
@@ -28,6 +27,7 @@ export default async function Page({ searchParams }: PageProps) {
     _sort: '-dateIso',
     _start: startRequest,
     _end: endRequest,
+    title: query,
   });
 
   if (!transactions) return null;
@@ -40,19 +40,7 @@ export default async function Page({ searchParams }: PageProps) {
       <Typography variant='heading2'>Extrato completo</Typography>
 
       <div className={styles.controlsContainer}>
-        <div className={styles.searchContainer}>
-          <Input label='Buscar transação' placeholder='Digite o título' color='tertiary' id='search' />
-          <Button variant='contained' color='tertiary' className={styles.searchButton}>
-            <SearchIcon />
-          </Button>
-        </div>
-
-        <div className={styles.searchContainer}>
-          <Input label='Buscar transação' placeholder='Digite o título' color='tertiary' id='search' />
-          <Button variant='contained' color='tertiary' className={styles.searchButton}>
-            <SearchIcon />
-          </Button>
-        </div>
+        <Search />
       </div>
 
       {!transactionsSlice.length && (
