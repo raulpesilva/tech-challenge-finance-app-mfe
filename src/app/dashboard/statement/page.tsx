@@ -8,7 +8,7 @@ import { redirect } from 'next/navigation';
 import styles from './styles.module.scss';
 
 interface PageProps {
-  searchParams: { page?: string; q?: string };
+  searchParams: { page?: string; query?: string };
 }
 
 const itemsPerPage = 10;
@@ -19,7 +19,7 @@ export default async function Page({ searchParams }: PageProps) {
   if (!user) return null;
 
   const page = searchParams.page ? Number(searchParams.page) : 1;
-  const query = searchParams.q ? searchParams.q : '';
+  const query = searchParams.query ? searchParams.query : '';
   const startRequest = (page - 1) * itemsPerPage;
   const endRequest = startRequest + requestLimit;
 

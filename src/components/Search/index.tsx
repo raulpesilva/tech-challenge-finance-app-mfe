@@ -13,13 +13,13 @@ export const Search = () => {
   const searchParams = useSearchParams();
   const debounceSearch = useRef<NodeJS.Timeout | undefined>(undefined);
 
-  const query = searchParams.get('q');
+  const query = searchParams.get('query');
   const [value, setValue] = useState(query ?? '');
 
   const handleSearchInputChange = (value: string) => {
     setValue(value);
     if (debounceSearch.current) clearTimeout(debounceSearch.current);
-    debounceSearch.current = setTimeout(() => router.push(`?q=${value}`), 500);
+    debounceSearch.current = setTimeout(() => router.push(`?query=${value}`), 500);
   };
 
   return (
