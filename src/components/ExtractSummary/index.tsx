@@ -28,7 +28,7 @@ export const ExtractSummary = async ({ user }: ExtractSummaryProps) => {
 
       {!transactionsSlice.length && (
         <Typography variant='paragraph' className={styles.noTransactions}>
-          Sem transações
+          Sem transações cadastradas
         </Typography>
       )}
 

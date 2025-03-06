@@ -31,7 +31,8 @@ export default async function Page({ searchParams }: PageProps) {
   });
 
   if (!transactions) return null;
-  if (!transactions.length && page !== 1) redirect('/dashboard/statement');
+  if (!transactions.length && page !== 1)
+    redirect(query ? `/dashboard/statement?query=${query}` : '/dashboard/statement');
 
   const transactionsSlice = transactions.slice(0, itemsPerPage);
 
