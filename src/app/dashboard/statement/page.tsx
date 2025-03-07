@@ -1,3 +1,5 @@
+import { CATEGORIES_TYPES_DICTIONARY_MAP, CategoryTypeDictionaryValue } from '@/@types/category';
+import { Filter } from '@/components/Filter';
 import { Pagination } from '@/components/Pagination';
 import { Search } from '@/components/Search';
 import { Typography } from '@/components/shared/Typography';
@@ -8,7 +10,7 @@ import { redirect } from 'next/navigation';
 import styles from './styles.module.scss';
 
 interface PageProps {
-  searchParams: { page?: string; query?: string };
+  searchParams: { page?: string; query?: string; category?: string };
 }
 
 const itemsPerPage = 10;
@@ -19,7 +21,8 @@ export default async function Page({ searchParams }: PageProps) {
   if (!user) return null;
 
   const page = searchParams.page ? Number(searchParams.page) : 1;
-  const query = searchParams.query ? searchParams.query : '';
+  const query = searchParams.query;
+  const category = CATEGORIES_TYPES_DICTIONARY_MAP[searchParams.category as CategoryTypeDictionaryValue];
   const startRequest = (page - 1) * itemsPerPage;
   const endRequest = startRequest + requestLimit;
 
@@ -28,6 +31,7 @@ export default async function Page({ searchParams }: PageProps) {
     _start: startRequest,
     _end: endRequest,
     title: query,
+    category,
   });
 
   if (!transactions) return null;
@@ -42,6 +46,7 @@ export default async function Page({ searchParams }: PageProps) {
 
       <div className={styles.controlsContainer}>
         <Search />
+        <Filter />
       </div>
 
       {!transactionsSlice.length && (

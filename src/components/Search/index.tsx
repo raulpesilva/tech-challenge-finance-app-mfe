@@ -13,13 +13,19 @@ export const Search = () => {
   const searchParams = useSearchParams();
   const debounceSearch = useRef<NodeJS.Timeout | undefined>(undefined);
 
-  const query = searchParams.get('query');
-  const [value, setValue] = useState(query ?? '');
+  const initialQuery = searchParams.get('query');
+  const [query, setQuery] = useState(initialQuery ?? '');
 
   const handleSearchInputChange = (value: string) => {
-    setValue(value);
+    setQuery(value);
     if (debounceSearch.current) clearTimeout(debounceSearch.current);
-    debounceSearch.current = setTimeout(() => router.push(`?query=${value}`), 500);
+
+    debounceSearch.current = setTimeout(() => {
+      const currentParams = new URLSearchParams(String(searchParams));
+      if (!value) currentParams.delete('query');
+      if (!!value) currentParams.set('query', value);
+      router.push(`?${String(currentParams)}`);
+    }, 500);
   };
 
   return (
@@ -29,17 +35,17 @@ export const Search = () => {
         placeholder='Digite o título'
         color='tertiary'
         id='search'
-        value={value}
+        value={query}
         onChange={(e) => handleSearchInputChange(e.target.value)}
       />
       <Button
         variant='contained'
         color='tertiary'
         className={styles.searchButton}
-        aria-label={value ? 'Limpar busca' : 'Buscar transação'}
+        aria-label={query ? 'Limpar busca' : 'Buscar transação'}
         onClick={() => handleSearchInputChange('')}
       >
-        {value ? <CloseIcon /> : <SearchIcon />}
+        {query ? <CloseIcon /> : <SearchIcon />}
       </Button>
     </div>
   );
