@@ -9,6 +9,7 @@ interface SelectItemProps {
   option: string;
   value: string | null;
   handleSelect: (option: string) => void;
+  color?: 'primary' | 'secondary' | 'tertiary' | 'error' | 'cta' | 'ctaForeground';
 }
 
 interface SelectProps<T extends readonly string[]> {
@@ -22,13 +23,13 @@ interface SelectProps<T extends readonly string[]> {
   color?: 'primary' | 'secondary' | 'tertiary' | 'error' | 'cta' | 'ctaForeground';
 }
 
-const SelectItem = ({ option, value, handleSelect }: SelectItemProps) => {
+const SelectItem = ({ option, value, handleSelect, color }: SelectItemProps) => {
   const itemSelected = option === value;
 
   return (
     <li
       tabIndex={0} // tornar o item do select acessível por teclado
-      className={combineStyles([styles.item, itemSelected && styles.selected])}
+      className={combineStyles([styles.item, itemSelected && styles.selected, color && styles[color]])}
       onClick={() => handleSelect(option)}
       onKeyDown={(e) => e.key === 'Enter' && handleSelect(option)}
     >
@@ -97,6 +98,7 @@ export const Select = <T extends readonly string[]>({
                 option={option}
                 value={value}
                 handleSelect={handleSelect}
+                color={color}
               />
             ))}
           </ul>

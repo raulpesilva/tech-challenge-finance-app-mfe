@@ -1,4 +1,5 @@
 @use '../../../theme/base' as *;
+@use 'sass:color';
 
 @keyframes slideTransition {
   0% {
@@ -48,6 +49,36 @@
       font-size: 16px;
       line-height: 19px;
       text-align: start;
+
+      &.primary svg,
+      &.primary svg path {
+        fill: $primary;
+      }
+
+      &.secondary svg,
+      &.secondary svg path {
+        fill: $secondary;
+      }
+
+      &.tertiary svg,
+      &.tertiary svg path {
+        fill: $tertiary;
+      }
+
+      &.error svg,
+      &.error svg path {
+        fill: $error;
+      }
+
+      &.cta svg,
+      &.cta svg path {
+        fill: $black;
+      }
+
+      &.ctaForeground svg,
+      &.ctaForeground svg path {
+        fill: $white;
+      }
 
       &:hover,
       &.opened {
@@ -142,30 +173,6 @@
       svg path {
         transition-duration: 350ms;
         pointer-events: none;
-
-        &.primary {
-          fill: $primary;
-        }
-
-        &.secondary {
-          fill: $secondary;
-        }
-
-        &.tertiary {
-          fill: $tertiary;
-        }
-
-        &.error {
-          fill: $error;
-        }
-
-        &.cta {
-          fill: $black;
-        }
-
-        &.ctaForeground {
-          fill: $white;
-        }
       }
 
       &.opened svg {
@@ -238,12 +245,38 @@
       &:hover,
       &:focus {
         outline: none;
-        background-color: $blue10;
       }
 
       &.selected {
-        background-color: $blue10;
         font-weight: 700;
+      }
+
+      &:hover,
+      &:focus,
+      &.selected {
+        &.primary {
+          background-color: color.adjust($primary, $lightness: 60%);
+        }
+
+        &.secondary {
+          background-color: color.adjust($secondary, $lightness: 30%);
+        }
+
+        &.tertiary {
+          background-color: color.adjust($tertiary, $lightness: 40%);
+        }
+
+        &.error {
+          background-color: color.adjust($error, $lightness: 40%);
+        }
+
+        &.cta {
+          background-color: color.adjust($black, $lightness: 40%);
+        }
+
+        &.ctaForeground {
+          background-color: $white;
+        }
       }
     }
   }
