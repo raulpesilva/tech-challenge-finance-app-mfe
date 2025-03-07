@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.searchButton {
+  margin-left: -12px;
+  padding: 10px !important;
+  min-width: 48px;
+  min-height: 48px;
+}

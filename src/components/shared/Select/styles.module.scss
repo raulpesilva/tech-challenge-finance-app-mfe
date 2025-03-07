@@ -1,4 +1,5 @@
 @use '../../../theme/base' as *;
+@use 'sass:color';
 
 @keyframes slideTransition {
   0% {
@@ -49,26 +50,128 @@
       line-height: 19px;
       text-align: start;
 
+      &.primary svg,
+      &.primary svg path {
+        fill: $primary;
+      }
+
+      &.secondary svg,
+      &.secondary svg path {
+        fill: $secondary;
+      }
+
+      &.tertiary svg,
+      &.tertiary svg path {
+        fill: $tertiary;
+      }
+
+      &.error svg,
+      &.error svg path {
+        fill: $error;
+      }
+
+      &.cta svg,
+      &.cta svg path {
+        fill: $black;
+      }
+
+      &.ctaForeground svg,
+      &.ctaForeground svg path {
+        fill: $white;
+      }
+
       &:hover,
       &.opened {
-        border: 1px solid $primary;
+        &.primary {
+          border: 1px solid $primary;
+        }
+
+        &.secondary {
+          border: 1px solid $secondary;
+        }
+
+        &.tertiary {
+          border: 1px solid $tertiary;
+        }
+
+        &.error {
+          border: 1px solid $error;
+        }
+
+        &.cta {
+          border: 1px solid $black;
+        }
+
+        &.ctaForeground {
+          border: 1px solid $white;
+        }
       }
 
       &:focus {
         outline: none;
-        box-shadow: 0 0 3px 0 $primary;
-        border: 1px solid $primary;
+
+        &.primary {
+          box-shadow: 0 0 3px 0 $primary;
+          border: 1px solid $primary;
+        }
+
+        &.secondary {
+          box-shadow: 0 0 3px 0 $secondary;
+          border: 1px solid $secondary;
+        }
+
+        &.tertiary {
+          box-shadow: 0 0 3px 0 $tertiary;
+          border: 1px solid $tertiary;
+        }
+
+        &.error {
+          box-shadow: 0 0 3px 0 $error;
+          border: 1px solid $error;
+        }
+
+        &.cta {
+          box-shadow: 0 0 3px 0 $black;
+          border: 1px solid $black;
+        }
+
+        &.ctaForeground {
+          box-shadow: 0 0 3px 0 $white;
+          border: 1px solid $white;
+        }
       }
 
       &.opened {
         z-index: 2;
-        box-shadow: 0 0 3px 0 $primary;
+
+        &.primary {
+          box-shadow: 0 0 3px 0 $primary;
+        }
+
+        &.secondary {
+          box-shadow: 0 0 3px 0 $secondary;
+        }
+
+        &.tertiary {
+          box-shadow: 0 0 3px 0 $tertiary;
+        }
+
+        &.error {
+          box-shadow: 0 0 3px 0 $error;
+        }
+
+        &.cta {
+          box-shadow: 0 0 3px 0 $black;
+        }
+
+        &.ctaForeground {
+          box-shadow: 0 0 3px 0 $white;
+        }
       }
 
       svg,
       svg path {
         transition-duration: 350ms;
-        fill: $primary;
         pointer-events: none;
       }
 
@@ -100,6 +203,30 @@
       max-height: 200px;
       overflow-y: auto;
 
+      &.primary {
+        border: 1px solid $primary;
+      }
+
+      &.secondary {
+        border: 1px solid $secondary;
+      }
+
+      &.tertiary {
+        border: 1px solid $tertiary;
+      }
+
+      &.error {
+        border: 1px solid $error;
+      }
+
+      &.cta {
+        border: 1px solid $black;
+      }
+
+      &.ctaForeground {
+        border: 1px solid $white;
+      }
+
       &::-webkit-scrollbar {
         width: 0px;
       }
@@ -118,12 +245,38 @@
       &:hover,
       &:focus {
         outline: none;
-        background-color: $blue10;
       }
 
       &.selected {
-        background-color: $blue10;
         font-weight: 700;
+      }
+
+      &:hover,
+      &:focus,
+      &.selected {
+        &.primary {
+          background-color: color.adjust($primary, $lightness: 60%);
+        }
+
+        &.secondary {
+          background-color: color.adjust($secondary, $lightness: 30%);
+        }
+
+        &.tertiary {
+          background-color: color.adjust($tertiary, $lightness: 40%);
+        }
+
+        &.error {
+          background-color: color.adjust($error, $lightness: 40%);
+        }
+
+        &.cta {
+          background-color: color.adjust($black, $lightness: 40%);
+        }
+
+        &.ctaForeground {
+          background-color: $white;
+        }
       }
     }
   }

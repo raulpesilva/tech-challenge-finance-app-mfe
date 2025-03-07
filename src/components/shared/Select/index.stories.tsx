@@ -44,3 +44,25 @@ export const WithValue: Story = {
     label: 'Select with Default Value',
   },
 };
+
+export const PrimaryColor: Story = {
+  args: {
+    placeholder: 'Select an option',
+    options,
+    value: null,
+    onChange: (option) => console.log('Selected:', option),
+    label: 'Select with Label',
+    color: 'primary',
+  },
+};
+
+export const SecondaryColor: Story = {
+  args: {
+    placeholder: 'Select an option',
+    options,
+    value: null,
+    onChange: (option) => console.log('Selected:', option),
+    label: 'Select with Label',
+    color: 'secondary',
+  },
+};
