@@ -51,25 +51,121 @@
 
       &:hover,
       &.opened {
-        border: 1px solid $primary;
+        &.primary {
+          border: 1px solid $primary;
+        }
+
+        &.secondary {
+          border: 1px solid $secondary;
+        }
+
+        &.tertiary {
+          border: 1px solid $tertiary;
+        }
+
+        &.error {
+          border: 1px solid $error;
+        }
+
+        &.cta {
+          border: 1px solid $black;
+        }
+
+        &.ctaForeground {
+          border: 1px solid $white;
+        }
       }
 
       &:focus {
         outline: none;
-        box-shadow: 0 0 3px 0 $primary;
-        border: 1px solid $primary;
+
+        &.primary {
+          box-shadow: 0 0 3px 0 $primary;
+          border: 1px solid $primary;
+        }
+
+        &.secondary {
+          box-shadow: 0 0 3px 0 $secondary;
+          border: 1px solid $secondary;
+        }
+
+        &.tertiary {
+          box-shadow: 0 0 3px 0 $tertiary;
+          border: 1px solid $tertiary;
+        }
+
+        &.error {
+          box-shadow: 0 0 3px 0 $error;
+          border: 1px solid $error;
+        }
+
+        &.cta {
+          box-shadow: 0 0 3px 0 $black;
+          border: 1px solid $black;
+        }
+
+        &.ctaForeground {
+          box-shadow: 0 0 3px 0 $white;
+          border: 1px solid $white;
+        }
       }
 
       &.opened {
         z-index: 2;
-        box-shadow: 0 0 3px 0 $primary;
+
+        &.primary {
+          box-shadow: 0 0 3px 0 $primary;
+        }
+
+        &.secondary {
+          box-shadow: 0 0 3px 0 $secondary;
+        }
+
+        &.tertiary {
+          box-shadow: 0 0 3px 0 $tertiary;
+        }
+
+        &.error {
+          box-shadow: 0 0 3px 0 $error;
+        }
+
+        &.cta {
+          box-shadow: 0 0 3px 0 $black;
+        }
+
+        &.ctaForeground {
+          box-shadow: 0 0 3px 0 $white;
+        }
       }
 
       svg,
       svg path {
         transition-duration: 350ms;
-        fill: $primary;
         pointer-events: none;
+
+        &.primary {
+          fill: $primary;
+        }
+
+        &.secondary {
+          fill: $secondary;
+        }
+
+        &.tertiary {
+          fill: $tertiary;
+        }
+
+        &.error {
+          fill: $error;
+        }
+
+        &.cta {
+          fill: $black;
+        }
+
+        &.ctaForeground {
+          fill: $white;
+        }
       }
 
       &.opened svg {
@@ -99,6 +195,30 @@
       width: calc(100% - 2px);
       max-height: 200px;
       overflow-y: auto;
+
+      &.primary {
+        border: 1px solid $primary;
+      }
+
+      &.secondary {
+        border: 1px solid $secondary;
+      }
+
+      &.tertiary {
+        border: 1px solid $tertiary;
+      }
+
+      &.error {
+        border: 1px solid $error;
+      }
+
+      &.cta {
+        border: 1px solid $black;
+      }
+
+      &.ctaForeground {
+        border: 1px solid $white;
+      }
 
       &::-webkit-scrollbar {
         width: 0px;

@@ -32,6 +32,7 @@ export const Filter = () => {
       value={category}
       onChange={handleSearchInputChange}
       name='filter-category'
+      color='tertiary'
     />
   );
 };

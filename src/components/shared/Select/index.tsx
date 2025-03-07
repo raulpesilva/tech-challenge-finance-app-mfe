@@ -19,6 +19,7 @@ interface SelectProps<T extends readonly string[]> {
   label?: string;
   className?: string;
   name?: string;
+  color?: 'primary' | 'secondary' | 'tertiary' | 'error' | 'cta' | 'ctaForeground';
 }
 
 const SelectItem = ({ option, value, handleSelect }: SelectItemProps) => {
@@ -44,6 +45,7 @@ export const Select = <T extends readonly string[]>({
   label,
   className,
   name,
+  color = 'primary',
 }: SelectProps<T>) => {
   const [opened, setOpened] = useState(false);
   const refButton = useRef<HTMLButtonElement>(null);
@@ -81,14 +83,14 @@ export const Select = <T extends readonly string[]>({
           ref={refButton}
           type='button'
           onClick={(e) => handleOpen(e)}
-          className={combineStyles([opened ? styles.opened : '', !!value ? styles.selected : ''])}
+          className={combineStyles([opened && styles.opened, !!value && styles.selected, color && styles[color]])}
         >
           {!!value ? value : placeholder}
           <ArrowIcon />
         </button>
 
         {opened && (
-          <ul className={styles.list}>
+          <ul className={combineStyles([styles.list, color && styles[color]])}>
             {options.map((option, i) => (
               <SelectItem
                 key={`select-item-${option}-${i}`}
