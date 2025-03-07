@@ -1,6 +1,8 @@
+import { combineStyles } from '@/utils/combineStyles';
 import { Typography } from '@mui/material';
+import Image from 'next/image';
 import { ChangeEvent, useState } from 'react';
-import { Button } from '../shared/Button';
+import { Button } from '../Button';
 import styles from './styles.module.scss';
 
 interface InputFileProps {
@@ -39,17 +41,33 @@ export const InputFile = ({
   const handleRemove = () => {
     setFile(null);
     setImage(null);
-  }
+  };
 
   return (
-    <div className={className}>
+    <div className={combineStyles([styles.container, className && className])}>
       <label htmlFor={id} className={styles.label}>
         {label}
       </label>
+
       <input type='file' id={id} className={styles.input} onInput={handleInput} accept={accept} multiple={false} />
+
       {!!image && <input type='hidden' name={name} value={image} />}
-      {!!image && <img src={image as string} alt={file?.name} className={styles.image} />}
-      {file && <Button onClick={handleRemove} variant='outlined' color='error'>Remover</Button>}
+      {!!image && (
+        <Image
+          src={image as string}
+          alt={file?.name || 'Image upload'}
+          className={styles.image}
+          layout='responsive'
+          width={100}
+          height={100}
+        />
+      )}
+
+      {file && (
+        <Button onClick={handleRemove} variant='outlined' color='error'>
+          Remover
+        </Button>
+      )}
       {file && (
         <Typography variant='caption' color='text' className={styles.fileName}>
           {file.name}
