@@ -53,4 +53,5 @@ export interface Transaction {
   type: TransactionType;
   category: CategoryType;
   title: string;
+  attachment?: string
 }

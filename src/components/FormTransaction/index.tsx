@@ -12,6 +12,7 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/pt';
 import { useActionState, useState } from 'react';
 import { CategoriesOptionsSelect } from '../CategoriesOptionsSelect';
+import { InputFile } from '../InputFile';
 import { Button } from '../shared/Button';
 import { Input } from '../shared/Input';
 import { Typography } from '../shared/Typography';
@@ -108,9 +109,7 @@ export const FormTransaction = ({ type, initialTransaction, transactionAction, i
             </Typography>
           ))}
 
-          <Button type='button' variant='outlined' color='primary' className={styles.uploadButton}>
-            Enviar anexo
-          </Button>
+          <InputFile id='file' className={styles.uploadButton} label='Anexos' name='attachment' />
         </>
       )}
 

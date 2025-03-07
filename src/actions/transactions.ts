@@ -33,6 +33,9 @@ export const createTransactionAction = async (_state: CreateTransactionResponse,
   const stringValue = undoMaskCurrency(formData.get('value') as string);
   const numberValue = Number(stringValue);
   const [day, month, year] = date.split('/');
+  const attachment = formData.get('attachment') as string;
+
+  console.log({ attachment });
 
   const fields: CreateTransactionFields = {
     inputs: { type, value: stringValue, date, dateIso: '', category, title },
@@ -66,6 +69,7 @@ export const createTransactionAction = async (_state: CreateTransactionResponse,
       dateIso: fields.inputs.dateIso!,
       category,
       title,
+      attachment
     });
     revalidatePath('/dashboard');
     return {
