@@ -15,9 +15,12 @@ interface PaginationProps {
 export const Pagination = ({ page, itemsPerPage, totalItems }: PaginationProps) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const query = searchParams.get('query');
 
-  const setUrl = (page: number) => (query ? `${pathname}?query=${query}&page=${page}` : `${pathname}?page=${page}`);
+  const setUrl = (page: number) => {
+    const currentParams = new URLSearchParams(String(searchParams));
+    currentParams.set('page', page.toString());
+    return `${pathname}?${currentParams.toString()}`;
+  };
 
   return (
     <div className={styles.container}>
