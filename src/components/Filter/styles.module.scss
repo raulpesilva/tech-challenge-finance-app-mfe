@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.clearFilter {
+  position: absolute !important;
+  bottom: -32px;
+  padding: 3px 0 !important;
+}

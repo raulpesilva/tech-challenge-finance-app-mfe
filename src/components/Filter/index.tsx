@@ -7,7 +7,9 @@ import {
 } from '@/@types/category';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
+import { Button } from '../shared/Button';
 import { Select } from '../shared/Select';
+import styles from './styles.module.scss';
 
 export const Filter = () => {
   const router = useRouter();
@@ -24,15 +26,30 @@ export const Filter = () => {
     router.push(`?${String(currentParams)}`);
   };
 
+  const handleClearFilter = () => {
+    setCategory(null);
+    const currentParams = new URLSearchParams(String(searchParams));
+    currentParams.delete('category');
+    router.push(`?${String(currentParams)}`);
+  };
+
   return (
-    <Select
-      label='Filtrar categoria'
-      placeholder='Selecione a categoria'
-      options={CATEGORIES_TYPES_DICTIONARY_VALUES}
-      value={category}
-      onChange={handleSearchInputChange}
-      name='filter-category'
-      color='tertiary'
-    />
+    <div className={styles.container}>
+      <Select
+        label='Filtrar categoria'
+        placeholder='Selecione a categoria'
+        options={CATEGORIES_TYPES_DICTIONARY_VALUES}
+        value={category}
+        onChange={handleSearchInputChange}
+        name='filter-category'
+        color='tertiary'
+      />
+
+      {category && (
+        <Button variant='text' color='tertiary' onClick={handleClearFilter} className={styles.clearFilter}>
+          Limpar filtro
+        </Button>
+      )}
+    </div>
   );
 };
