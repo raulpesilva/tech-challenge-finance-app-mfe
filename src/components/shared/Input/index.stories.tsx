@@ -23,6 +23,24 @@ export const Default: Story = {
   },
 };
 
+export const Primary: Story = {
+  args: {
+    id: 'primary-input',
+    label: 'Primary Input',
+    placeholder: 'Type here...',
+    color: 'primary',
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    id: 'secondary-input',
+    label: 'Secondary Input',
+    placeholder: 'Type here...',
+    color: 'secondary',
+  },
+};
+
 export const CenteredText: Story = {
   args: {
     id: 'centered-input',

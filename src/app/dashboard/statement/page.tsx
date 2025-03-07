@@ -1,4 +1,7 @@
+import { CATEGORIES_TYPES_DICTIONARY_MAP, CategoryTypeDictionaryValue } from '@/@types/category';
+import { Filter } from '@/components/Filter';
 import { Pagination } from '@/components/Pagination';
+import { Search } from '@/components/Search';
 import { Typography } from '@/components/shared/Typography';
 import { TransactionCard } from '@/components/TransactionCard';
 import { getUser } from '@/lib/auth/getUser';
@@ -7,7 +10,7 @@ import { redirect } from 'next/navigation';
 import styles from './styles.module.scss';
 
 interface PageProps {
-  searchParams: { page?: string };
+  searchParams: { page?: string; query?: string; category?: string };
 }
 
 const itemsPerPage = 10;
@@ -18,6 +21,8 @@ export default async function Page({ searchParams }: PageProps) {
   if (!user) return null;
 
   const page = searchParams.page ? Number(searchParams.page) : 1;
+  const query = searchParams.query;
+  const category = CATEGORIES_TYPES_DICTIONARY_MAP[searchParams.category as CategoryTypeDictionaryValue];
   const startRequest = (page - 1) * itemsPerPage;
   const endRequest = startRequest + requestLimit;
 
@@ -25,10 +30,13 @@ export default async function Page({ searchParams }: PageProps) {
     _sort: '-dateIso',
     _start: startRequest,
     _end: endRequest,
+    title: query,
+    category,
   });
 
   if (!transactions) return null;
-  if (!transactions.length && page !== 1) redirect('/dashboard/statement');
+  if (!transactions.length && page !== 1)
+    redirect(query ? `/dashboard/statement?query=${query}` : '/dashboard/statement');
 
   const transactionsSlice = transactions.slice(0, itemsPerPage);
 
@@ -36,9 +44,14 @@ export default async function Page({ searchParams }: PageProps) {
     <div className={styles.container}>
       <Typography variant='heading2'>Extrato completo</Typography>
 
+      <div className={styles.controlsContainer}>
+        <Search />
+        <Filter />
+      </div>
+
       {!transactionsSlice.length && (
         <Typography variant='paragraph' className={styles.noTransactions}>
-          Sem transações cadastradas
+          Sem transações
         </Typography>
       )}
 

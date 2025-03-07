@@ -24,11 +24,55 @@
 
     &:hover,
     &:focus-within {
-      border: 1px solid $primary;
+      &.primary {
+        border: 1px solid $primary;
+      }
+
+      &.secondary {
+        border: 1px solid $secondary;
+      }
+
+      &.tertiary {
+        border: 1px solid $tertiary;
+      }
+
+      &.error {
+        border: 1px solid $error;
+      }
+
+      &.cta {
+        border: 1px solid $black;
+      }
+
+      &.ctaForeground {
+        border: 1px solid $white;
+      }
     }
 
     &:focus-within {
-      box-shadow: 0 0 3px 0 $primary;
+      &.primary {
+        box-shadow: 0 0 3px 0 $primary;
+      }
+
+      &.secondary {
+        box-shadow: 0 0 3px 0 $secondary;
+      }
+
+      &.tertiary {
+        box-shadow: 0 0 3px 0 $tertiary;
+      }
+
+      &.error {
+        box-shadow: 0 0 3px 0 $error;
+      }
+
+      &.cta {
+        box-shadow: 0 0 3px 0 $black;
+      }
+
+      &.ctaForeground {
+        box-shadow: 0 0 3px 0 $white;
+      }
     }
 
     &.left input {
