@@ -15,6 +15,18 @@
   align-items: center;
 }
 
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.titleWrapper > svg {
+  width: 18px;
+  min-width: 18px;
+  height: 18px;
+}
+
 .actions {
   display: flex;
   position: absolute;
