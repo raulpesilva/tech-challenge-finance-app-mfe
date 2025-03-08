@@ -71,7 +71,7 @@ export const InputFile = ({
 
       {(file || image) && (
         <Button onClick={handleRemove} variant='outlined' color='error'>
-          Remover
+          Remover imagem
         </Button>
       )}
 

@@ -19,6 +19,7 @@ export default async function Page({ params }: { params: Promise<{ [key: string]
   return (
     <div className={styles.container}>
       <GoBackButton />
+
       <div className={styles.content}>
         <FormTransaction
           id={id}
@@ -40,15 +41,15 @@ export default async function Page({ params }: { params: Promise<{ [key: string]
             return await updateTransactionAction(state, formData);
           }}
         />
-
-        <Image
-          src={imageBanner}
-          alt='Ilustração de uma pessoa olhando para uma tela com uma lista de tarefas, onde uma delas está marcada como concluída.'
-          width={400}
-          height={310}
-          className={styles.banner}
-        />
       </div>
+
+      <Image
+        src={imageBanner}
+        alt='Ilustração de uma pessoa olhando para uma tela com uma lista de tarefas, onde uma delas está marcada como concluída.'
+        width={400}
+        height={310}
+        className={styles.banner}
+      />
     </div>
   );
 }
