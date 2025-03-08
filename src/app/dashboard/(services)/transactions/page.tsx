@@ -8,7 +8,7 @@ import Image from 'next/image';
 import styles from './styles.module.scss';
 
 const initialTransaction = {
-  inputs: { date: '', type: '', value: '', category: '', title: '' },
+  inputs: { date: '', type: '', value: '', category: '', title: '', attachment: null },
   errors: {},
 } satisfies CreateTransactionResponse;
 

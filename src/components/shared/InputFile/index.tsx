@@ -1,7 +1,7 @@
 import { combineStyles } from '@/utils/combineStyles';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { Button } from '../Button';
 import styles from './styles.module.scss';
 
@@ -12,6 +12,7 @@ interface InputFileProps {
   className?: string;
   onInput?: (file: File) => void;
   accept?: string;
+  attachment?: string | null;
 }
 
 export const InputFile = ({
@@ -21,9 +22,19 @@ export const InputFile = ({
   className,
   onInput,
   accept = 'image/png, image/jpeg',
+  attachment = null,
 }: InputFileProps) => {
   const [file, setFile] = useState<File | null>(null);
-  const [image, setImage] = useState<string | null>(null);
+  const [image, setImage] = useState<string | null>(attachment);
+
+  const handleRemove = useCallback(() => {
+    setFile(null);
+    setImage(null);
+  }, [setFile, setImage]);
+
+  useEffect(() => {
+    if (attachment === '') handleRemove();
+  }, [attachment, handleRemove]);
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
@@ -38,11 +49,6 @@ export const InputFile = ({
     fileReader.onload = (e) => e.target?.result && setImage(e.target.result as string);
   };
 
-  const handleRemove = () => {
-    setFile(null);
-    setImage(null);
-  };
-
   return (
     <div className={combineStyles([styles.container, className && className])}>
       <label htmlFor={id} className={styles.label}>
@@ -55,7 +61,7 @@ export const InputFile = ({
       {!!image && (
         <Image
           src={image as string}
-          alt={file?.name || 'Image upload'}
+          alt={file?.name ?? 'Upload image'}
           className={styles.image}
           layout='responsive'
           width={100}
@@ -63,11 +69,12 @@ export const InputFile = ({
         />
       )}
 
-      {file && (
+      {(file || image) && (
         <Button onClick={handleRemove} variant='outlined' color='error'>
           Remover
         </Button>
       )}
+
       {file && (
         <Typography variant='caption' color='text' className={styles.fileName}>
           {file.name}

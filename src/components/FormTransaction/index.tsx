@@ -37,8 +37,9 @@ export const FormTransaction = ({ type, initialTransaction, transactionAction, i
   const initialCategory = state?.inputs?.category as CategoryTypeDictionaryKey;
   const categoryType = CATEGORIES_TYPES_DICTIONARY[initialCategory] as CategoryTypeDictionaryValue;
   const initialDate = state?.inputs?.dateIso ? dayjs(state.inputs.dateIso) : dayjs();
+  const initialAttachment = state?.inputs?.attachment;
 
-  const hasAdvancedOptions = !!categoryType && categoryType !== 'Sem Categoria';
+  const hasAdvancedOptions = (!!categoryType && categoryType !== 'Sem Categoria') || !!initialAttachment;
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(hasAdvancedOptions);
 
   return (
@@ -109,7 +110,13 @@ export const FormTransaction = ({ type, initialTransaction, transactionAction, i
             </Typography>
           ))}
 
-          <InputFile id='file' className={styles.uploadButton} label='Anexos' name='attachment' />
+          <InputFile
+            id='file'
+            className={styles.uploadButton}
+            label='Anexo'
+            name='attachment'
+            attachment={state?.inputs?.attachment}
+          />
         </>
       )}
 
