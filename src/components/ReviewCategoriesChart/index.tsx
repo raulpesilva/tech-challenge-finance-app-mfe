@@ -3,6 +3,7 @@
 import { CATEGORIES_TYPES_DICTIONARY } from '@/@types/category';
 import { Transaction } from '@/@types/transaction';
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
+import { Typography } from '../shared/Typography';
 import styles from './styles.module.scss';
 
 interface ReviewCategoriesChartProps {
@@ -51,30 +52,36 @@ export const ReviewCategoriesChart = ({ transactions }: ReviewCategoriesChartPro
   if (!sortedData?.length) return null;
 
   return (
-    <ResponsiveContainer width='100%' height={320} className={styles.container}>
-      <PieChart>
-        <Pie data={sortedData} dataKey='Quant' nameKey='name' outerRadius='80%' stroke='#8b8b8b' strokeWidth={1}>
-          {sortedData.map((_, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
+    <div className={styles.container}>
+      <Typography variant='heading2' className={styles.title}>
+        Distribuição de Transações por Categoria
+      </Typography>
 
-        <Tooltip
-          contentStyle={tooltipStyles}
-          formatter={(value, name) => [`${name}: ${value} ${value === 1 ? 'transação' : 'transações'}`, '']}
-        />
+      <ResponsiveContainer width='100%' height={256}>
+        <PieChart>
+          <Pie data={sortedData} dataKey='Quant' nameKey='name' outerRadius='95%' stroke='#8b8b8b' strokeWidth={1}>
+            {sortedData.map((_, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
 
-        <Legend
-          layout='vertical'
-          align='right'
-          verticalAlign='middle'
-          payload={sortedData.map((entry, index) => ({
-            value: `${entry.name} (${entry.Quant})`,
-            type: 'square',
-            color: COLORS[index % COLORS.length],
-          }))}
-        />
-      </PieChart>
-    </ResponsiveContainer>
+          <Tooltip
+            contentStyle={tooltipStyles}
+            formatter={(value, name) => [`${name}: ${value} ${value === 1 ? 'transação' : 'transações'}`, '']}
+          />
+
+          <Legend
+            layout='vertical'
+            align='right'
+            verticalAlign='middle'
+            payload={sortedData.map((entry, index) => ({
+              value: `${entry.name} (${entry.Quant})`,
+              type: 'square',
+              color: COLORS[index % COLORS.length],
+            }))}
+          />
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
