@@ -23,8 +23,6 @@ export default async function Page() {
     ? await getTransactionsByUser(user.id, { type: ['deposit', 'withdraw', 'investment', 'transfer'] })
     : [];
 
-  console.log(transactions);
-
   return (
     <>
       <section className={styles.pageContent}>
