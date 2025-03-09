@@ -3,6 +3,7 @@
 import { Transaction, TRANSACTIONS_TYPES_DICTIONARY } from '@/@types/transaction';
 import { formatCurrency } from '@/utils/formatCurrency';
 import { Bar, BarChart, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Typography } from '../shared/Typography';
 import styles from './styles.module.scss';
 
 interface ReviewChartProps {
@@ -56,28 +57,34 @@ export const ReviewChart = ({ transactions }: ReviewChartProps) => {
   if (!data?.length) return null;
 
   return (
-    <ResponsiveContainer width='100%' height={320} className={styles.container}>
-      <BarChart data={data}>
-        <XAxis dataKey='name' tick={{ fill: fontColor, fontSize }} className={styles.xAxis} />
+    <div className={styles.container}>
+      <Typography variant='heading2' className={styles.title}>
+        Valores por Tipo de Transação
+      </Typography>
 
-        <YAxis
-          width={80}
-          tick={{ fill: fontColor, fontSize }}
-          tickFormatter={(value) => formatCurrency(Number(value)).replace('R$ ', 'R$')}
-        />
+      <ResponsiveContainer width='100%' height={320}>
+        <BarChart data={data}>
+          <XAxis dataKey='name' tick={{ fill: fontColor, fontSize }} className={styles.xAxis} />
 
-        <Tooltip
-          formatter={(value) => formatCurrency(Number(value))}
-          cursor={{ fill: tooltipShadow }}
-          contentStyle={tooltipStyles}
-        />
+          <YAxis
+            width={80}
+            tick={{ fill: fontColor, fontSize }}
+            tickFormatter={(value) => formatCurrency(Number(value)).replace('R$ ', 'R$')}
+          />
 
-        <Bar dataKey='Valor' radius={[8, 8, 0, 0]} label={renderCustomLabel} barSize={16}>
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={entry.color} />
-          ))}
-        </Bar>
-      </BarChart>
-    </ResponsiveContainer>
+          <Tooltip
+            formatter={(value) => formatCurrency(Number(value))}
+            cursor={{ fill: tooltipShadow }}
+            contentStyle={tooltipStyles}
+          />
+
+          <Bar dataKey='Valor' radius={[8, 8, 0, 0]} label={renderCustomLabel} barSize={16}>
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.color} />
+            ))}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
