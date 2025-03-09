@@ -1,0 +1,9 @@
+.container {
+  margin-top: 24px;
+}
+
+.textBar {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}

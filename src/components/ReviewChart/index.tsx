@@ -3,6 +3,7 @@
 import { Transaction } from '@/@types/transaction';
 import { formatCurrency } from '@/utils/formatCurrency';
 import { Bar, BarChart, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import styles from './styles.module.scss';
 
 interface ReviewChartProps {
   transactions: Transaction[];
@@ -22,7 +23,14 @@ const renderCustomLabel = (props: any) => {
   const { x, y, width, value } = props;
 
   return (
-    <text x={x + width / 2} y={y - 10} fill={fontColor} textAnchor='middle' fontSize={fontSize}>
+    <text
+      x={x + width / 2}
+      y={y - 10}
+      fill={fontColor}
+      textAnchor='middle'
+      fontSize={fontSize}
+      className={styles.textBar}
+    >
       {formatCurrency(value)}
     </text>
   );
@@ -70,9 +78,9 @@ export const ReviewChart = ({ transactions }: ReviewChartProps) => {
   const data = Object.values(values);
 
   return (
-    <ResponsiveContainer width='100%' height={320}>
+    <ResponsiveContainer width='100%' height={320} className={styles.container}>
       <BarChart data={data}>
-        <XAxis dataKey='name' tick={{ fill: fontColor, fontSize }} />
+        <XAxis dataKey='name' tick={{ fill: fontColor, fontSize }} className={styles.xAxis} />
 
         <YAxis
           width={80}
@@ -88,10 +96,11 @@ export const ReviewChart = ({ transactions }: ReviewChartProps) => {
             border: `1px solid ${tooltipBorder}`,
             borderRadius: '8px',
             padding: '8px',
+            fontSize: '14px',
           }}
         />
 
-        <Bar dataKey='Valor' radius={[8, 8, 0, 0]} label={renderCustomLabel} barSize={24}>
+        <Bar dataKey='Valor' radius={[8, 8, 0, 0]} label={renderCustomLabel} barSize={16}>
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={entry.color} />
           ))}

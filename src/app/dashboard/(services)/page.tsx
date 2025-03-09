@@ -58,7 +58,7 @@ export default async function Page() {
           <GridBottomIcon className={styles.gridBottom} />
 
           <Typography variant='heading1' className={styles.title}>
-            Balanço Financeiro
+            Balanço financeiro
           </Typography>
 
           <ReviewChart transactions={transactions} />
