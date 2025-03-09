@@ -5,10 +5,12 @@
   background-color: $white;
   padding: 32px 24px;
   min-width: 282px;
+  max-width: 282px;
   height: fit-content;
 
   @media (max-width: 1024px) {
     min-width: auto;
+    max-width: 100%;
   }
 }
 

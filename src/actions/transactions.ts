@@ -20,6 +20,7 @@ export type CreateTransactionFields = Fields<{
   dateIso?: string;
   category: string;
   title: string;
+  attachment: string | null;
 }>;
 export type CreateTransactionResponse = ActionResponse<CreateTransactionFields>;
 
@@ -35,10 +36,8 @@ export const createTransactionAction = async (_state: CreateTransactionResponse,
   const [day, month, year] = date.split('/');
   const attachment = formData.get('attachment') as string;
 
-  console.log({ attachment });
-
   const fields: CreateTransactionFields = {
-    inputs: { type, value: stringValue, date, dateIso: '', category, title },
+    inputs: { type, value: stringValue, date, dateIso: '', category, title, attachment },
     errors: {},
   };
   if (!date.replace(/\D/g, '')) fields.errors.date = ['Data é obrigatória'];
@@ -69,12 +68,12 @@ export const createTransactionAction = async (_state: CreateTransactionResponse,
       dateIso: fields.inputs.dateIso!,
       category,
       title,
-      attachment
+      attachment,
     });
     revalidatePath('/dashboard');
     return {
       ...response,
-      inputs: { ...response.inputs, value: '', date: '', dateIso: '', category: '', title: '' },
+      inputs: { ...response.inputs, value: '', date: '', dateIso: '', category: '', title: '', attachment: '' },
       success: true,
     };
   } catch {
@@ -89,6 +88,7 @@ export type UpdateTransactionFields = Fields<{
   dateIso?: string;
   category: string;
   title: string;
+  attachment: string | null;
 }>;
 export type UpdateTransactionResponse = ActionResponse<UpdateTransactionFields>;
 
@@ -104,9 +104,10 @@ export const updateTransactionAction = async (_state: UpdateTransactionResponse,
   const numberValue = Number(stringValue);
   const [day, month, year] = date.split('/');
   const dateIso = dayjs(`${year}-${month}-${day}`).toISOString();
+  const attachment = formData.get('attachment') as string;
 
   const fields: CreateTransactionFields = {
-    inputs: { type, value: stringValue, date, dateIso, category, title },
+    inputs: { type, value: stringValue, date, dateIso, category, title, attachment },
     errors: {},
   };
 
@@ -123,7 +124,17 @@ export const updateTransactionAction = async (_state: UpdateTransactionResponse,
     const user = await getUser();
     if (!user) return { ...response, success: false, errors: { type: ['Usuário não encontrado'] } };
 
-    await updateTransaction({ id, type, value: numberValue, date, author: user.id, dateIso, category, title });
+    await updateTransaction({
+      id,
+      type,
+      value: numberValue,
+      date,
+      author: user.id,
+      dateIso,
+      category,
+      title,
+      attachment,
+    });
     revalidatePath('/dashboard');
     revalidatePath('/dashboard/statement/*');
     return { ...response, success: true };
