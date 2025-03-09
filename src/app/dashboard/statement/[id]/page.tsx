@@ -7,7 +7,7 @@ import Image from 'next/image';
 import styles from './styles.module.scss';
 
 const initialTransaction = {
-  inputs: { date: '', type: '', value: '', category: '', title: '' },
+  inputs: { date: '', type: '', value: '', category: '', title: '', attachment: null },
   errors: {},
 } satisfies CreateTransactionResponse;
 
@@ -19,6 +19,7 @@ export default async function Page({ params }: { params: Promise<{ [key: string]
   return (
     <div className={styles.container}>
       <GoBackButton />
+
       <div className={styles.content}>
         <FormTransaction
           id={id}
@@ -32,6 +33,7 @@ export default async function Page({ params }: { params: Promise<{ [key: string]
               dateIso: transaction.dateIso,
               category: transaction.category,
               title: transaction.title,
+              attachment: transaction.attachment,
             },
           }}
           transactionAction={async (state, formData) => {
@@ -39,15 +41,15 @@ export default async function Page({ params }: { params: Promise<{ [key: string]
             return await updateTransactionAction(state, formData);
           }}
         />
-
-        <Image
-          src={imageBanner}
-          alt='Ilustração de uma pessoa olhando para uma tela com uma lista de tarefas, onde uma delas está marcada como concluída.'
-          width={400}
-          height={310}
-          className={styles.banner}
-        />
       </div>
+
+      <Image
+        src={imageBanner}
+        alt='Ilustração de uma pessoa olhando para uma tela com uma lista de tarefas, onde uma delas está marcada como concluída.'
+        width={400}
+        height={310}
+        className={styles.banner}
+      />
     </div>
   );
 }
