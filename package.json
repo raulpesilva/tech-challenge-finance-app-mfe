@@ -19,6 +19,7 @@
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^6.3.1",
     "@mui/x-date-pickers": "^7.23.3",
+    "@raulpesilva/re-state": "^1.2.32",
     "bcrypt": "^5.1.1",
     "dayjs": "^1.11.13",
     "jose": "^5.9.6",
