@@ -1,6 +1,6 @@
 'use client';
 
-import { Transaction } from '@/@types/transaction';
+import { Transaction, TRANSACTIONS_TYPES_DICTIONARY } from '@/@types/transaction';
 import { formatCurrency } from '@/utils/formatCurrency';
 import { Bar, BarChart, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import styles from './styles.module.scss';
@@ -11,71 +11,49 @@ interface ReviewChartProps {
 
 const fontSize = 14;
 const fontColor = '#8b8b8b';
-const tooltipBackground = '#ffffff';
-const tooltipBorder = '#8b8b8b';
-const tooltipShadow = '#00000019';
-const depositColor = '#004d61';
-const withdrawColor = '#ff5031';
-const investmentColor = '#47a138';
-const transferColor = '#bf1313';
-
-const renderCustomLabel = (props: any) => {
-  const { x, y, width, value } = props;
-
-  return (
-    <text
-      x={x + width / 2}
-      y={y - 10}
-      fill={fontColor}
-      textAnchor='middle'
-      fontSize={fontSize}
-      className={styles.textBar}
-    >
-      {formatCurrency(value)}
-    </text>
-  );
+const tooltipStyles = {
+  backgroundColor: '#ffffff',
+  border: '1px solid #8b8b8b',
+  borderRadius: '8px',
+  padding: '8px',
+  fontSize: '14px',
 };
+const tooltipShadow = '#00000019';
 
-export const ReviewChart = ({ transactions }: ReviewChartProps) => {
+const COLORS = ['#004d61', '#ff5031', '#47a138', '#bf1313'];
+
+const getChartData = (transactions: Transaction[]) => {
   const values = transactions.reduce(
-    (acc, transaction) => {
+    (acc, transaction, i) => {
       const type = transaction.type;
       const value = transaction.value / 100;
+      const color = COLORS[i] ?? '#004d61';
 
-      if (type === 'deposit') {
-        if (!acc['deposit']) return { ...acc, deposit: { name: 'Depósito', Valor: value, color: depositColor } };
-        return { ...acc, deposit: { ...acc['deposit'], Valor: acc['deposit'].Valor + value } };
-      }
-
-      if (type === 'withdraw') {
-        if (!acc['withdraw']) return { ...acc, withdraw: { name: 'Retirada', Valor: value, color: withdrawColor } };
-        return { ...acc, withdraw: { ...acc['withdraw'], Valor: acc['withdraw'].Valor + value } };
-      }
-
-      if (type === 'investment') {
-        if (!acc['investment'])
-          return {
-            ...acc,
-            investment: { name: 'Investimento', Valor: value, color: investmentColor },
-          };
-        return {
-          ...acc,
-          investment: { ...acc['investment'], Valor: acc['investment'].Valor + value },
-        };
-      }
-
-      if (type === 'transfer') {
-        if (!acc['transfer'])
-          return { ...acc, transfer: { name: 'Transferência', Valor: value, color: transferColor } };
-        return { ...acc, transfer: { ...acc['transfer'], Valor: acc['transfer'].Valor + value } };
-      }
-
-      return acc;
+      if (!acc[type]) return { ...acc, [type]: { name: TRANSACTIONS_TYPES_DICTIONARY[type], Valor: value, color } };
+      return { ...acc, [type]: { ...acc[type], Valor: acc[type].Valor + value, color } };
     },
     {} as { [key: string]: { name: string; Valor: number; color: string } }
   );
 
-  const data = Object.values(values);
+  return Object.values(values);
+};
+
+const renderCustomLabel = ({ x, y, width, value }: { x: number; y: number; width: number; value: number }) => (
+  <text
+    x={x + width / 2}
+    y={y - 10}
+    fill={fontColor}
+    textAnchor='middle'
+    fontSize={fontSize}
+    className={styles.textBar}
+  >
+    {formatCurrency(value)}
+  </text>
+);
+
+export const ReviewChart = ({ transactions }: ReviewChartProps) => {
+  const data = getChartData(transactions);
+  if (!data?.length) return null;
 
   return (
     <ResponsiveContainer width='100%' height={320} className={styles.container}>
@@ -91,13 +69,7 @@ export const ReviewChart = ({ transactions }: ReviewChartProps) => {
         <Tooltip
           formatter={(value) => formatCurrency(Number(value))}
           cursor={{ fill: tooltipShadow }}
-          contentStyle={{
-            backgroundColor: tooltipBackground,
-            border: `1px solid ${tooltipBorder}`,
-            borderRadius: '8px',
-            padding: '8px',
-            fontSize: '14px',
-          }}
+          contentStyle={tooltipStyles}
         />
 
         <Bar dataKey='Valor' radius={[8, 8, 0, 0]} label={renderCustomLabel} barSize={16}>
