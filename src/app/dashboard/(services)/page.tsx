@@ -3,6 +3,7 @@ import GridBottomIcon from '@/assets/icons/grid-bottom.svg';
 import GridTopIcon from '@/assets/icons/grid-top.svg';
 import imageBanner from '@/assets/images/main-banner-dashboard.png';
 import { FormTransaction } from '@/components/FormTransaction';
+import { ReviewCategoriesChart } from '@/components/ReviewCategoriesChart';
 import { ReviewChart } from '@/components/ReviewChart';
 import { Typography } from '@/components/shared/Typography';
 import { getUser } from '@/lib/auth/getUser';
@@ -21,6 +22,8 @@ export default async function Page() {
   const transactions = user?.id
     ? await getTransactionsByUser(user.id, { type: ['deposit', 'withdraw', 'investment', 'transfer'] })
     : [];
+
+  console.log(transactions);
 
   return (
     <>
@@ -62,6 +65,7 @@ export default async function Page() {
           </Typography>
 
           <ReviewChart transactions={transactions} />
+          <ReviewCategoriesChart transactions={transactions} />
         </section>
       )}
     </>
