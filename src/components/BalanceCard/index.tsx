@@ -47,7 +47,7 @@ export const BalanceCard = async ({ user }: BalanceCardProps) => {
           alt='Ilustração de uma pessoa colocando uma moeda com símbolo de dólar em um cofrinho em forma de porco.'
           width={283}
           height={228}
-          priority
+          loading='eager'
           className={styles.banner}
         />
 
