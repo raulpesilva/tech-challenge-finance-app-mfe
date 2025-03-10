@@ -19,7 +19,6 @@ const ExternalLink = ({ href, children }: ExternalLinkProps) => {
   );
 };
 
-// TODO: Add links in the footer - Services
 const services = [
   { link: '/', text: 'Conta corrente' },
   { link: '/', text: 'Conta PJ' },
@@ -36,9 +35,9 @@ const contacts = [
 ];
 
 const socialMedia = [
-  { link: 'https://www.instagram.com/', icon: InstagramIcon },
-  { link: 'https://www.whatsapp.com/', icon: WhatsappIcon },
-  { link: 'https://www.youtube.com/', icon: YouTubeIcon },
+  { link: 'https://www.instagram.com/', icon: InstagramIcon, ariaLabel: 'Instagram' },
+  { link: 'https://www.whatsapp.com/', icon: WhatsappIcon, ariaLabel: 'WhatsApp' },
+  { link: 'https://www.youtube.com/', icon: YouTubeIcon, ariaLabel: 'YouTube' },
 ];
 
 export const Footer = () => {
@@ -74,7 +73,7 @@ export const Footer = () => {
           <LogoType />
           <div className={styles.socialMediaWrapper}>
             {socialMedia.map((media, i) => (
-              <ExternalLink key={`media-${i}`} href={media.link}>
+              <ExternalLink key={`media-${i}`} href={media.link} aria-label={media.ariaLabel}>
                 <media.icon />
               </ExternalLink>
             ))}
