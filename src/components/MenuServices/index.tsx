@@ -20,14 +20,20 @@ export const MenuServices = () => {
 
   return (
     <div>
-      <ButtonIcon variant='text' color='tertiary' onClick={open} className={styles.openButton}>
+      <ButtonIcon variant='text' color='tertiary' onClick={open} className={styles.openButton} aria-label='Abrir menu'>
         <MenuIcon />
       </ButtonIcon>
 
       {!!opened && <div className={styles.overlay} onClick={close} />}
 
       <div className={combineStyles([styles.menuContent, opened && styles.opened])}>
-        <ButtonIcon variant='text' color='tertiary' onClick={close} className={styles.closeButton}>
+        <ButtonIcon
+          variant='text'
+          color='tertiary'
+          onClick={close}
+          className={styles.closeButton}
+          aria-label='Fechar menu'
+        >
           <CloseIcon />
         </ButtonIcon>
 
