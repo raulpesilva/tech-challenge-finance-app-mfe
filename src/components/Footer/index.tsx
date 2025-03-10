@@ -8,12 +8,13 @@ import styles from './styles.module.scss';
 
 interface ExternalLinkProps {
   href: string;
+  ariaLabel?: string;
   children: React.ReactNode;
 }
 
-const ExternalLink = ({ href, children }: ExternalLinkProps) => {
+const ExternalLink = ({ href, ariaLabel, children }: ExternalLinkProps) => {
   return (
-    <a href={href} target='_blank' rel='noopener noreferrer'>
+    <a href={href} target='_blank' rel='noopener noreferrer' aria-label={ariaLabel}>
       {children}
     </a>
   );
@@ -45,7 +46,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <Typography variant='heading4' color='secondary'>
+          <Typography variant='heading3' size='base' color='secondary'>
             Serviços
           </Typography>
           {services.map((service, i) => (
@@ -56,7 +57,7 @@ export const Footer = () => {
         </div>
 
         <div className={styles.content}>
-          <Typography variant='heading4' color='secondary'>
+          <Typography variant='heading3' size='base' color='secondary'>
             Contato
           </Typography>
           {contacts.map((contact, i) => (
@@ -67,13 +68,13 @@ export const Footer = () => {
         </div>
 
         <div className={styles.content}>
-          <Typography variant='heading4' color='secondary'>
+          <Typography variant='heading3' size='base' color='secondary'>
             Desenvolvido por Alura
           </Typography>
           <LogoType />
           <div className={styles.socialMediaWrapper}>
             {socialMedia.map((media, i) => (
-              <ExternalLink key={`media-${i}`} href={media.link} aria-label={media.ariaLabel}>
+              <ExternalLink key={`media-${i}`} href={media.link} ariaLabel={media.ariaLabel}>
                 <media.icon />
               </ExternalLink>
             ))}
