@@ -23,15 +23,10 @@
   .amountWrapper {
     position: relative;
     margin-top: 8px;
+    min-width: 200px;
 
-    &.hiddenAmount .amount {
-      visibility: hidden;
-      opacity: 0;
-    }
-
-    &.hiddenAmount .mask {
-      visibility: visible;
-      opacity: 1;
+    @media (max-width: 1200px) and (min-width: 1025px) {
+      min-width: 160px;
     }
   }
 
@@ -45,12 +40,8 @@
   }
 
   .mask {
-    position: absolute;
-    top: 0;
-    left: 0;
-    visibility: hidden;
-    opacity: 0;
     margin: 0;
+    width: max-content;
 
     @media (max-width: 1200px) and (min-width: 1025px) {
       font-size: 24px;
