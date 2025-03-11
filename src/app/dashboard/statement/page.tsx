@@ -42,7 +42,7 @@ export default async function Page({ searchParams }: PageProps) {
 
   return (
     <div className={styles.container}>
-      <Typography variant='heading2'>Extrato completo</Typography>
+      <Typography variant='heading1' size='xl'>Extrato completo</Typography>
 
       <div className={styles.controlsContainer}>
         <Search />

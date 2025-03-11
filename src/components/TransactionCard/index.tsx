@@ -61,12 +61,13 @@ export const TransactionCard = ({ transaction }: { transaction: Transaction }) =
           variant='contained'
           color='tertiary'
           className={styles.editButton}
+          aria-label='Editar transação'
         >
           <EditIcon />
         </ButtonLink>
 
         <form action={deleteAction}>
-          <ButtonIcon variant='contained' color='error' type='submit'>
+          <ButtonIcon variant='contained' color='error' type='submit' aria-label='Excluir transação'>
             <DeleteIcon />
           </ButtonIcon>
         </form>
