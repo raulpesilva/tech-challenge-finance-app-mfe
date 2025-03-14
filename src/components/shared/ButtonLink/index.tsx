@@ -1,5 +1,5 @@
 import { combineStyles } from '@/utils/combineStyles';
-import Link, { LinkProps } from 'next/link';
+import { LinkProps } from 'next/link';
 import styles from './styles.module.scss';
 
 interface ButtonLinkProps extends LinkProps {
@@ -13,7 +13,7 @@ interface ButtonLinkProps extends LinkProps {
 
 export const ButtonLink = ({ variant, color, href, children, className, selected, ...props }: ButtonLinkProps) => {
   return (
-    <Link
+    <a
       href={href}
       className={combineStyles([
         styles.buttonLink,
@@ -25,6 +25,6 @@ export const ButtonLink = ({ variant, color, href, children, className, selected
       {...props}
     >
       {children}
-    </Link>
+    </a>
   );
 };
