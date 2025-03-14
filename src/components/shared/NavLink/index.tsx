@@ -1,7 +1,7 @@
 'use client';
 
 import { combineStyles } from '@/utils/combineStyles';
-import Link, { LinkProps } from 'next/link';
+import { LinkProps } from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './styles.module.scss';
 
@@ -13,14 +13,14 @@ interface NavLinkProps extends LinkProps {
   className?: string;
 }
 
-export const NavLink = ({ color, colorActive, href, children, className, ...props }: NavLinkProps) => {
+export const NavLink = ({ color, colorActive, href, children, className, replace: _replace, ...props }: NavLinkProps) => {
   const pathname = usePathname();
   const pathnameFormatted = pathname?.replace('/dashboard/', '');
   const hrefFormatted = href?.replace('/dashboard/', '');
   const isActive = pathnameFormatted?.includes(hrefFormatted);
 
   return (
-    <Link
+    <a
       href={href}
       className={combineStyles([
         styles.navLink,
@@ -32,6 +32,6 @@ export const NavLink = ({ color, colorActive, href, children, className, ...prop
       {...props}
     >
       {children}
-    </Link>
+    </a>
   );
 };
