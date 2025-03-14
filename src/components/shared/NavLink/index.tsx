@@ -13,7 +13,7 @@ interface NavLinkProps extends LinkProps {
   className?: string;
 }
 
-export const NavLink = ({ color, colorActive, href, children, className, replace: _replace, ...props }: NavLinkProps) => {
+export const NavLink = ({ color, colorActive, href, children, className, replace, ...props }: NavLinkProps) => {
   const pathname = usePathname();
   const pathnameFormatted = pathname?.replace('/dashboard/', '');
   const hrefFormatted = href?.replace('/dashboard/', '');
@@ -28,6 +28,7 @@ export const NavLink = ({ color, colorActive, href, children, className, replace
         styles[`${colorActive}Active`],
         isActive && styles.isActive,
         className && className,
+        replace && 'replace',
       ])}
       {...props}
     >
