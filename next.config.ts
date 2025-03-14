@@ -1,7 +1,7 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  assetPrefix: 'https://tech-challenge-finance-app.vercel.app',
+  assetPrefix: '/mfe',
   sassOptions: {
     silenceDeprecations: ['legacy-js-api'],
   },
