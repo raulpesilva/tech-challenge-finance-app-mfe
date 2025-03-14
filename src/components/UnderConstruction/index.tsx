@@ -28,9 +28,8 @@ export const UnderConstruction = ({ service }: UnderConstructionProps) => {
       >
         {service ? 'Voltar aos serviços' : 'Voltar ao início'}
       </ButtonLink>
-
       <Image
-        src={imageBanner}
+        src={imageBanner.src}
         alt='Ilustração de dois trabalhadores de capacete e colete verde construindo a estrutura de uma casa, com árvores ao fundo.'
         width={470}
         height={290}
