@@ -7,7 +7,7 @@ import { Suspense } from 'react';
 import styles from './styles.module.scss';
 
 export const metadata: Metadata = {
-  title: 'Bytebank | Dashboard | FIAP Tech Challenge',
+  title: 'Bytebank | Configurações | FIAP Tech Challenge',
   description:
     'Bytebank é o seu sistema bancário digital, permitindo gerenciar contas, realizar transações e acompanhar saldos de forma simples e eficiente!',
 };
