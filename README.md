@@ -77,7 +77,7 @@ pnpm install
 pnpm dev:mock
 ```
 
-4. Acesse a aplicação no navegador em http://localhost:3000/
+4. Acesse a aplicação no navegador em http://localhost:3002/
 
 &nbsp;
 
