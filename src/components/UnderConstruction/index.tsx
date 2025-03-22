@@ -12,7 +12,7 @@ export const UnderConstruction = ({ service }: UnderConstructionProps) => {
   return (
     <section>
       <Typography variant='heading1' className={styles.title}>
-        {service ? 'Ops! Este serviço está em construção...' : 'Ops! Esta página está em construção...'}
+        {service ? 'Ops! Este serviço está em construção...' : 'Ops! Esta página está em construção... estou no MFE'}
       </Typography>
 
       <div className={styles.textWrapper}>
