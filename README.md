@@ -83,6 +83,7 @@ pnpm dev
 ```
 
 4. Acesse a aplicação no navegador em http://localhost:3000/
+5. `MFE nao deve ser acessado diretamente` MFE url - `http://localhost:3002/`
 
 &nbsp;
 
